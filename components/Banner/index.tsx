@@ -31,14 +31,14 @@ export default function Banner() {
     <div className="flex bg-brand-primary rounded-2xl py-4 px-12 items-center justify-between text-white">
       <div className="flex-1 flex flex-col gap-4">
         <div>
-          <h3 className="text-2xl">Selamat Datang Kembali!</h3>
-          <h2 className="text-4xl font-semibold">Toko Sejahtera</h2>
-          <p className="text-xl">Kelola tokomu dengan mudah dan efesien</p>
+          <h3 className="text-lg">Selamat Datang Kembali!</h3>
+          <h2 className="text-3xl font-semibold">Toko Sejahtera</h2>
+          <p className="text-lg">Kelola tokomu dengan mudah dan efesien</p>
         </div>
-        <div className="flex gap-12 items-center text-xl">
-          <div className="flex flex-col justify-center gap-2">
+        <div className="flex gap-12 items-center text-lg">
+          <div className="flex flex-col justify-center">
             <p>Tanggal</p>
-            <span className="flex gap-2 items-center">
+            <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faCalendar} />
               {formattedDate}
             </span>
@@ -46,7 +46,7 @@ export default function Banner() {
         <div className="w-0.5 h-14 bg-white">
 
         </div>
-          <div className="flex flex-col justify-center gap-2">
+          <div className="flex flex-col justify-center ">
             <p>Waktu</p>
             <span className="flex gap-2 items-center">
               <FontAwesomeIcon icon={faClock} />
@@ -56,7 +56,7 @@ export default function Banner() {
         </div>
       </div>
 
-      <div className="flex-1 max-w-75 shrink-0">
+      <div className="flex-1 max-w-64 shrink-0">
         <img src="banner-logo.png" alt=""  className="w-full h-full object-contain"/>
       </div>
     </div>
