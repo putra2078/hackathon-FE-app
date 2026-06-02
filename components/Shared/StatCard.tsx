@@ -20,7 +20,7 @@ export default function StatCard({icon, title, value, subText, subTextGrowth}: S
             <div>
                 <h3 className="font-semibold text-lg">{title}</h3>
                 <h2 className="font-semibold text-xl">{value}</h2>
-                <p>{subTextGrowth ? <span className="text-status-success"><FontAwesomeIcon icon={faArrowUp}/>{subTextGrowth}</span> : ''} {subText}</p>
+                <p>{subTextGrowth ? <span className="text-green-600"><FontAwesomeIcon icon={faArrowUp}/>{subTextGrowth}</span> : ''} {subText}</p>
             </div>
         </div>
     )
