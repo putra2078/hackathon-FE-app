@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import LatestSale from "@/components/features/dashboard/LatestSale";
 import LowStockTables from "@/components/features/dashboard/LowStockTables";
+import SalesChart from "@/components/features/dashboard/SalesChart";
 import StatCard from "@/components/Shared/StatCard";
 import {faBoxOpen, faCartShopping, faUser} from "@fortawesome/free-solid-svg-icons"
 
@@ -23,6 +24,12 @@ export default function Home(){
         <div className="grid grid-cols-2 gap-4">
           <LowStockTables/>
           <LatestSale/>
+        </div>
+      </section>
+
+      <section id="chart" className="w-full">
+        <div className="grid grid-cols-1 gap-4">
+          <SalesChart/>
         </div>
       </section>
     </div>

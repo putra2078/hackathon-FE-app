@@ -28,7 +28,7 @@ export default function Banner() {
     updateDate();
   }, []);
   return (
-    <div className="flex bg-brand-primary rounded-2xl py-4 px-12 items-center justify-between text-white">
+    <div className="flex bg-brand-primary rounded-2xl py-4 px-12 items-center justify-between text-white shadow">
       <div className="flex-1 flex flex-col gap-4">
         <div>
           <h3 className="text-lg">Selamat Datang Kembali!</h3>

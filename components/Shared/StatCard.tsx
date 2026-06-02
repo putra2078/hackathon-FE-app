@@ -13,7 +13,7 @@ interface StatCardProps {
 
 export default function StatCard({icon, title, value, subText, subTextGrowth}: StatCardProps) {
     return(
-        <div className="flex items-center gap-4 bg-bg-survace rounded-xl py-6 px-6">
+        <div className="flex items-center gap-4 bg-bg-survace rounded-xl p-6 shadow">
             <div className="flex items-center justify-center bg-brand-primary rounded-4xl w-20 h-20 text-white text-3xl">
                 <FontAwesomeIcon icon={icon}/>
             </div>
