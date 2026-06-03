@@ -16,7 +16,7 @@ export default function Sidebar() {
     { name: "Supplier", href: "/supplier", icon: faBoxOpen },
   ];
   return (
-    <aside className="bg-bg-survace p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">
+    <aside className="bg-bg-surface p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">
       <div className="flex flex-col gap-12">
         {/* Logo */}
         <div className="flex items-center py-3">
