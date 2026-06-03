@@ -51,14 +51,14 @@ export default function SalesChart() {
     return revenue.toString();
   };
   return (
-    <div className="flex flex-col gap-6 bg-bg-survace rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
       <div className="flex justify-between items-end">
         <h2 className="font-bold">Grafik Penjualan</h2>
-        <Link href={"/"} className="text-sm text-brand-primary hover:underline">
-          Lihat semua
-        </Link>
+        <select className="text-sm border border-gray-500 rounded-lg px-2 py-2 bg-bg-surface font-semibold focus:outline-none cursor-pointer">
+          <option>7 Hari Terakhir</option>
+        </select>
       </div>
-      <div className="w-full h-80">
+      <div className="w-full h-80 self-center">
         <ResponsiveContainer>
           <AreaChart
             data={data}
@@ -96,7 +96,7 @@ export default function SalesChart() {
               }}
             />
 
-            <XAxis dataKey={"day"} tickLine={false} dy={10} />
+            <XAxis dataKey={"day"} tickLine={false} dy={10}/>
             <YAxis
               tickFormatter={formatRevenue}
               tick={{ fontSize: 16 }}
@@ -105,15 +105,19 @@ export default function SalesChart() {
               dx={-10}
             />
             <CartesianGrid
-              strokeDasharray="3 3"
+              strokeDasharray="0 0"
               vertical={false}
-              stroke="#000000"
+              stroke="#6a7282"
             />
             <Tooltip
               formatter={(revenue) => `Rp${revenue?.toLocaleString("id-ID")}`}
             />
           </AreaChart>
         </ResponsiveContainer>
+      </div>
+      <div className="flex items-center gap-2 self-center">
+        <div className="w-3 h-3 bg-brand-primary rounded-full"></div>
+        <p>Penjualan (Rp)</p>
       </div>
     </div>
   );

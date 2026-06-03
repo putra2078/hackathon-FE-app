@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import CategoryChart from "@/components/features/dashboard/CategoryChart";
 import LatestSale from "@/components/features/dashboard/LatestSale";
 import LowStockTables from "@/components/features/dashboard/LowStockTables";
 import SalesChart from "@/components/features/dashboard/SalesChart";
@@ -30,6 +31,7 @@ export default function Home(){
       <section id="chart" className="w-full">
         <div className="grid grid-cols-1 gap-4">
           <SalesChart/>
+          <CategoryChart/>
         </div>
       </section>
     </div>

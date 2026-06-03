@@ -7,17 +7,17 @@ export default function LowStockTables() {
     { name: "MBG", stock: 30 },
   ];
   return (
-    <div className="flex flex-col gap-6 bg-bg-survace rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
       <div className="flex justify-between items-end">
         <h2 className="font-bold">Stok Menipis</h2>
         <Link href={"/"} className="text-sm text-brand-primary hover:underline">
           Lihat semua
         </Link>
       </div>
-      <div className="flex flex-col px-2 gap-2">
+      <div className="flex flex-col px-2 gap-2 end">
         {products.map((product, i) => {
           return (
-            <div className="flex justify-between border-b border-gray-400 py-2" key={i}>
+            <div className="flex justify-between border-b border-gray-400 py-2 last:border-transparent" key={i}>
               <div className="flex gap-4 items-center">
                 <div className="flex justify-center items-center w-12 h-12 bg-brand-primary rounded-xl">
                   h

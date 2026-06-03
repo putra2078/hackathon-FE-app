@@ -27,7 +27,7 @@ export default function LatestSale() {
     },
   ];
   return (
-    <div className="flex flex-col gap-6 bg-bg-survace rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
       <div className="flex justify-between items-end">
         <h2 className="font-bold">Penjualan Terbaru</h2>
         <Link href={"/"} className="text-sm text-brand-primary hover:underline">
