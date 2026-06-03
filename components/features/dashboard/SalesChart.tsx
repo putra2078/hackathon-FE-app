@@ -69,10 +69,16 @@ export default function SalesChart() {
               bottom: 24,
             }}
           >
+            <defs>
+              <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#C6D6BF" stopOpacity={1} />
+                <stop offset="100%" stopColor="#C6D6BF" stopOpacity={0} />
+              </linearGradient>
+            </defs>
             <Area
               type="monotone"
               dataKey="revenue"
-              fill="var(--brand-light)"
+              fill="url(#colorValue)"
               stroke="none"
               dot={false}
               activeDot={false}
@@ -96,7 +102,7 @@ export default function SalesChart() {
               }}
             />
 
-            <XAxis dataKey={"day"} tickLine={false} dy={10}/>
+            <XAxis dataKey={"day"} tickLine={false} dy={10} />
             <YAxis
               tickFormatter={formatRevenue}
               tick={{ fontSize: 16 }}
@@ -108,6 +114,7 @@ export default function SalesChart() {
               strokeDasharray="0 0"
               vertical={false}
               stroke="#6a7282"
+              opacity={0.2}
             />
             <Tooltip
               formatter={(revenue) => `Rp${revenue?.toLocaleString("id-ID")}`}

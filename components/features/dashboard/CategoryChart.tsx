@@ -23,7 +23,7 @@ export default function CategoryChart() {
       </div>
       <div className="flex gap-12 items-center px-12 ">
         <div className="flex justify-center items-center">
-            <PieChart>
+            <PieChart width={200} height={200}>
                 <Pie
                 data={data}
                 dataKey="value"
@@ -42,10 +42,10 @@ export default function CategoryChart() {
 
         <div className="flex flex-col gap-4 w-full flex-1 ">
           {data.map((item, index) => (
-            <div key={index} className="flex items-center justify-between text-sm">
+            <div key={index} className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-md shrink-0" style={{ backgroundColor: item.color }}></div>
-                <span>{item.name}</span>
+                <h3 >{item.name}</h3>
               </div>
               <span>{item.value}%</span>
             </div>

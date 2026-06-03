@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowUp, faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 interface StatCardProps {
@@ -8,13 +8,15 @@ interface StatCardProps {
     value: string | number
     icon: IconProp
     subText?: string
-    subTextGrowth?: string 
+    subTextGrowth?: string
+    normalBg?: string
+    gradientClass?: string
 }
 
-export default function StatCard({icon, title, value, subText, subTextGrowth}: StatCardProps) {
+export default function StatCard({icon, title, value, subText, subTextGrowth, normalBg, gradientClass}: StatCardProps) {
     return(
         <div className="flex items-center gap-4 bg-bg-surface rounded-xl p-6 shadow">
-            <div className="flex items-center justify-center bg-brand-primary rounded-4xl w-20 h-20 text-white text-3xl">
+            <div className={`flex items-center justify-center rounded-4xl w-20 h-20 text-white text-3xl ${normalBg ? normalBg : gradientClass}`}>
                 <FontAwesomeIcon icon={icon}/>
             </div>
             <div>
