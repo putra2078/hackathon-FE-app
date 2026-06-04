@@ -28,7 +28,7 @@
   --color-primary-950: #0e2017;
 
   /* Warna Aksi Utama (Brand) */
-  --color-primary: var(--color-primary-600); /* Hijau segar */
+  --color-primary: var(--color-primary-600); /* Hijau */
   --color-primary-foreground: #ffffff; /* Teks di dalam tombol primary */
 
   /* Warna Status */
