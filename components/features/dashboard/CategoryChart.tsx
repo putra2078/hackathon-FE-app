@@ -9,15 +9,15 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Makanan & Minuman", value: 45, color: "var(--brand-primary)" },
-  { name: "Kebutuhan Rumah", value: 30, color: "#73A043" },
-  { name: "Perawatan Tubuh", value: 15, color: "#C1D794" },
-  { name: "Lainnya", value: 10, color: "var(--brand-light)" },
+  { name: "Makanan & Minuman", value: 45, color: "var(--color-primary-800)" },
+  { name: "Kebutuhan Rumah", value: 30, color: "var(--color-primary)" },
+  { name: "Perawatan Tubuh", value: 15, color: "var(--color-primary-400)" },
+  { name: "Lainnya", value: 10, color: "var(--color-primary-200)" },
 ];
 
 export default function CategoryChart() {
   return (
-    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow">
       <div>
         <h2 className="font-bold">Kategori Penjualan</h2>
       </div>
@@ -54,10 +54,10 @@ export default function CategoryChart() {
 
       </div>
           <div className="flex justify-between px-6">
-                <span className="font-bold text-green-800">
+                <span className="font-bold text-primary-800">
                     Total Penjualan
                 </span>
-                <span className="font-semibold text-green-600">
+                <span className="font-semibold text-primary">
                     Rp12.450.000
                 </span>
           </div>

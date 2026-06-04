@@ -28,7 +28,7 @@ export default function Banner() {
     updateDate();
   }, []);
   return (
-    <div className="flex bg-linear-to-r from-brand-primary via-[#5D9460] via-53% to-[#508B5D] to-89% rounded-2xl py-4 px-12 items-center justify-between text-white shadow">
+    <div className="flex bg-linear-to-r from-primary via-primary-400 via-53% to-primary-500 to-89% rounded-2xl py-4 px-12 items-center justify-between text-white shadow">
       <div className="flex-1 flex flex-col gap-4">
         <div>
           <h3 className="text-lg">Selamat Datang Kembali!</h3>
@@ -37,7 +37,7 @@ export default function Banner() {
         </div>
         <div className="flex gap-12 items-center text-lg">
           <div className="flex flex-col justify-center">
-            <p className="text-gray-300">Tanggal</p>
+            <p className="text-slate-100">Tanggal</p>
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faCalendar} />
               {formattedDate}
@@ -47,7 +47,7 @@ export default function Banner() {
 
         </div>
           <div className="flex flex-col justify-center ">
-            <p className="text-gray-300">Waktu</p>
+            <p className="text-slate-100">Waktu</p>
             <span className="flex gap-2 items-center">
               <FontAwesomeIcon icon={faClock} />
               {formattedTime}

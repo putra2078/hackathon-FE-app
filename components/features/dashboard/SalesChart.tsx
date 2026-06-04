@@ -51,10 +51,10 @@ export default function SalesChart() {
     return revenue.toString();
   };
   return (
-    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow">
       <div className="flex justify-between items-end">
         <h2 className="font-bold">Grafik Penjualan</h2>
-        <select className="text-sm border border-gray-500 rounded-lg px-2 py-2 bg-bg-surface font-semibold focus:outline-none cursor-pointer">
+        <select className="text-sm border border-slate-300 rounded-lg px-2 py-2 bg-surface font-semibold focus:outline-none cursor-pointer">
           <option>7 Hari Terakhir</option>
         </select>
       </div>
@@ -87,18 +87,18 @@ export default function SalesChart() {
             <Line
               type="monotone"
               dataKey="revenue"
-              stroke="var(--brand-primary)"
+              stroke="var(--color-primary)"
               strokeWidth={3}
               dot={{
                 r: 6,
-                stroke: "var(--brand-primary)",
-                fill: "var(--brand-primary)",
+                stroke: "var(--color-primary)",
+                fill: "var(--color-primary)",
               }}
               activeDot={{
                 r: 6,
-                stroke: "var(--brand-primary)",
+                stroke: "var(--color-primary)",
                 strokeWidth: 1,
-                fill: "var(--bg-surface)",
+                fill: "var(--color-surface)",
               }}
             />
 
@@ -123,7 +123,7 @@ export default function SalesChart() {
         </ResponsiveContainer>
       </div>
       <div className="flex items-center gap-2 self-center">
-        <div className="w-3 h-3 bg-brand-primary rounded-full"></div>
+        <div className="w-3 h-3 bg-primary rounded-full"></div>
         <p>Penjualan (Rp)</p>
       </div>
     </div>

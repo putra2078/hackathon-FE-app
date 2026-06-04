@@ -1,26 +1,51 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-
-  --bg-surface: #FBFCF6;
-
-  --brand-primary: #337650;
-  --brand-light: #E7F0D9;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
+  /* Testing */
 
-  --color-bg-surface: var(--bg-surface);
+  --color-background: #ffffff;
+  --color-foreground: #000000; /* Teks utama gelap  */
 
-  --color-brand-primary: var(--brand-primary);
-  --color-brand-light: var(--brand-light);
+  /* Permukaan komponen (Card, Sidebar, Topbar) */
+  --color-surface: #fbfcf6; 
+  --color-surface-border: #e2e8f0;
+
+    /* Gradasi dari warna primary */
+  --color-primary-50: #f1f8f3;
+  --color-primary-100: #ddeee1;
+  --color-primary-200: #bdddc6;
+  --color-primary-300: #91c4a3;
+  --color-primary-400: #62a57b;
+  --color-primary-500: #41885e;
+  --color-primary-600: #337650;
+  --color-primary-700: #25573c;
+  --color-primary-800: #204531;
+  --color-primary-900: #1b3929;
+  --color-primary-950: #0e2017;
+
+  /* Warna Aksi Utama (Brand) */
+  --color-primary: var(--color-primary-600); /* Hijau segar */
+  --color-primary-foreground: #ffffff; /* Teks di dalam tombol primary */
+
+  /* Warna Status */
+  /* Success */
+  --color-success: oklch(0.7329 0.1935 150.8066 / 0.2);
+  --color-success-foreground: oklch(0.7329 0.1935 150.81); 
+
+  /* Warning */
+    --color-warning: oklch(0.7819 0.1585 72.3344 / 0.2);
+  --color-warning-foreground: oklch(0.7819 0.1585 72.3301);
+
+  /* Danger" */
+  --color-danger: oklch(0.6532 0.2328 25.7455 / 0.2);
+  --color-danger-foreground: oklch(0.6532 0.2328 25.7401);
+
+  /* Efek Fokus & Ring */
+  --color-focus: #22c55e;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -31,7 +56,5 @@
 } */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

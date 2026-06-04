@@ -24,14 +24,14 @@ export default function Home() {
             value={"Rp12.231.231"}
             subText="Profit"
             icon={faCartShopping}
-            gradientClass="bg-linear-to-t from-[#44814E] to-[#5D9055]"
+            gradientClass="bg-linear-to-b from-primary-600 to-primary-700"
           />
           <StatCard
             title="Total Produk"
             value={"238"}
             subText="Stok Tersedia"
             icon={faBoxOpen}
-            gradientClass="bg-linear-to-t from-[#7FA34F] to-[#9EB960]"
+            gradientClass="bg-linear-to-b from-primary-500 to-primary-600"
           />
           <StatCard
             title="Total Pelanggan"
@@ -39,7 +39,7 @@ export default function Home() {
             subTextGrowth="8.3%"
             subText="dari bulan lalu"
             icon={faUser}
-            gradientClass="bg-linear-to-t from-[#77AF2C] to-[#A2CE3E]"
+            gradientClass="bg-linear-to-b from-primary-400 to-primary-500"
           />
         </div>
       </section>

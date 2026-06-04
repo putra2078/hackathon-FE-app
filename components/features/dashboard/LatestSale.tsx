@@ -27,10 +27,10 @@ export default function LatestSale() {
     },
   ];
   return (
-    <div className="flex flex-col gap-6 bg-bg-surface rounded-2xl p-6 shadow">
+    <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow">
       <div className="flex justify-between items-end">
         <h2 className="font-bold">Penjualan Terbaru</h2>
-        <Link href={"/"} className="text-sm text-brand-primary hover:underline">
+        <Link href={"/"} className="text-sm text-primary hover:underline">
           Lihat semua
         </Link>
       </div>
@@ -39,7 +39,7 @@ export default function LatestSale() {
           return (
             <div className="flex justify-between py-2" key={i}>
               <div className="flex items-center gap-4">
-                <div className="flex justify-center items-center bg-brand-light w-12 h-12 rounded-lg text-lg text-brand-primary">
+                <div className="flex justify-center items-center bg-primary-100 w-12 h-12 rounded-lg text-lg text-primary">
                   <FontAwesomeIcon icon={faFileInvoice} />
                 </div>
                 <div>
@@ -49,8 +49,8 @@ export default function LatestSale() {
               </div>
               <div className="flex flex-col items-end">
                 <p className="font-semibold">Rp{transaction.total}</p>
-                <div className="bg-green-100 text-xs py-1 px-4 rounded-full">
-                  <p className="font-semibold text-green-600">{transaction.status}</p>
+                <div className="bg-success text-xs py-1 px-4 rounded-full">
+                  <p className=" text-success-foreground">{transaction.status}</p>
                 </div>
               </div>
             </div>
