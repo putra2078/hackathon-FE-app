@@ -29,6 +29,7 @@ export default function DateSelector() {
             placeholderText='Masukkan tanggal'
             portalId="root-portal"
             className='outline-none w-36'
+            dateFormat="dd/MM/yyyy"
           />
       </div>
 

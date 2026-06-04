@@ -1,0 +1,227 @@
+[
+{
+  "id": "19367a08-a0bb-45d6-9b12-192277fba21b",
+  "tanggal": "08/09/2025",
+  "namaPelanggan": "Karol Dewar",
+  "metode": "tunai",
+  "total": 48669,
+  "status": "proses"
+}, {
+  "id": "505b025a-36de-4c0a-9a86-969dd43d336e",
+  "tanggal": "04/11/2025",
+  "namaPelanggan": "Bree Gorghetto",
+  "metode": "tunai",
+  "total": 31258,
+  "status": "batal"
+}, {
+  "id": "cfb2a490-2d63-4ea4-ba69-13f930693a5f",
+  "tanggal": "12/12/2025",
+  "namaPelanggan": "Kale Footer",
+  "metode": "transfer",
+  "total": 85539,
+  "status": "batal"
+}, {
+  "id": "8c0e38c8-7bce-4959-9148-cd09740e2c39",
+  "tanggal": "24/11/2025",
+  "namaPelanggan": "Lucy Rewcassell",
+  "metode": "tunai",
+  "total": 29899,
+  "status": "batal"
+}, {
+  "id": "5d5b88e0-0980-49f3-a1c8-6cd258437c63",
+  "tanggal": "12/05/2026",
+  "namaPelanggan": "Kath Farra",
+  "metode": "transfer",
+  "total": 21704,
+  "status": "proses"
+}, {
+  "id": "59b3dffc-8491-4e6d-a4a8-c7d87a282f29",
+  "tanggal": "27/06/2025",
+  "namaPelanggan": "Moishe Plait",
+  "metode": "tunai",
+  "total": 20661,
+  "status": "proses"
+}, {
+  "id": "b7ad2173-250a-4eec-9cb3-df81d9a0804c",
+  "tanggal": "02/09/2025",
+  "namaPelanggan": "Charity Joinsey",
+  "metode": "transfer",
+  "total": 76920,
+  "status": "proses"
+}, {
+  "id": "f95c1cd3-3aa0-4d5f-834d-4a37d88dafb8",
+  "tanggal": "02/07/2025",
+  "namaPelanggan": "Robers Icom",
+  "metode": "tunai",
+  "total": 78626,
+  "status": "batal"
+}, {
+  "id": "a73e4d3a-d13c-44a7-a19d-f9e28e0ea79a",
+  "tanggal": "06/06/2025",
+  "namaPelanggan": "Vita Ormston",
+  "metode": "qris",
+  "total": 26077,
+  "status": "proses"
+}, {
+  "id": "3fc6b512-d17c-4983-97e6-f4f055940bf0",
+  "tanggal": "14/12/2025",
+  "namaPelanggan": "Tiffani Colvill",
+  "metode": "qris",
+  "total": 54282,
+  "status": "batal"
+}, {
+  "id": "e1039a5a-e616-4f29-ae8f-8bb526e69d44",
+  "tanggal": "03/03/2026",
+  "namaPelanggan": "Aurie Mattimoe",
+  "metode": "qris",
+  "total": 62488,
+  "status": "selesai"
+}, {
+  "id": "ea44e11f-ad2d-4ee2-bd5c-c3764372c267",
+  "tanggal": "10/07/2025",
+  "namaPelanggan": "Dorthea Raikes",
+  "metode": "tunai",
+  "total": 98865,
+  "status": "batal"
+}, {
+  "id": "cb5651f6-7ae4-4f51-80ce-41b1fee9881b",
+  "tanggal": "23/05/2026",
+  "namaPelanggan": "Lawton Johnsey",
+  "metode": "qris",
+  "total": 76518,
+  "status": "selesai"
+}, {
+  "id": "7cbd1436-5c3b-465c-8620-2e2435bc1e27",
+  "tanggal": "27/05/2026",
+  "namaPelanggan": "Gianna Pargeter",
+  "metode": "transfer",
+  "total": 49665,
+  "status": "proses"
+}, {
+  "id": "573c1c70-97ff-4565-aad5-4a95f6215dc3",
+  "tanggal": "13/04/2026",
+  "namaPelanggan": "Anatollo Scranedge",
+  "metode": "transfer",
+  "total": 61595,
+  "status": "selesai"
+}, {
+  "id": "d9d18d7d-e33c-4e40-ae5b-5460e854c3d3",
+  "tanggal": "26/12/2025",
+  "namaPelanggan": "Marita Trosdall",
+  "metode": "tunai",
+  "total": 63745,
+  "status": "proses"
+}, {
+  "id": "dbeb4fc1-b924-467e-94fd-739d000e239f",
+  "tanggal": "13/11/2025",
+  "namaPelanggan": "Imelda Hendricks",
+  "metode": "tunai",
+  "total": 40420,
+  "status": "proses"
+}, {
+  "id": "fd73de11-fd35-4d6a-ba6a-fdd32bc3f981",
+  "tanggal": "04/04/2026",
+  "namaPelanggan": "Artie Maliffe",
+  "metode": "qris",
+  "total": 58132,
+  "status": "selesai"
+}, {
+  "id": "7373f63e-5943-465e-9074-83d12591bbf3",
+  "tanggal": "22/09/2025",
+  "namaPelanggan": "Randee Allerton",
+  "metode": "transfer",
+  "total": 29550,
+  "status": "batal"
+}, {
+  "id": "df7278f8-9893-4767-8d31-8fbc1e4a561d",
+  "tanggal": "14/09/2025",
+  "namaPelanggan": "Gates Henbury",
+  "metode": "tunai",
+  "total": 59065,
+  "status": "selesai"
+}, {
+  "id": "b3e66c4a-44ef-4fb9-9d0e-d070c1c70469",
+  "tanggal": "31/07/2025",
+  "namaPelanggan": "Coral Navan",
+  "metode": "transfer",
+  "total": 79326,
+  "status": "proses"
+}, {
+  "id": "19948eee-716e-4f2c-bfa5-39e0b4657c1c",
+  "tanggal": "10/02/2026",
+  "namaPelanggan": "Estella Crabtree",
+  "metode": "transfer",
+  "total": 63431,
+  "status": "batal"
+}, {
+  "id": "f08a8a49-6421-43b0-949e-3537cb96d3ca",
+  "tanggal": "14/03/2026",
+  "namaPelanggan": "Karole Huggett",
+  "metode": "qris",
+  "total": 27844,
+  "status": "proses"
+}, {
+  "id": "13324e05-d033-42d8-af98-754df5795b6d",
+  "tanggal": "18/01/2026",
+  "namaPelanggan": "Friedrich Birkmyr",
+  "metode": "qris",
+  "total": 24084,
+  "status": "proses"
+}, {
+  "id": "27100eb6-0617-4035-ae73-c8732d9acce0",
+  "tanggal": "12/11/2025",
+  "namaPelanggan": "Tanhya Shugg",
+  "metode": "qris",
+  "total": 81790,
+  "status": "selesai"
+}, {
+  "id": "760378e6-91fa-4001-8433-093d149112fe",
+  "tanggal": "25/06/2025",
+  "namaPelanggan": "Harwilll Guerreiro",
+  "metode": "tunai",
+  "total": 79106,
+  "status": "proses"
+}, {
+  "id": "1d78f777-f299-4dcb-8b39-42c5a468bb9e",
+  "tanggal": "16/01/2026",
+  "namaPelanggan": "Winthrop Grove",
+  "metode": "tunai",
+  "total": 32222,
+  "status": "batal"
+}, {
+  "id": "6a16a627-8f98-4150-8faa-6a1a35f39343",
+  "tanggal": "04/08/2025",
+  "namaPelanggan": "Kev Asher",
+  "metode": "qris",
+  "total": 20972,
+  "status": "selesai"
+}, {
+  "id": "79c16544-76c2-438f-b476-7c0b85ff6959",
+  "tanggal": "09/12/2025",
+  "namaPelanggan": "Noella Charity",
+  "metode": "transfer",
+  "total": 97474,
+  "status": "selesai"
+}, {
+  "id": "4ae259a5-81c6-4ffb-8909-5ac4e95c694f",
+  "tanggal": "25/06/2025",
+  "namaPelanggan": "Bruis Andrysiak",
+  "metode": "transfer",
+  "total": 41320,
+  "status": "selesai"
+}, {
+  "id": "8d04f339-0344-42af-80bd-49d98e0bdf7b",
+  "tanggal": "06/09/2025",
+  "namaPelanggan": "Tades Hatt",
+  "metode": "qris",
+  "total": 82872,
+  "status": "batal"
+}, {
+  "id": "865b6057-88cf-4839-9649-17e2b9a73fd2",
+  "tanggal": "30/04/2026",
+  "namaPelanggan": "Bryn Duggan",
+  "metode": "qris",
+  "total": 42496,
+  "status": "selesai"
+}
+]
