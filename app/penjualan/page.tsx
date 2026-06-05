@@ -9,7 +9,7 @@ export default function Penjualan() {
   return (
     <>
     <section>
-      <BannerSmall title='Daftar Transaksi Penuualan' breadcrumbs={['Manajemen Toko', 'Penjualan']} />
+      <BannerSmall title='Daftar Transaksi Penujualan' breadcrumbs={['Manajemen Toko', 'Penjualan']} />
     </section>
     
     <section>

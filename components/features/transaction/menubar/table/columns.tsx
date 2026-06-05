@@ -18,11 +18,11 @@ export const columns = [
     }),
     columnHelper.accessor('metode', {
         header: 'METODE',
-        cell: (info) => info.getValue()
+        cell: (info) => info.getValue().toUpperCase()
     }),
     columnHelper.accessor('total', {
         header: 'TOTAL',
-        cell: (info) => info.getValue()
+        cell: (info) => info.getValue().toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })
     }),
     columnHelper.accessor('status', {
         header: 'STATUS',

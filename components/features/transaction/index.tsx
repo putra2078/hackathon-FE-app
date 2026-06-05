@@ -17,9 +17,10 @@ export default function TransactionMenu() {
         </div>
         <button className='py-3 px-6 bg-brand-primary text-background font-bold rounded-xl'>Tambah transaksi</button>
       </div> 
-
+      <br />
       {/* Table */}
       <Table />
+      
     </section>
   )
 }
