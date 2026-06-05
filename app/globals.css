@@ -11,6 +11,7 @@
 
   --success: #4D8856;
   --danger: #C67134;
+  --failed: #C94A4A;
 
 }
 
@@ -28,6 +29,7 @@
 
   --color-status-success: var(--success);
   --color-status-danger: var(--danger);
+  --color-status-failed: var(--failed);
 }
 
 /* @media (prefers-color-scheme: dark) {

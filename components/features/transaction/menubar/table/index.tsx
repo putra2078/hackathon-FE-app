@@ -31,7 +31,7 @@ export default function Table() {
 
     // Pagination
 
-    const buttonStyle = `border border-gray-200 w-8 h-8 rounded-lg`;
+    const buttonStyle = `border border-gray-200 w-8 h-8 rounded-lg hover:cursor-pointer`;
     const [pageIn, setPageIn] = useState([0,1,2]);
     const isCurrentPage = (idx: number) => 
         table.getState().pagination.pageIndex === idx
@@ -41,7 +41,7 @@ export default function Table() {
     return (
         <>
         <table
-            className='w-full border-separate border-spacing-0 overflow-hidden border rounded-xl'
+            className='w-full border-separate border-spacing-0 overflow-hidden border rounded-2xl'
         >
             <thead>
                 {table.getHeaderGroups().map((headerGroup) => (
@@ -49,7 +49,7 @@ export default function Table() {
                     {headerGroup.headers.map((header) => (
                     <th
                         key={header.id}
-                        className='text-left p-4 font-semibold'
+                        className={`${header.id === 'action' ? 'text-center' : 'text-left'} p-4 font-black`}
                     >
                         {header.isPlaceholder
                         ? null
@@ -67,7 +67,10 @@ export default function Table() {
                 className='bg-background text-left text-sm '
             >
                 {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
+                <tr 
+                    key={row.id}
+                    className='hover:bg-gray-50 '
+                >
                     {row.getVisibleCells().map((cell) => (
                     <td
                         key={cell.id}
@@ -105,32 +108,11 @@ export default function Table() {
                     <FontAwesomeIcon icon={faAngleLeft} />
                 </button>
 
-                {/*
-                    table.getPageOptions().map((pageIndex) => {
-
-                    const isCurrentPage = table.getState().pagination.pageIndex == pageIndex   
-
-                    return (
-                        <button 
-                            key={pageIndex}
-                            onClick={() => table.setPageIndex(pageIndex)}
-                            className={`
-                                ${buttonStyle}
-                                ${isCurrentPage ? 'text-background bg-brand-primary': 'text-foreground bg-background'}
-                                `
-                            }
-                        >
-                            {pageIndex + 1}
-                        </button>
-                    )
-                    })
-                */}
-
                 {
                     pageIn.map(idx => (
                         <button 
                             key={idx + 1}
-                            onClick={() => {table.setPageIndex(idx); console.log(pageIn)}} 
+                            onClick={() => {table.setPageIndex(idx)}} 
                             className={`
                                 ${buttonStyle} 
                                 ${isCurrentPage(idx)}
@@ -153,7 +135,6 @@ export default function Table() {
                     <FontAwesomeIcon icon={faAngleRight} />
                 </button>
             </div>
-
         </div>
         </>
     )
