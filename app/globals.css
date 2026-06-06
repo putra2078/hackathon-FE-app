@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -11,8 +12,10 @@
   --color-foreground: #000000; /* Teks utama gelap  */
 
   /* Permukaan komponen (Card, Sidebar, Topbar) */
-  --color-surface: #fbfcf6; 
-  --color-surface-border: #e2e8f0;
+  --color-surface: #FCFBF7; 
+  --color-surface-secondary: #FCFBF8;
+  --color-surface-tertiary: #FDFDFB;
+  --color-surface-border: #F0F0F0;
 
     /* Gradasi dari warna primary */
   --color-primary-50: #f1f8f3;
