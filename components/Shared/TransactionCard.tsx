@@ -38,10 +38,10 @@ export default function TransactionCard() {
         return (
           <div
             key={index}
-            className="min-h-18 flex items-center bg-surface border border-gray-200 rounded-2xl"
+            className="min-h-18 flex items-center bg-surface border border-gray-200 rounded-2xl shadow"
           >
             <div
-              className={`m-6 ${info.gradient} text-background text-3xl min-w-16 min-h-16 rounded-2xl flex items-center justify-center`}
+              className={`m-6 ${info.gradient} text-background text-3xl min-w-16 min-h-16 rounded-2xl flex items-center justify-center shadow`}
             >
               <FontAwesomeIcon icon={info.icon} className="relative" />
             </div>

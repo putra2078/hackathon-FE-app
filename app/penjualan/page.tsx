@@ -9,7 +9,6 @@ export default function Penjualan() {
       <section>
         <BannerSmall
           title="Daftar Transaksi Penujualan"
-          breadcrumbs={["Manajemen Toko", "Penjualan"]}
         />
       </section>
 

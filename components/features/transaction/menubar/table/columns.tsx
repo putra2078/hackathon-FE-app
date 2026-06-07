@@ -42,7 +42,7 @@ export const Columns = [
         <span className="font-bold">
           {info
             .getValue()
-            .toLocaleString("id-ID", { style: "currency", currency: "IDR" })}
+            .toLocaleString("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 })}
         </span>
       );
     },
@@ -78,7 +78,7 @@ export const Columns = [
     cell: () => {
       return (
         <div className="flex justify-center">
-          <button className="text-center font-black w-8 h-8 bg-gray-100 rounded-3xl hover:cursor-pointer">
+          <button className="font-black w-8 h-8 bg-gray-100 rounded-3xl hover:cursor-pointer">
             <FontAwesomeIcon icon={faEllipsisVertical} />
           </button>
         </div>
