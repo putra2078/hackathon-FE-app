@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faBoxOpen, faShop } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faBoxOpen, faShop } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -45,7 +45,7 @@ export default function Sidebar() {
                 className={`flex items-center px-4 py-3 rounded-xl gap-6 transition-all ${isActive ? "bg-primary-100 text-primary shadow" : " hover:bg-primary-50 hover:text-primary"}`}
               >
                 <span>
-                    <FontAwesomeIcon icon={item.icon} className="text-xl"/>
+                  <FontAwesomeIcon icon={item.icon} className="text-xl" />
                 </span>{" "}
                 {item.name}
               </Link>
@@ -53,12 +53,12 @@ export default function Sidebar() {
           })}
         </nav>
 
-          {/* Bagian bawah */}
+        {/* Bagian bawah */}
         <div className="flex gap-2 px-4 py-6 bg-primary-100 rounded-xl items-center">
           <div>
-            <FontAwesomeIcon icon={faShop} className="text-primary text-3xl"/>
+            <FontAwesomeIcon icon={faShop} className="text-primary text-3xl" />
           </div>
-          <div >
+          <div>
             <h3 className="font-semibold">Toko sejahtera</h3>
             <p className="text-xs">Pemilik</p>
           </div>
