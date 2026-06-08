@@ -1,6 +1,8 @@
 "use client";
 import { Chip, Pagination, Table } from "@heroui/react";
 import { useMemo, useState } from "react";
+import ActionProductButton from "./ActionProductButton";
+import SeacrhProduct from "./SearchProduct";
 
 const columns = [
   { id: "productName", name: "Produk", minWidth: 220 },
@@ -262,10 +264,13 @@ export default function ProductTable() {
   const end = Math.min(page * ROW_PER_PAGE, products.length);
 
   return (
-    <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow">
-      <div id="searchProduct"></div>
+    <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
+      <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden shadow">
+      <div id="searchProduct" className="p-6 max-w-75">
+        <SeacrhProduct/>
+      </div>
       <div>
-        <Table className="rounded-md p-0 border border-surface-border">
+        <Table className="rounded-none p-0">
           <Table.ResizableContainer>
             <Table.Content
               aria-label="Table with resizable columns"
@@ -334,7 +339,7 @@ export default function ProductTable() {
                         </Chip>
                       </Table.Cell>
                       <Table.Cell className="rounded-none truncate">
-                        edit
+                        <ActionProductButton/>
                       </Table.Cell>
                     </Table.Row>
                   );
@@ -381,6 +386,7 @@ export default function ProductTable() {
             </Pagination>
           </Table.Footer>
         </Table>
+      </div>
       </div>
     </div>
   );
