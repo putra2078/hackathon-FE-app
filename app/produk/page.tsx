@@ -1,4 +1,4 @@
-import ProductTable from "@/components/features/product/ProductTable";
+import ProductSection from "@/components/features/product/ProductSection";
 import NavBanner from "@/components/Shared/NavBanner";
 
 export default function ProductPage(){
@@ -8,7 +8,7 @@ export default function ProductPage(){
                 <NavBanner/>
             </section>
             <section id="productTable"className="w-full">
-                <ProductTable/>
+                <ProductSection/>
             </section>
         </div>
     )
