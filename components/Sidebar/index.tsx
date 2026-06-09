@@ -19,7 +19,7 @@ export default function Sidebar() {
     { name: "Produk", href: "/produk", icon: faBoxesPacking },
     { name: "Penjualan", href: "/penjualan", icon: faSackDollar },
     { name: "Pembelian", href: "/pembelian", icon: faCartShopping },
-    { name: "Stok", href: "/stok", icon: faWarehouse },
+    { name: "Stok", href: "/stock", icon: faWarehouse },
     { name: "Pelanggan", href: "/pelanggan", icon: faPeopleGroup },
     { name: "Supplier", href: "/supplier", icon: faTruckFast },
 >>>>>>> fb7574a (change sidebar nav icon)
