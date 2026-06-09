@@ -11,7 +11,7 @@ export default function Sidebar() {
     { name: "Produk", href: "/produl", icon: faBoxOpen },
     { name: "Penjualan", href: "/penjualan", icon: faBoxOpen },
     { name: "Pembelian", href: "/pembelian", icon: faBoxOpen },
-    { name: "Stok", href: "/stok", icon: faBoxOpen },
+    { name: "Stok", href: "/stock", icon: faBoxOpen },
     { name: "Pelanggan", href: "/pelanggan", icon: faBoxOpen },
     { name: "Supplier", href: "/supplier", icon: faBoxOpen },
   ];
