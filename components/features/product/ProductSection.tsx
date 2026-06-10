@@ -1,11 +1,13 @@
 "use client";
-import { Chip, Pagination, Table } from "@heroui/react";
+import { Chip, Pagination, Table, Button } from "@heroui/react";
 import { useMemo, useState } from "react";
 import ActionProductButton from "./ActionProductButton";
 import SeacrhProduct from "./SearchProduct";
 import SelectCategory from "./SelectCategory";
 import SelectStatus from "./SelectStatus";
 import ProductTable from "./ProductTable";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 const columns = [
   { id: "productName", name: "Produk", minWidth: 220 },
@@ -269,10 +271,13 @@ export default function ProductSection() {
   return (
     <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
       <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
-      <div id="filter" className="flex gap-4 items-center p-6">
+      <div id="filter" className="flex gap-4 items-center p-6 w-full">
         <SeacrhProduct/>
         <SelectCategory/>
         <SelectStatus/>
+        <div className="ml-auto">
+          <Button variant="outline" className={'rounded-md shadow-sm border-0 bg-white hover:bg-gray-50'}><FontAwesomeIcon icon={faFilter}/> Filter</Button>
+        </div>
       </div>
       <div id="table">
         <ProductTable columns={columns} currentPage={page} end={end} onPageChange={setPage} pages={pages} products={paginatedItems} start={start} totalPages={totalPages}/>
