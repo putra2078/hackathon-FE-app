@@ -12,10 +12,15 @@ const colorMap: Record<string, 'success' | 'danger' | 'warning'> = {
   habis: 'danger'
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d67205b (add: Table and pagination)
 export const Column = [
   columnHelper.accessor("nama", {
   header: "Barang",
   cell: (info) => {
+<<<<<<< HEAD
       const {image, nama, satuan} = info.row.original
       return (
         <div className="flex items-center gap-4">
@@ -29,6 +34,9 @@ export const Column = [
         </div>
       )
         
+=======
+      return info.getValue();
+>>>>>>> d67205b (add: Table and pagination)
     },
   }),
   columnHelper.accessor("sku", {
@@ -52,6 +60,7 @@ export const Column = [
   columnHelper.accessor("stock_available", {
   header: "Stok Tersedia",
   cell: (info) => {
+<<<<<<< HEAD
         const status = info.getValue();
         const borderValue = 30;
         switch(true) {
@@ -62,11 +71,17 @@ export const Column = [
           case status < borderValue:
             return (<strong className="text-yellow-500">{status}</strong>)
         }
+=======
+      return info.getValue();
+>>>>>>> d67205b (add: Table and pagination)
     },
   }),
   columnHelper.accessor("stock_minimum", {
   header: "Stok Minimal",
+<<<<<<< HEAD
   meta: {className: 'text-center'},
+=======
+>>>>>>> d67205b (add: Table and pagination)
   cell: (info) => {
       return info.getValue();
     },
@@ -74,16 +89,27 @@ export const Column = [
   columnHelper.accessor("status", {
   header: "Status",
   cell: (info) => (
+<<<<<<< HEAD
     <Chip color={colorMap[info.getValue()]} variant="soft" className="font-bold rounded-md">
       {info.getValue()}
     </Chip>
+=======
+    <Chip color={colorMap[info.getValue()]} variant="soft" className="font-bold">
+      {info.getValue()}
+    </Chip>
+      
+>>>>>>> d67205b (add: Table and pagination)
   ),
   }),
   columnHelper.display({
     header: 'Aksi',
     id: "action",
     cell: () => (
+<<<<<<< HEAD
       <span className="flex gap-2 text-black">
+=======
+      <span className="flex gap-2">
+>>>>>>> d67205b (add: Table and pagination)
         <Button isIconOnly variant="tertiary" className='rounded-lg'>
           <Icon className="size-4" icon="gravity-ui:eye" />
         </Button>
@@ -91,6 +117,13 @@ export const Column = [
           <Icon className="size-4" icon="gravity-ui:ellipsis" />
         </Button>
       </span>
+<<<<<<< HEAD
     )
   })
 ]
+=======
+
+    )
+  })
+]
+>>>>>>> d67205b (add: Table and pagination)

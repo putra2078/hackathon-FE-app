@@ -136,6 +136,7 @@ export default function Filter() {
     selectionMode="multiple"
     value={selectedKeys}
     onChange={(keys: Key | Key[] | null) => setSelectedKeys(keys as Key[])}
+    aria-label="Autocomplete"
   >
     <Autocomplete.Trigger className="rounded-md">
       {/* Summary hasil select */}
