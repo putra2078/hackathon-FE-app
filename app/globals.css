@@ -1,24 +1,6 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-
-    --bg-surface: #fbfcf6;
-
-    --brand-primary: #337650;
-    --brand-light: #e7f0d9;
-
-    --success: #4d8856;
-    --danger: #c67134;
-    --failed: #c94a4a;
-}
-
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-}
 
 @theme {
     --font-sans: var(--font-geist-sans);
@@ -30,9 +12,11 @@
     --color-background: #ffffff;
     --color-foreground: #000000; /* Teks utama gelap  */
 
-    /* Permukaan komponen (Card, Sidebar, Topbar) */
-    --color-surface: #fbfcf6;
-    --color-surface-border: #e2e8f0;
+  /* Permukaan komponen (Card, Sidebar, Topbar) */
+  --color-surface: #FCFBF7; 
+  --color-surface-secondary: #FCFBF8;
+  --color-surface-tertiary: #FDFDFB;
+  --color-surface-border: #F0F0F0;
 
     --color-status-success: var(--success);
     --color-status-danger: var(--danger);

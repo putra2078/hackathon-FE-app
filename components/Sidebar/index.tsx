@@ -8,7 +8,7 @@ export default function Sidebar() {
   const pathname = usePathname();
   const itemsMenu = [
     { name: "Dashboard", href: "/", icon: faHouse },
-    { name: "Produk", href: "/produl", icon: faBoxOpen },
+    { name: "Produk", href: "/produk", icon: faBoxOpen },
     { name: "Penjualan", href: "/penjualan", icon: faBoxOpen },
     { name: "Pembelian", href: "/pembelian", icon: faBoxOpen },
     { name: "Stok", href: "/stok", icon: faBoxOpen },
