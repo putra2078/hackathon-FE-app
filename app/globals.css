@@ -78,6 +78,25 @@
   }
 } */
 
+@layer components {
+    .chip--success {
+        color: oklch(0.7329 0.1935 150.81);
+        background-color: oklch(0.7329 0.1935 150.8066 / 0.2);
+    }
+
+    .chip--warning {
+        color: oklch(0.7819 0.1585 72.3301);
+        background-color: oklch(0.7819 0.1585 72.3344 / 0.2);
+    }
+
+    .chip--danger {
+        color: oklch(0.6532 0.2328 25.7401);
+        background-color: oklch(0.6532 0.2328 25.7455 / 0.2);
+    }
+}
+
+
+
 body {
     background: var(--background);
     color: var(--foreground);

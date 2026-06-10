@@ -9,7 +9,7 @@ interface type {
 
 export default function DropDown({title, list, width}: type) {
   return (
-  <Select className={`rounded-md border ${width}`} placeholder={title}>
+  <Select className={`rounded-md border ${width}`} aria-label='Drop Down' placeholder={title}>
       <Select.Trigger className="rounded-md">
         <Select.Value />
         <Select.Indicator />
