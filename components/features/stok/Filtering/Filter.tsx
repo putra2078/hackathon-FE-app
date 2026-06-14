@@ -40,35 +40,37 @@ export default function Filter() {
       <Autocomplete.Trigger className="rounded-md" >
         <span className="flex gap-1 items-center">
           <Icon icon='gravity-ui:funnel' />
-          {/* Summary hasil select */}
           <Autocomplete.Value>
-            {/* {({ defaultChildren, isPlaceholder, state }) => {
+            {({ defaultChildren, isPlaceholder, state }) => {
+              console.log(state.selectedItems)
               if (isPlaceholder || state.selectedItems.length === 0) {
                 return defaultChildren;
               }
-
               const selectedItemsKeys = state.selectedItems.map((item) => item.key);
               return (
                 <TagGroup aria-label="Selected filters" size="sm" onRemove={onRemoveTags}>
                   <TagGroup.List>
                     {selectedItemsKeys.map((selectedItemKey) => {
-                      const item = filterData.find((s) => s.id === selectedItemKey);
-                      if (!item) return null;
+                      const keyStr = String(selectedItemKey);
+                      const dashIndex = keyStr.indexOf("-");
+                      const filterId = keyStr.slice(0, dashIndex);
+                      const option = keyStr.slice(dashIndex + 1);
+
+                      const section = filterData.find((s) => s.id === filterId);
+                      if (!section || !section.opsi.includes(option)) return null;
+
                       return (
-                        <Tag key={item.id} id={item.id}>
-                          {item.id}
+                        <Tag key={selectedItemKey} id={keyStr}>
+                          {option}
                         </Tag>
                       );
                     })}
                   </TagGroup.List>
                 </TagGroup>
               );
-            }} */}
+            }}
           </Autocomplete.Value>
         </span>
-
-        <Autocomplete.ClearButton />
-        {/* Dropdown Arrow*/}
         <Autocomplete.Indicator />
       </Autocomplete.Trigger>
 
@@ -80,7 +82,7 @@ export default function Filter() {
               <SearchField.Input placeholder='Search...' />
             </SearchField.Group>
           </SearchField>
-          <ListBox aria-label="Filter categories">
+          <ListBox aria-label="Filter categories" renderEmptyState={() => <EmptyState>Hasil tak ditemukan</EmptyState>}>
             {filterData.map((filter, index) => {
               const isLast = index === filterData.length - 1;
               return (
@@ -92,6 +94,7 @@ export default function Filter() {
                       key={`${filter.id}-${category}`}
                       id={`${filter.id}-${category}`}
                       textValue={category}
+                      className="rounded-md"
                     >
                       <Label>{category}</Label>
                       <ListBox.ItemIndicator />
@@ -108,6 +111,7 @@ export default function Filter() {
           </ListBox>
         </Autocomplete.Filter>
       </Autocomplete.Popover>
+    
     </Autocomplete>
   )
 }
