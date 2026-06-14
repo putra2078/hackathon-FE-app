@@ -12,12 +12,24 @@ const colorMap: Record<string, 'success' | 'danger' | 'warning'> = {
   habis: 'danger'
 }
 
-
 export const Column = [
   columnHelper.accessor("nama", {
   header: "Barang",
   cell: (info) => {
-      return info.getValue();
+      const {image, nama, satuan} = info.row.original
+      return (
+        <div className="flex items-center gap-4">
+          <div className="p-1 bg-gray-200 rounded-lg flex items-center justify-center">
+            <img src={image} width='60' height='60' alt="imaj" />
+          </div>
+          <span>
+            <span className="font-bold text-black">{nama}</span>
+            <p>{satuan}</p>
+          </span>
+
+        </div>
+      )
+        
     },
   }),
   columnHelper.accessor("sku", {
@@ -41,7 +53,15 @@ export const Column = [
   columnHelper.accessor("stock_available", {
   header: "Stok Tersedia",
   cell: (info) => {
-      return info.getValue();
+        const status = info.getValue();
+        switch(true) {
+          case status == 0:
+            return(<strong className="text-red-500">{status}</strong>)
+          case status >= 10:
+            return (<strong className="text-green-600">{status}</strong>)
+          case status < 10:
+            return (<strong className="text-yellow-500">{status}</strong>)
+        }
     },
   }),
   columnHelper.accessor("stock_minimum", {
@@ -53,7 +73,7 @@ export const Column = [
   columnHelper.accessor("status", {
   header: "Status",
   cell: (info) => (
-    <Chip color={colorMap[info.getValue()]} variant="soft" className="font-bold">
+    <Chip color={colorMap[info.getValue()]} variant="soft" className="font-bold rounded-md">
       {info.getValue()}
     </Chip>
       
@@ -63,7 +83,7 @@ export const Column = [
     header: 'Aksi',
     id: "action",
     cell: () => (
-      <span className="flex gap-2">
+      <span className="flex gap-2 text-black">
         <Button isIconOnly variant="tertiary" className='rounded-lg'>
           <Icon className="size-4" icon="gravity-ui:eye" />
         </Button>
@@ -71,7 +91,6 @@ export const Column = [
           <Icon className="size-4" icon="gravity-ui:ellipsis" />
         </Button>
       </span>
-
     )
   })
 ]

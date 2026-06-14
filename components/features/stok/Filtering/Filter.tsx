@@ -15,6 +15,8 @@ import {
 import type { Key } from "@heroui/react";
 import { useState } from "react";
 import { category } from './Category'
+import {Icon} from "@iconify/react";
+
 
 export default function Filter() {
 
@@ -38,6 +40,8 @@ export default function Filter() {
     aria-label="Autocomplete"
   >
     <Autocomplete.Trigger className="rounded-md">
+      <span className="flex gap-1 items-center">
+      <Icon icon='gravity-ui:funnel' />
       {/* Summary hasil select */}
       <Autocomplete.Value>
           {/* {({defaultChildren, isPlaceholder, state}: any) => {
@@ -64,6 +68,8 @@ export default function Filter() {
             );
           }} */}
       </Autocomplete.Value> 
+      </span>
+
       <Autocomplete.ClearButton />
       {/* Dropdown Arrow*/}
       <Autocomplete.Indicator />

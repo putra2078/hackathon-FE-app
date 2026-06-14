@@ -1,7 +1,6 @@
 import BannerSmall from "@/components/Banner/BannerSmall";
 import Filtering from "@/components/features/stok/Filtering";
-import Stock from "@/components/features/stok/Table";
-import { Tab } from "@heroui/react";
+import StockTable from "@/components/features/stok/Table";
 
 export default function Stok() {
   return (
@@ -13,7 +12,7 @@ export default function Stok() {
       <section className="Table border w-full rounded-xl my-4 p-0">
         {/* Filtering input */}
         <Filtering />
-        <Stock />
+        <StockTable />
       </section>
     </>
   );
