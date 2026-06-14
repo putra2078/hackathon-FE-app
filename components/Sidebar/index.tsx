@@ -2,18 +2,18 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faBoxOpen, faShop } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faShop, faSackDollar, faWarehouse, faPeopleGroup, faTruckFast, faCartShopping, faBoxesPacking } from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const itemsMenu = [
     { name: "Dashboard", href: "/", icon: faHouse },
-    { name: "Produk", href: "/produk", icon: faBoxOpen },
-    { name: "Penjualan", href: "/penjualan", icon: faBoxOpen },
-    { name: "Pembelian", href: "/pembelian", icon: faBoxOpen },
-    { name: "Stok", href: "/stok", icon: faBoxOpen },
-    { name: "Pelanggan", href: "/pelanggan", icon: faBoxOpen },
-    { name: "Supplier", href: "/supplier", icon: faBoxOpen },
+    { name: "Produk", href: "/produk", icon: faBoxesPacking },
+    { name: "Penjualan", href: "/penjualan", icon: faSackDollar },
+    { name: "Pembelian", href: "/pembelian", icon: faCartShopping },
+    { name: "Stok", href: "/stok", icon: faWarehouse },
+    { name: "Pelanggan", href: "/pelanggan", icon: faPeopleGroup },
+    { name: "Supplier", href: "/supplier", icon: faTruckFast },
   ];
   return (
     <aside className="bg-surface p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">
