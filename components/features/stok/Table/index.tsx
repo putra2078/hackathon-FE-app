@@ -18,6 +18,7 @@ export default function StockTable() {
   const PAGE_SIZE = 6;
   const memoizedData = useMemo(() => data, [data]);
   const table = useReactTable({
+
     data: memoizedData,
     columns: Column,
     getCoreRowModel: getCoreRowModel(),
@@ -61,11 +62,8 @@ export default function StockTable() {
             {table.getRowModel().rows.map((row) => (
               <Table.Row key={row.id}>
                 {row.getVisibleCells().map((cell) => (
-                  <Table.Cell key={cell.id} className='text-gray-600'>
-                    { cell.id == '0' ?
-                      'Test'
-                    : flexRender(cell.column.columnDef.cell, cell.getContext())
-                    }
+                  <Table.Cell key={cell.id} className={`text-gray-600`}>
+                    { flexRender(cell.column.columnDef.cell, cell.getContext()) }
                   </Table.Cell>
                 ))}
               </Table.Row>

@@ -26,7 +26,6 @@ export const Column = [
             <span className="font-bold text-black">{nama}</span>
             <p>{satuan}</p>
           </span>
-
         </div>
       )
         
@@ -54,18 +53,20 @@ export const Column = [
   header: "Stok Tersedia",
   cell: (info) => {
         const status = info.getValue();
+        const borderValue = 30;
         switch(true) {
           case status == 0:
             return(<strong className="text-red-500">{status}</strong>)
-          case status >= 10:
+          case status >= borderValue:
             return (<strong className="text-green-600">{status}</strong>)
-          case status < 10:
+          case status < borderValue:
             return (<strong className="text-yellow-500">{status}</strong>)
         }
     },
   }),
   columnHelper.accessor("stock_minimum", {
   header: "Stok Minimal",
+  meta: {className: 'text-center'},
   cell: (info) => {
       return info.getValue();
     },
@@ -76,7 +77,6 @@ export const Column = [
     <Chip color={colorMap[info.getValue()]} variant="soft" className="font-bold rounded-md">
       {info.getValue()}
     </Chip>
-      
   ),
   }),
   columnHelper.display({
