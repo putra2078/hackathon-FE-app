@@ -1,24 +1,21 @@
 "use client";
+import { useMemo } from "react";
 import {
   useReactTable,
   getCoreRowModel,
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
+import { Table } from "@heroui/react";
 
-import { Table, Pagination } from "@heroui/react";
-
-import { useMemo } from "react";
-import dummy from "./dummy.json";
 import { Column } from "./columns";
+import dummy from "./dummy.json";
+import StockPagination from "./pagination";
 
 export default function StockTable() {
   const data = dummy;
-
-  const PAGE_SIZE = 6;
   const memoizedData = useMemo(() => data, [data]);
   const table = useReactTable({
-
     data: memoizedData,
     columns: Column,
     getCoreRowModel: getCoreRowModel(),
@@ -26,19 +23,11 @@ export default function StockTable() {
     initialState: {
       pagination: {
         pageIndex: 0,
-        pageSize: PAGE_SIZE,
+        pageSize: 6,
       },
     },
   });
-
-  // Pagination stuff
-  const { pageIndex } = table.getState().pagination;
-  const pageCount = table.getPageCount();
-  const pages = Array.from({ length: pageCount }, (_, i) => i);
-  const length = table.getRowCount();
-  const start = pageIndex * PAGE_SIZE + 1;
-  const end = Math.min((pageIndex + 1) * PAGE_SIZE, length);
-
+  
   return (
     <Table variant="secondary">
       <Table.ScrollContainer>
@@ -72,55 +61,7 @@ export default function StockTable() {
         </Table.Content>
       </Table.ScrollContainer>
 
-      <Table.Footer>
-        <Pagination size="sm">
-          {/* Summary page */}
-          <Pagination.Summary>
-            Menampilkan {start} - {end} dari {length} barang 
-          </Pagination.Summary>
-
-          <Pagination.Content>
-            {/* Previous Button */}
-            <Pagination.Previous
-              isDisabled={!table.getCanPreviousPage()}
-              onClick={() => table.previousPage()}
-              className='border rounded-md w-7'
-            >
-              <Pagination.PreviousIcon />
-            </Pagination.Previous>
-
-            {
-              pages.map((p) => 
-                (
-                  <Pagination.Item 
-                    key={p + 1}
-
-                  >
-                    <Pagination.Link
-                      isActive={p === pageIndex }
-                      onPress={() => {
-                        table.setPageIndex(p)
-                      }}
-                      className="rounded-md border"
-                    >
-                      {p + 1}
-                    </Pagination.Link>
-                  </Pagination.Item>
-                )
-              )
-            }
-
-            {/* Next Button */}
-            <Pagination.Next
-              isDisabled={!table.getCanNextPage()}
-              onClick={() => table.nextPage()}
-              className='border rounded-md w-7'
-            >
-              <Pagination.NextIcon />
-            </Pagination.Next>
-          </Pagination.Content>
-        </Pagination>
-      </Table.Footer>
+      <StockPagination table={table} />
     </Table>
   );
 }

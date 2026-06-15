@@ -42,7 +42,6 @@ export default function Filter() {
           <Icon icon='gravity-ui:funnel' />
           <Autocomplete.Value>
             {({ defaultChildren, isPlaceholder, state }) => {
-              console.log(state.selectedItems)
               if (isPlaceholder || state.selectedItems.length === 0) {
                 return defaultChildren;
               }
