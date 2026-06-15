@@ -1,8 +1,7 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
-<<<<<<< HEAD
-:root {
+/* :root {
     --background: #ffffff;
     --foreground: #171717;
 
@@ -19,9 +18,7 @@
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
-}
-=======
->>>>>>> c6e354a (add: table on product page)
+} */
 
 @theme {
     --font-sans: var(--font-geist-sans);
@@ -33,17 +30,11 @@
     --color-background: #ffffff;
     --color-foreground: #000000; /* Teks utama gelap  */
 
-<<<<<<< HEAD
-    /* Permukaan komponen (Card, Sidebar, Topbar) */
-    --color-surface: #fbfcf6;
-    --color-surface-border: #e2e8f0;
-=======
   /* Permukaan komponen (Card, Sidebar, Topbar) */
   --color-surface: #FCFBF7; 
   --color-surface-secondary: #FCFBF8;
   --color-surface-tertiary: #FDFDFB;
   --color-surface-border: #F0F0F0;
->>>>>>> c6e354a (add: table on product page)
 
     --color-status-success: var(--success);
     --color-status-danger: var(--danger);
