@@ -8,21 +8,12 @@ export default function Sidebar() {
   const pathname = usePathname();
   const itemsMenu = [
     { name: "Dashboard", href: "/", icon: faHouse },
-<<<<<<< HEAD
-    { name: "Produk", href: "/produk", icon: faBoxOpen },
-    { name: "Penjualan", href: "/penjualan", icon: faBoxOpen },
-    { name: "Pembelian", href: "/pembelian", icon: faBoxOpen },
-    { name: "Stok", href: "/stock", icon: faBoxOpen },
-    { name: "Pelanggan", href: "/pelanggan", icon: faBoxOpen },
-    { name: "Supplier", href: "/supplier", icon: faBoxOpen },
-=======
     { name: "Produk", href: "/produk", icon: faBoxesPacking },
     { name: "Penjualan", href: "/penjualan", icon: faSackDollar },
     { name: "Pembelian", href: "/pembelian", icon: faCartShopping },
     { name: "Stok", href: "/stock", icon: faWarehouse },
     { name: "Pelanggan", href: "/pelanggan", icon: faPeopleGroup },
     { name: "Supplier", href: "/supplier", icon: faTruckFast },
->>>>>>> fb7574a (change sidebar nav icon)
   ];
   return (
     <aside className="bg-surface p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">

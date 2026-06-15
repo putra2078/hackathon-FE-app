@@ -32,14 +32,14 @@ export default function StockTable() {
     <Table variant="secondary">
       <Table.ScrollContainer>
         <Table.Content aria-label="Header Barang" className="min-w-[600px]">
-          <Table.Header >
+          <Table.Header>
             {table.getHeaderGroups()[0]!.headers.map((head) => {
               return (
                 <Table.Column
                   key={head.id}
                   id={head.id}
                   isRowHeader={head.id == "nama"}
-                  className="rounded-none text-black font-black"
+                  className="rounded-none text-black font-black bg-surface"
                 >
                   {flexRender(head.column.columnDef.header, head.getContext())}
                 </Table.Column>
@@ -49,7 +49,7 @@ export default function StockTable() {
 
           <Table.Body>
             {table.getRowModel().rows.map((row) => (
-              <Table.Row key={row.id}>
+              <Table.Row key={row.id} className='bg-background'>
                 {row.getVisibleCells().map((cell) => (
                   <Table.Cell key={cell.id} className={`text-gray-600`}>
                     { flexRender(cell.column.columnDef.cell, cell.getContext()) }

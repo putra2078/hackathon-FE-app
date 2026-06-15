@@ -9,7 +9,7 @@ export default function Stok() {
         <BannerSmall title="Stok Barang" />
       </section>
 
-      <section className="Table border w-full rounded-xl my-4 p-0">
+      <section className="Table border w-full rounded-xl my-4 p-0 bg-background">
         {/* Filtering input */}
         <Filtering />
         <StockTable />

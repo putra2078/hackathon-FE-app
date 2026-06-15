@@ -30,11 +30,11 @@
     --color-background: #ffffff;
     --color-foreground: #000000; /* Teks utama gelap  */
 
-  /* Permukaan komponen (Card, Sidebar, Topbar) */
-  --color-surface: #FCFBF7; 
-  --color-surface-secondary: #FCFBF8;
-  --color-surface-tertiary: #FDFDFB;
-  --color-surface-border: #F0F0F0;
+    /* Permukaan komponen (Card, Sidebar, Topbar) */
+    --color-surface: #FCFBF7; 
+    --color-surface-secondary: #FCFBF8;
+    --color-surface-tertiary: #FDFDFB;
+    --color-surface-border: #F0F0F0;
 
     --color-status-success: var(--success);
     --color-status-danger: var(--danger);
