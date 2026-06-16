@@ -1,6 +1,24 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 
+/* :root {
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --bg-surface: #fbfcf6;
+
+    --brand-primary: #337650;
+    --brand-light: #e7f0d9;
+
+    --success: #4d8856;
+    --danger: #c67134;
+    --failed: #c94a4a;
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+} */
 
 @theme {
     --font-sans: var(--font-geist-sans);
@@ -12,11 +30,11 @@
     --color-background: #ffffff;
     --color-foreground: #000000; /* Teks utama gelap  */
 
-  /* Permukaan komponen (Card, Sidebar, Topbar) */
-  --color-surface: #FCFBF7; 
-  --color-surface-secondary: #FCFBF8;
-  --color-surface-tertiary: #FDFDFB;
-  --color-surface-border: #F0F0F0;
+    /* Permukaan komponen (Card, Sidebar, Topbar) */
+    --color-surface: #FCFBF7; 
+    --color-surface-secondary: #FCFBF8;
+    --color-surface-tertiary: #FDFDFB;
+    --color-surface-border: #F0F0F0;
 
     --color-status-success: var(--success);
     --color-status-danger: var(--danger);
@@ -61,6 +79,25 @@
     --foreground: #ededed;
   }
 } */
+
+@layer components {
+    .chip--success {
+        color: oklch(0.7329 0.1935 150.81);
+        background-color: oklch(0.7329 0.1935 150.8066 / 0.2);
+    }
+
+    .chip--warning {
+        color: oklch(0.7819 0.1585 72.3301);
+        background-color: oklch(0.7819 0.1585 72.3344 / 0.2);
+    }
+
+    .chip--danger {
+        color: oklch(0.6532 0.2328 25.7401);
+        background-color: oklch(0.6532 0.2328 25.7455 / 0.2);
+    }
+}
+
+
 
 body {
     background: var(--background);

@@ -4,6 +4,9 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "./types";
 
+import { Button } from "@heroui/react";
+import {Icon} from "@iconify/react";
+
 const columnHelper = createColumnHelper<Transaction>();
 
 export const Columns = [
@@ -78,9 +81,9 @@ export const Columns = [
     cell: () => {
       return (
         <div className="flex justify-center">
-          <button className="font-black w-8 h-8 bg-gray-100 rounded-3xl hover:cursor-pointer">
-            <FontAwesomeIcon icon={faEllipsisVertical} />
-          </button>
+          <Button isIconOnly className="hover:cursor-pointer" variant="tertiary">
+            <Icon className="size-4" icon="gravity-ui:ellipsis-vertical" />
+          </Button>
         </div>
       );
     },
