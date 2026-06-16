@@ -1,0 +1,421 @@
+[{
+  "image": "/sawit.jpg",
+  "nama": "Callie Fitzsymonds",
+  "satuan": "1 Kg",
+  "sku": "MIE-003",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Solo",
+  "stock_available": 45,
+  "stock_minimum": 7,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Jocelyn Bunworth",
+  "satuan": "200 Gram",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Gudang Utama",
+  "stock_available": 97,
+  "stock_minimum": 2,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Rolando Whittingham",
+  "satuan": "1 mg",
+  "sku": "SOL-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak B-01",
+  "stock_available": 75,
+  "stock_minimum": 1,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Caldwell McPeck",
+  "satuan": "1 mg",
+  "sku": "JOK-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak B-02",
+  "stock_available": 125,
+  "stock_minimum": 1,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Krissy Eldon",
+  "satuan": "200 Gram",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Gudang Utama",
+  "stock_available": 83,
+  "stock_minimum": 4,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Yettie Pummell",
+  "satuan": "1 Kg",
+  "sku": "JOK-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Gudang Utama",
+  "stock_available": 56,
+  "stock_minimum": 8,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Sisile Gange",
+  "satuan": "200 Gram",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Solo",
+  "stock_available": 96,
+  "stock_minimum": 1,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Sigfrid Leatherborrow",
+  "satuan": "200 Gram",
+  "sku": "BER-002",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak B-02",
+  "stock_available": 6,
+  "stock_minimum": 8,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Lonnie Karpfen",
+  "satuan": "200 Gram",
+  "sku": "SOL-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak C-02",
+  "stock_available": 32,
+  "stock_minimum": 10,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Sargent Frankum",
+  "satuan": "100 Gram",
+  "sku": "MIE-003",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak B-02",
+  "stock_available": 10,
+  "stock_minimum": 9,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Ailbert Gatlin",
+  "satuan": "1 mg",
+  "sku": "MIE-003",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak C-02",
+  "stock_available": 100,
+  "stock_minimum": 9,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Leigh Keningley",
+  "satuan": "1 Pack",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak A-01",
+  "stock_available": 44,
+  "stock_minimum": 2,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Shawnee Paschek",
+  "satuan": "1 mg",
+  "sku": "JOK-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak B-01",
+  "stock_available": 46,
+  "stock_minimum": 9,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Klemens Larmour",
+  "satuan": "1 Kg",
+  "sku": "BER-002",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak A-02",
+  "stock_available": 7,
+  "stock_minimum": 2,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Cameron Abele",
+  "satuan": "100 Gram",
+  "sku": "MIE-003",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak C-01",
+  "stock_available": 108,
+  "stock_minimum": 3,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Charles Rosenthaler",
+  "satuan": "200 Gram",
+  "sku": "SOL-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak C-02",
+  "stock_available": 17,
+  "stock_minimum": 4,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Rania Alwen",
+  "satuan": "100 Gram",
+  "sku": "BER-002",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak A-02",
+  "stock_available": 57,
+  "stock_minimum": 5,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Aridatha Tissier",
+  "satuan": "200 Gram",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak B-02",
+  "stock_available": 110,
+  "stock_minimum": 1,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Cathleen Emery",
+  "satuan": "1 mg",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak C-02",
+  "stock_available": 114,
+  "stock_minimum": 10,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Mil Chisolm",
+  "satuan": "200 Gram",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Solo",
+  "stock_available": 129,
+  "stock_minimum": 7,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Lyndy De Normanville",
+  "satuan": "1 Pack",
+  "sku": "SOL-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak A-02",
+  "stock_available": 14,
+  "stock_minimum": 6,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Ingmar Raigatt",
+  "satuan": "1 mg",
+  "sku": "JOK-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Gudang Utama",
+  "stock_available": 91,
+  "stock_minimum": 10,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Hamish Dudny",
+  "satuan": "200 Gram",
+  "sku": "JOK-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak A-02",
+  "stock_available": 80,
+  "stock_minimum": 6,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Carol-jean Pickford",
+  "satuan": "1 Kg",
+  "sku": "JOK-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak A-01",
+  "stock_available": 118,
+  "stock_minimum": 5,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Roxane Balbeck",
+  "satuan": "200 Gram",
+  "sku": "MIE-003",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak B-01",
+  "stock_available": 67,
+  "stock_minimum": 6,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Shirlee Stollenbeck",
+  "satuan": "1 Pack",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak A-02",
+  "stock_available": 108,
+  "stock_minimum": 1,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Murray Semmence",
+  "satuan": "1 Pack",
+  "sku": "BER-002",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak C-02",
+  "stock_available": 101,
+  "stock_minimum": 9,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Ingaberg Covotto",
+  "satuan": "1 mg",
+  "sku": "JOK-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak A-02",
+  "stock_available": 105,
+  "stock_minimum": 2,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Shellysheldon Dalglish",
+  "satuan": "1 Kg",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Gudang Utama",
+  "stock_available": 101,
+  "stock_minimum": 7,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Adaline Tran",
+  "satuan": "200 Gram",
+  "sku": "BER-002",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak C-02",
+  "stock_available": 93,
+  "stock_minimum": 10,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Gabie Newlan",
+  "satuan": "1 Pack",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak B-02",
+  "stock_available": 56,
+  "stock_minimum": 10,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Kate Benedit",
+  "satuan": "200 Gram",
+  "sku": "BER-002",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak B-02",
+  "stock_available": 38,
+  "stock_minimum": 3,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Ezekiel Duiged",
+  "satuan": "100 Gram",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak A-02",
+  "stock_available": 52,
+  "stock_minimum": 7,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Westley Gilbride",
+  "satuan": "1 Kg",
+  "sku": "JOK-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Solo",
+  "stock_available": 15,
+  "stock_minimum": 8,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Christie Towriss",
+  "satuan": "1 Kg",
+  "sku": "JOK-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak A-01",
+  "stock_available": 18,
+  "stock_minimum": 9,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Issie Itzcovich",
+  "satuan": "100 Gram",
+  "sku": "BER-002",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak A-02",
+  "stock_available": 90,
+  "stock_minimum": 4,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Paulo Oxenham",
+  "satuan": "1 Pack",
+  "sku": "SOL-001",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak B-02",
+  "stock_available": 56,
+  "stock_minimum": 5,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Levy Janssens",
+  "satuan": "100 Gram",
+  "sku": "JOK-001",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Solo",
+  "stock_available": 84,
+  "stock_minimum": 6,
+  "status": "rendah"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Arabele Monkeman",
+  "satuan": "1 Kg",
+  "sku": "SOL-001",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak B-02",
+  "stock_available": 6,
+  "stock_minimum": 10,
+  "status": "aman"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Oneida Drei",
+  "satuan": "1 Pack",
+  "sku": "MIE-003",
+  "kategori": "Obat-obatan",
+  "lokasi": "Rak B-02",
+  "stock_available": 84,
+  "stock_minimum": 9,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Jeff Postans",
+  "satuan": "1 mg",
+  "sku": "BER-002",
+  "kategori": "Kebutuhan Rumah",
+  "lokasi": "Rak C-02",
+  "stock_available": 113,
+  "stock_minimum": 5,
+  "status": "habis"
+}, {
+  "image": "/sawit.jpg",
+  "nama": "Jerrie Le Franc",
+  "satuan": "1 mg",
+  "sku": "BER-002",
+  "kategori": "Makanan & Minuman",
+  "lokasi": "Rak A-02",
+  "stock_available": 27,
+  "stock_minimum": 8,
+  "status": "habis"
+}]
