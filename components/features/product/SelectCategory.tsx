@@ -11,7 +11,7 @@ export default function SelectCategory() {
         <Select.Indicator />
       </Select.Trigger>
       <Select.Popover className={'rounded-md'}>
-        <ListBox selectionMode="multiple" className="*:rounded-sm">
+        <ListBox className="*:rounded-sm">
           <ListBox.Item key='semuaKategori' id="semuaKategori" textValue="Semua Kategori">
             Semua Kategori
             <ListBox.ItemIndicator />

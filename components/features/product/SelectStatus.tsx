@@ -10,7 +10,7 @@ export default function SelectStatus() {
         <Select.Indicator />
       </Select.Trigger>
       <Select.Popover className={'rounded-md'}>
-        <ListBox selectionMode="multiple" className="*:rounded-sm">
+        <ListBox className="*:rounded-sm">
           <ListBox.Item key='aktif' id="aktif" textValue="Aktif">
             Aktif
             <ListBox.ItemIndicator />
