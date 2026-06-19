@@ -1,5 +1,5 @@
 "use client";
-import Card from "@/components/Shared/TransactionCard";
+import TransactionCard from "@/components/Shared/TransactionCard";
 import Transaction from "@/components/features/transaction/index";
 import BannerSmall from "@/components/Banner/BannerSmall";
 
@@ -13,7 +13,7 @@ export default function Penjualan() {
       </section>
 
       <section>
-        <Card />
+        <TransactionCard />
       </section>
 
       <section>
