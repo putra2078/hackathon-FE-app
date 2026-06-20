@@ -1,0 +1,353 @@
+import { Customer } from "../customer.columns";
+
+export const customersData: Customer[] = [{
+  "name": "tlamba0",
+  "id": "CG-5",
+  "category": "pro",
+  "point": 12,
+  "last_buy": "02/07/2025",
+  "status": "nonaktif"
+}, {
+  "name": "deagell1",
+  "id": "PK-NW",
+  "category": "regular",
+  "point": 87,
+  "last_buy": "29/08/2025",
+  "status": "nonaktif"
+}, {
+  "name": "rmctavish2",
+  "id": "CA-BC",
+  "category": "vip",
+  "point": 18,
+  "last_buy": "12/01/2026",
+  "status": "aktif"
+}, {
+  "name": "scargon3",
+  "id": "PG-EHG",
+  "category": "pro",
+  "point": 50,
+  "last_buy": "28/01/2026",
+  "status": "aktif"
+}, {
+  "name": "akabsch4",
+  "id": "IR-04",
+  "category": "regular",
+  "point": 2,
+  "last_buy": "10/12/2025",
+  "status": "aktif"
+}, {
+  "name": "mcradduck5",
+  "id": "US-IN",
+  "category": "pro",
+  "point": 58,
+  "last_buy": "16/02/2026",
+  "status": "nonaktif"
+}, {
+  "name": "nbailey6",
+  "id": "GB-ENG",
+  "category": "regular",
+  "point": 66,
+  "last_buy": "20/01/2026",
+  "status": "aktif"
+}, {
+  "name": "mflory7",
+  "id": "ZA-EC",
+  "category": "vip",
+  "point": 81,
+  "last_buy": "19/04/2026",
+  "status": "aktif"
+}, {
+  "name": "aleser8",
+  "id": "CA-NS",
+  "category": "regular",
+  "point": 53,
+  "last_buy": "25/11/2025",
+  "status": "aktif"
+}, {
+  "name": "jloreit9",
+  "id": "ZA-NP",
+  "category": "pro",
+  "point": 45,
+  "last_buy": "22/02/2026",
+  "status": "aktif"
+}, {
+  "name": "jbigleya",
+  "id": "AU-QLD",
+  "category": "regular",
+  "point": 48,
+  "last_buy": "16/03/2026",
+  "status": "nonaktif"
+}, {
+  "name": "stadlowb",
+  "id": "CA-NT",
+  "category": "pro",
+  "point": 81,
+  "last_buy": "23/07/2025",
+  "status": "aktif"
+}, {
+  "name": "mmartschikc",
+  "id": "AU-VIC",
+  "category": "vip",
+  "point": 1,
+  "last_buy": "09/08/2025",
+  "status": "nonaktif"
+}, {
+  "name": "gcolefordd",
+  "id": "BS-BI",
+  "category": "regular",
+  "point": 9,
+  "last_buy": "28/06/2025",
+  "status": "nonaktif"
+}, {
+  "name": "edunniome",
+  "id": "TR-12",
+  "category": "pro",
+  "point": 70,
+  "last_buy": "09/10/2025",
+  "status": "nonaktif"
+}, {
+  "name": "wkohnf",
+  "id": "FI-LS",
+  "category": "vip",
+  "point": 24,
+  "last_buy": "21/05/2026",
+  "status": "aktif"
+}, {
+  "name": "tballisterg",
+  "id": "US-AK",
+  "category": "pro",
+  "point": 6,
+  "last_buy": "23/09/2025",
+  "status": "nonaktif"
+}, {
+  "name": "cwharfh",
+  "id": "AU-QLD",
+  "category": "pro",
+  "point": 61,
+  "last_buy": "11/04/2026",
+  "status": "aktif"
+}, {
+  "name": "dlandai",
+  "id": "CA-QC",
+  "category": "pro",
+  "point": 61,
+  "last_buy": "04/03/2026",
+  "status": "aktif"
+}, {
+  "name": "bbauldreyj",
+  "id": "SA-04",
+  "category": "regular",
+  "point": 88,
+  "last_buy": "23/01/2026",
+  "status": "nonaktif"
+}, {
+  "name": "dcrowleyk",
+  "id": "UA-09",
+  "category": "vip",
+  "point": 92,
+  "last_buy": "01/05/2026",
+  "status": "aktif"
+}, {
+  "name": "mwebberleyl",
+  "id": "ZM-05",
+  "category": "vip",
+  "point": 40,
+  "last_buy": "16/11/2025",
+  "status": "aktif"
+}, {
+  "name": "thuggardm",
+  "id": "PG-WPD",
+  "category": "vip",
+  "point": 53,
+  "last_buy": "23/09/2025",
+  "status": "aktif"
+}, {
+  "name": "eieldenn",
+  "id": "AU-WA",
+  "category": "vip",
+  "point": 27,
+  "last_buy": "02/12/2025",
+  "status": "aktif"
+}, {
+  "name": "dcalkino",
+  "id": "BR-BA",
+  "category": "pro",
+  "point": 78,
+  "last_buy": "27/01/2026",
+  "status": "aktif"
+}, {
+  "name": "bgodballp",
+  "id": "VE-I",
+  "category": "vip",
+  "point": 93,
+  "last_buy": "21/12/2025",
+  "status": "aktif"
+}, {
+  "name": "agrinyerq",
+  "id": "BR-MT",
+  "category": "pro",
+  "point": 38,
+  "last_buy": "30/10/2025",
+  "status": "aktif"
+}, {
+  "name": "awilsonr",
+  "id": "BR-MT",
+  "category": "vip",
+  "point": 17,
+  "last_buy": "01/06/2026",
+  "status": "nonaktif"
+}, {
+  "name": "wlafonds",
+  "id": "VU-TOB",
+  "category": "pro",
+  "point": 53,
+  "last_buy": "26/07/2025",
+  "status": "aktif"
+}, {
+  "name": "jbollomt",
+  "id": "BR-RS",
+  "category": "vip",
+  "point": 99,
+  "last_buy": "11/09/2025",
+  "status": "aktif"
+}, {
+  "name": "pfarfootu",
+  "id": "AU-SA",
+  "category": "pro",
+  "point": 11,
+  "last_buy": "01/12/2025",
+  "status": "nonaktif"
+}, {
+  "name": "cetheringtonv",
+  "id": "CA-NB",
+  "category": "vip",
+  "point": 36,
+  "last_buy": "08/12/2025",
+  "status": "nonaktif"
+}, {
+  "name": "vleminw",
+  "id": "PL-MZ",
+  "category": "vip",
+  "point": 15,
+  "last_buy": "17/01/2026",
+  "status": "aktif"
+}, {
+  "name": "asiddaleyx",
+  "id": "CN-23",
+  "category": "vip",
+  "point": 69,
+  "last_buy": "13/10/2025",
+  "status": "aktif"
+}, {
+  "name": "nlamploughy",
+  "id": "US-GA",
+  "category": "pro",
+  "point": 3,
+  "last_buy": "08/04/2026",
+  "status": "aktif"
+}, {
+  "name": "xpierrepontz",
+  "id": "IN-AP",
+  "category": "vip",
+  "point": 76,
+  "last_buy": "19/07/2025",
+  "status": "aktif"
+}, {
+  "name": "nmcgraffin10",
+  "id": "US-IA",
+  "category": "regular",
+  "point": 45,
+  "last_buy": "30/03/2026",
+  "status": "aktif"
+}, {
+  "name": "bbrugsma11",
+  "id": "PA-8",
+  "category": "pro",
+  "point": 98,
+  "last_buy": "18/03/2026",
+  "status": "aktif"
+}, {
+  "name": "nkenford12",
+  "id": "BD-5",
+  "category": "regular",
+  "point": 60,
+  "last_buy": "22/05/2026",
+  "status": "nonaktif"
+}, {
+  "name": "omelwall13",
+  "id": "IR-15",
+  "category": "vip",
+  "point": 8,
+  "last_buy": "13/03/2026",
+  "status": "aktif"
+}, {
+  "name": "grummin14",
+  "id": "RU-KHA",
+  "category": "regular",
+  "point": 72,
+  "last_buy": "30/11/2025",
+  "status": "nonaktif"
+}, {
+  "name": "ajochanany15",
+  "id": "IN-MP",
+  "category": "regular",
+  "point": 2,
+  "last_buy": "07/11/2025",
+  "status": "nonaktif"
+}, {
+  "name": "tcandlish16",
+  "id": "US-MI",
+  "category": "regular",
+  "point": 37,
+  "last_buy": "09/10/2025",
+  "status": "aktif"
+}, {
+  "name": "rmatuszak17",
+  "id": "AU-QLD",
+  "category": "pro",
+  "point": 6,
+  "last_buy": "04/10/2025",
+  "status": "aktif"
+}, {
+  "name": "shumpage18",
+  "id": "PG-EHG",
+  "category": "vip",
+  "point": 37,
+  "last_buy": "20/07/2025",
+  "status": "nonaktif"
+}, {
+  "name": "kmaulden19",
+  "id": "CO-ANT",
+  "category": "pro",
+  "point": 16,
+  "last_buy": "02/04/2026",
+  "status": "aktif"
+}, {
+  "name": "idevine1a",
+  "id": "JP-01",
+  "category": "pro",
+  "point": 31,
+  "last_buy": "21/03/2026",
+  "status": "aktif"
+}, {
+  "name": "lbrummitt1b",
+  "id": "BR-BA",
+  "category": "regular",
+  "point": 63,
+  "last_buy": "11/08/2025",
+  "status": "nonaktif"
+}, {
+  "name": "iyaldren1c",
+  "id": "MX-COA",
+  "category": "vip",
+  "point": 100,
+  "last_buy": "20/08/2025",
+  "status": "aktif"
+}, {
+  "name": "gscarborough1d",
+  "id": "US-TX",
+  "category": "regular",
+  "point": 99,
+  "last_buy": "09/06/2026",
+  "status": "nonaktif"
+}]
