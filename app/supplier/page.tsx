@@ -1,5 +1,4 @@
 "use client";
-import SeacrhProduct from "@/components/Shared/TableSearchField";
 import { supplierData } from "@/components/features/supplier/mock/supplier.mock";
 import {
   Supplier,

@@ -36,7 +36,7 @@ export function ReusableTable<T extends object>({
   pagination,
 }: ReusableTableProps<T>) {
   return (
-    <Table aria-label="Reusable Table" className="rounded-none p-0">
+    <Table aria-label="Table" className="rounded-none p-0">
       <Table.ResizableContainer>
         <Table.Content className="min-w-[700px]">
           {/* Header */}
@@ -81,7 +81,7 @@ export function ReusableTable<T extends object>({
       </Table.ResizableContainer>
       {pagination && (
         <Table.Footer className="bg-surface-secondary">
-          <Pagination size="sm">
+          <Pagination size="sm" aria-label="Navigasi Tabel">
             <Pagination.Summary className="text-black">
               Manampilkan {pagination.start} - {pagination.end} dari{" "}
               {pagination.totalItems} {pagination.itemLabel}

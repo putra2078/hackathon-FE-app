@@ -13,9 +13,10 @@ interface SelectListProps<K extends string> {
   placeholder: string;
   defaultValue?: K;
   width?: number;
+  ariaLabel?: string
 }
 
-export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200}: SelectListProps<K>) {
+export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200, ariaLabel}: SelectListProps<K>) {
   const styleWidth =  `${width}px`;
     return (
     
@@ -25,6 +26,7 @@ export default function SelectList<K extends string>({ListItems, placeholder, de
       style={{
         width: styleWidth
       }}
+      aria-label={ariaLabel}
     >
       <Select.Trigger className={"rounded-md"}>
         <Select.Value />
