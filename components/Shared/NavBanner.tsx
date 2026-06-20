@@ -3,7 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react/jsx-runtime";
 
-export default function NavBanner() {
+interface NavBannerProps{
+  bannerTitle: string
+}
+
+export default function NavBanner({bannerTitle} : NavBannerProps) {
   const fullPath = usePathname();
   const paths = fullPath.split("/").filter(Boolean);
   console.log(paths);
@@ -26,7 +30,7 @@ export default function NavBanner() {
         })}
       </div>
       <div>
-        <h2 className="font-semibold text-3xl">Daftar Produk</h2>
+        <h2 className="font-semibold text-3xl">{bannerTitle}</h2>
       </div>
     </div>
   );
