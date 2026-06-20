@@ -44,18 +44,20 @@ export default function SupplierPage() {
         <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
           <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
             <div id="filter" className="flex gap-4 items-center p-6 w-full">
-              <TableSearchField placeholder="Cari Supplier..."/>
+              <TableSearchField placeholder="Cari Supplier..." aria_label="Cari Supplier"/>
               <SelectList
                 ListItems={CategoriesList}
                 placeholder="Pilih Kategori"
                 defaultValue="semuaKategori"
                 width={150}
+                ariaLabel="Pilih kategori"
               />
               <SelectList
                 ListItems={StatusList}
                 placeholder="Pilih Status"
                 defaultValue="semuaStatus"
                 width={150}
+                ariaLabel="Pilih status"
               />
               <div className="ml-auto">
                 <Button

@@ -32,9 +32,9 @@ export default function ProductSection() {
     <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
       <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
         <div id="filter" className="flex gap-4 items-center p-6 w-full">
-          <TableSearchField placeholder="Cari Produk..."/>
-          <SelectList ListItems={CategoriesList} placeholder="Pilih Kategori" defaultValue="semuaKategori" width={200}/>
-          <SelectList ListItems={StatusList} placeholder="Status" width={128}/>
+          <TableSearchField placeholder="Cari Produk..." aria_label="Cari Produk"/>
+          <SelectList ListItems={CategoriesList} placeholder="Pilih Kategori" ariaLabel="Pilih Kategori" defaultValue="semuaKategori" width={200}/>
+          <SelectList ListItems={StatusList} placeholder="Status" width={128} ariaLabel="pilih status"/>
           <div className="ml-auto">
             <Button
               variant="outline"

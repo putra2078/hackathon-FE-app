@@ -38,7 +38,7 @@ export function ReusableTable<T extends object>({
   return (
     <Table aria-label="Table" className="rounded-none p-0">
       <Table.ResizableContainer>
-        <Table.Content className="min-w-[700px]">
+        <Table.Content className="min-w-[700px]" aria-label="table content">
           {/* Header */}
           <Table.Header
             className={"bg-surface-secondary border border-surface-border"}
