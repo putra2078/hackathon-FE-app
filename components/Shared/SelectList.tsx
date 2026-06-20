@@ -1,5 +1,8 @@
 import { ListBox, Select } from "@heroui/react";
 
+export const createList  = <K extends string>(items: ListItemsDef<K>[]) => items;
+
+
 export interface ListItemsDef<K extends string> {
   key: K;
   textValue: string;

@@ -28,14 +28,17 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
         <p className="text-xs text-gray-400 mt-0.5">PIC: {row.pic}</p>
       </div>
     ),
+    minWidth: 200
   },
   {
     key: "kategori",
     label: "Kategori",
+        minWidth: 110
   },
   {
     key: "kontak",
     label: "Kontak",
+        minWidth: 140
   },
   {
     key: "status",
@@ -51,6 +54,7 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
         </Chip>
       );
     },
+        minWidth: 110
   },
   {
     key: "aksi",
@@ -60,5 +64,6 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
         <ActionProductButton />
       </div>
     ),
+        minWidth: 150
   },
 ];

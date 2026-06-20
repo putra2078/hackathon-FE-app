@@ -10,6 +10,7 @@ export interface ColumnDef<T> {
   className?: string; // class tambahan untuk <th>
   cellClassName?: string; // class tambahan untuk <td>
   renderCell?: (row: T) => React.ReactNode; // custom renderer; jika tidak ada, pakai row[key]
+  minWidth?: number
 }
 
 export interface PaginationConfig {
@@ -26,9 +27,8 @@ export interface PaginationConfig {
 interface ReusableTableProps<T extends object> {
   columns: ColumnDef<T>[];
   data: T[];
-  pagination?: PaginationConfig
+  pagination?: PaginationConfig;
 }
-
 
 export function ReusableTable<T extends object>({
   columns,
@@ -48,8 +48,10 @@ export function ReusableTable<T extends object>({
                 isRowHeader={i === 0}
                 key={col.key}
                 className={"font-semibold text-black text-sm"}
+                minWidth={col.minWidth}
               >
                 {col.label}
+                {i !== columns.length - 1 && <Table.ColumnResizer />}
               </Table.Column>
             ))}
           </Table.Header>
@@ -81,13 +83,18 @@ export function ReusableTable<T extends object>({
         <Table.Footer className="bg-surface-secondary">
           <Pagination size="sm">
             <Pagination.Summary className="text-black">
-              Manampilkan {pagination.start} - {pagination.end} dari {pagination.totalItems} {pagination.itemLabel}
+              Manampilkan {pagination.start} - {pagination.end} dari{" "}
+              {pagination.totalItems} {pagination.itemLabel}
             </Pagination.Summary>
             <Pagination.Content>
               <Pagination.Item>
                 <Pagination.Previous
                   isDisabled={pagination.currentPage === 1}
-                  onPress={() => pagination.onPageChange(Math.max(1, pagination.currentPage - 1))}
+                  onPress={() =>
+                    pagination.onPageChange(
+                      Math.max(1, pagination.currentPage - 1),
+                    )
+                  }
                   className="bg-white rounded-md border border-slate-300"
                 >
                   <Pagination.PreviousIcon />
@@ -108,7 +115,12 @@ export function ReusableTable<T extends object>({
                 <Pagination.Next
                   isDisabled={pagination.currentPage === pagination.totalPages}
                   onPress={() =>
-                    pagination.onPageChange(Math.min(pagination.totalPages, pagination.currentPage + 1))
+                    pagination.onPageChange(
+                      Math.min(
+                        pagination.totalPages,
+                        pagination.currentPage + 1,
+                      ),
+                    )
                   }
                   className="bg-white rounded-md border border-slate-300s"
                 >

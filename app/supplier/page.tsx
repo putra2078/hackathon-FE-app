@@ -1,5 +1,5 @@
 "use client";
-import SeacrhProduct from "@/components/features/product/SearchProduct";
+import SeacrhProduct from "@/components/Shared/TableSearchField";
 import { supplierData } from "@/components/features/supplier/mock/supplier.mock";
 import {
   Supplier,
@@ -11,7 +11,8 @@ import SelectList, { ListItemsDef } from "@/components/Shared/SelectList";
 import { usePagination } from "@/hooks/usePagination";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, ListBox } from "@heroui/react";
+import { Button } from "@heroui/react";
+import TableSearchField from "@/components/Shared/TableSearchField";
 
 export default function SupplierPage() {
   const { currentData, pagination } = usePagination({
@@ -44,7 +45,7 @@ export default function SupplierPage() {
         <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
           <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
             <div id="filter" className="flex gap-4 items-center p-6 w-full">
-              <SeacrhProduct />
+              <TableSearchField placeholder="Cari Supplier..."/>
               <SelectList
                 ListItems={CategoriesList}
                 placeholder="Pilih Kategori"
