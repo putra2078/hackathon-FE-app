@@ -1,39 +1,13 @@
-// import { table } from './logic'
 'use client';
 import { Table } from "@heroui/react";
 import { flexRender } from '@tanstack/react-table';
-
-
-import dummy from './MOCK_DATA.json'
-import { useMemo } from 'react';
-import { 
-  useReactTable, 
-  getCoreRowModel,
-  getPaginationRowModel
-} from '@tanstack/react-table';
-import { Column } from './columns'
+import { TypePembelian } from "./type";
+import dataPembeli from './MOCK_DATA.json'
+import LogicTable from './logic'
 import PaginationType2 from "@/components/Shared/Pagination/Pagination-2";
 
-
 export default function TabelPembelian() {
-  // 
-  const data = dummy;
-  const memoizedData = useMemo(() => data, [data]);
-
-  const table = useReactTable({
-    data: memoizedData,
-    columns: Column,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    initialState: {
-      pagination: {
-        pageIndex: 0,
-        pageSize: 6,
-      },
-    },
-  });
-  //
-
+  const { table } = LogicTable({ data: dataPembeli})
   return (
     <Table className="border my-4 rounded-xl" variant="secondary">
     <Table.ScrollContainer>

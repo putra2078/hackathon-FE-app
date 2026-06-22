@@ -1,31 +1,21 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import { Icon } from '@iconify/react'
 import { Button } from '@heroui/react'
+
 import data from './MOCK_DATA.json'
-
-type TypePembelian = {
-  id: string,           // Column
-  note: string,         // Column
-  penjab: string,
-  nominal: number,      // Column
-  status: string,
-  tanggal: string,      // Column
-  kategori: string,     // Column
-  kuantitas: number,    
-  satuan: string,
-  metode: string,       // Column
-}
-
-const cappitalize = (word: string) => {
-  return word.charAt(0).toUpperCase() + word.slice(1)
-}
-const cappitalizeEach = (list: string) => {
-  const word = list.split(' ')
-  const each = word.map(x => { return x.charAt(0).toUpperCase() + x.slice(1)})
-  return each.join(" ")
-}
+import { TypePembelian } from './type' 
 
 const columnHelper = createColumnHelper<TypePembelian>();
+
+const cappitalize = (word: string) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+const cappitalizeEach = (list: string) => {
+  const word = list.split(' ');
+  const each = word.map(x => { return x.charAt(0).toUpperCase() + x.slice(1)});
+  return each.join(" ");
+}
+
 export const Column = [
   columnHelper.accessor('id', {
     header: 'ID',
