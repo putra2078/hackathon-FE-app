@@ -86,7 +86,7 @@ export const Column = [
     id: 'action',
     cell: () => {
       return (
-        <Button isIconOnly variant='tertiary'> 
+        <Button isIconOnly variant='tertiary' className='rounded-lg'> 
           <Icon icon="gravity-ui:ellipsis-vertical"></Icon>
         </Button>
       )
