@@ -110,7 +110,6 @@ export default function Filter() {
           </ListBox>
         </Autocomplete.Filter>
       </Autocomplete.Popover>
-    
     </Autocomplete>
   )
 }

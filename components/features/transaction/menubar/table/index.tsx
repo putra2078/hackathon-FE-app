@@ -8,7 +8,7 @@ import {
 
 import mainData from "./data.json";
 import { Columns } from "./columns";
-import Pagination from "./pagination";
+import PaginationType1 from "@/components/Shared/Pagination/Pagination-1";
 
 export default function Table() {
   const data = mainData;
@@ -65,7 +65,7 @@ export default function Table() {
         </tbody>
       </table>
       <br />
-      <Pagination table={table} />
+      <PaginationType1 table={table} />
     </>
   );
 }

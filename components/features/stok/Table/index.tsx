@@ -10,7 +10,7 @@ import { Table } from "@heroui/react";
 
 import { Column } from "./columns";
 import dummy from "./dummy.json";
-import StockPagination from "./pagination";
+import PaginationType2 from "@/components/Shared/Pagination/Pagination-2";
 
 export default function StockTable() {
   const data = dummy;
@@ -61,7 +61,7 @@ export default function StockTable() {
         </Table.Content>
       </Table.ScrollContainer>
 
-      <StockPagination table={table} />
+      <PaginationType2 table={table} />
     </Table>
   );
 }
