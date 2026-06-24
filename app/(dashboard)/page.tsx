@@ -10,7 +10,9 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home() {
+
+export default function DashboardPage() {
+
   return (
     <div className="w-full flex flex-col gap-4 mx-auto">
       <section id="banner-welcome" className="w-full">
