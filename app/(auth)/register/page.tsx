@@ -1,6 +1,5 @@
 "use client";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRegister } from "@/hooks/useRegister";
 import {
   Button,
   Checkbox,
@@ -15,36 +14,36 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function RegisterPage() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { register, isLoading, error } = useRegister();
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    register({ name, email, password });
+  }
+
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
-  };
   return (
     <div className="w-full p-12 flex flex-col h-full">
       <div className="mb-6">
-        <h1 className="text-3xl font-semibold text-primary mb-4">Register</h1>
+        <h1 className="text-3xl font-semibold text-primary mb-4">Daftar</h1>
         <p className="text-sm">
-          Already have account?{" "}
+          Sudah punya akun?{" "}
           <Link className="underline text-blue-600" href={"/login"}>
-            Login here!
+            Login disini!
           </Link>
         </p>
       </div>
 
-      <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+      <Form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <TextField isRequired name="username" type="text">
-            <Label>Username</Label>
-            <Input className="rounded" placeholder="example123"/>
+            <Label>Nama</Label>
+            <Input className="rounded" placeholder="example123" value={name} onChange={(e) => setName(e.target.value)}/>
                       <FieldError />
 
         </TextField>
@@ -60,7 +59,7 @@ export default function RegisterPage() {
           }}
         >
           <Label>Email</Label>
-          <Input className="rounded" placeholder="john@example.com" />
+          <Input className="rounded" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
           <FieldError />
         </TextField>
         <TextField
@@ -82,7 +81,7 @@ export default function RegisterPage() {
         }}
         >
           <Label>Password</Label>
-          <Input className="rounded" placeholder="Enter your password" />
+          <Input className="rounded" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
           <FieldError />
                      <Checkbox
@@ -98,7 +97,8 @@ export default function RegisterPage() {
           </Checkbox.Content>
         </Checkbox>
         </TextField>
-          <Button type="submit" className="bg-primary hover:bg-primary-500 rounded w-full shadow">Register</Button>
+        {error && <p className="text-red-500">{error}</p>}
+          <Button isDisabled={isLoading} type="submit" className="bg-primary hover:bg-primary-500 rounded w-full shadow">{isLoading ? "Mendaftar..." : "Daftar"}</Button>
       </Form>
     </div>
   );

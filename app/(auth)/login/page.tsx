@@ -1,10 +1,8 @@
 "use client";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLogin } from "@/hooks/useLogin";
 import {
   Button,
   Checkbox,
-  Description,
   FieldError,
   Form,
   Input,
@@ -15,19 +13,17 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const {error, isLoading, login} = useLogin()
+
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
-    // Convert FormData to plain object
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
-    });
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    login({email, password})
   };
   return (
     <div className="w-full p-12 flex flex-col h-full">
@@ -54,20 +50,19 @@ export default function LoginPage() {
           }}
         >
           <Label>Email</Label>
-          <Input className="rounded" placeholder="john@example.com" />
+          <Input className="rounded" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
           <FieldError />
         </TextField>
         <TextField
           isRequired
           // minLength={8}
           name="password"
-          //   type="password"
           type={isVisible ? "text" : "password"}
         >
           <Label>Password</Label>
        
 
-          <Input className="rounded" placeholder="Enter your password" />
+          <Input className="rounded" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <FieldError />
                      <Checkbox
           name="show-pass"
@@ -82,7 +77,8 @@ export default function LoginPage() {
           </Checkbox.Content>
         </Checkbox>
         </TextField>
-          <Button type="submit" className="bg-primary hover:bg-primary-500 rounded w-full shadow">Log In</Button>
+        {error && <p className="text-red-500">{error}</p>}
+          <Button isDisabled={isLoading} type="submit" className="bg-primary hover:bg-primary-500 rounded w-full shadow">{isLoading ? "Masuk...": "Login"}</Button>
       </Form>
     </div>
   );
