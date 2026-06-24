@@ -1,4 +1,3 @@
-// lib/api/client.ts
 import axios, {
   AxiosError,
   AxiosInstance,
@@ -26,7 +25,6 @@ export class ApiError extends Error {
   }
 }
 
-// extend config Axios biar bisa terima `token` & `_retryCount` custom
 declare module "axios" {
   export interface AxiosRequestConfig {
     token?: string;
@@ -38,11 +36,11 @@ const MAX_RETRIES = 2;
 
 export const apiClient: AxiosInstance = axios.create({
   baseURL: BASE_URL,
-  timeout: 5000, // axios punya timeout built-in, gak perlu AbortController manual
+  timeout: 5000,
   headers: { "Content-Type": "application/json" },
 });
 
-// attach token per-request (kalau dikirim)
+// attach token
 apiClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = config.token ?? tokenStorage.get();
   if (token) {

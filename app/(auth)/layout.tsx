@@ -14,7 +14,7 @@ export default function AuthLayout({
   useEffect(() => {
     const token = tokenStorage.get();
     if (token) {
-      router.push('/'); // udah login, gak perlu liat halaman login lagi
+      router.push('/'); 
     } else {
       setTimeout(() => {
         setIsChecking(false);

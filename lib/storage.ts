@@ -3,7 +3,7 @@ const TOKEN_KEY = 'token';
 
 export const tokenStorage = {
   get(): string | null {
-    if (typeof window === 'undefined') return null; // guard buat SSR
+    if (typeof window === 'undefined') return null;
     return localStorage.getItem(TOKEN_KEY);
   },
   set(token: string) {

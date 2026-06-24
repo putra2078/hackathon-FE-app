@@ -1,36 +1,18 @@
-"use client";
 import Banner from "@/components/features/dashboard/Banner";
 import CategoryChart from "@/components/features/dashboard/CategoryChart";
 import LatestSale from "@/components/features/dashboard/LatestSale";
 import LowStockTables from "@/components/features/dashboard/LowStockTables";
 import SalesChart from "@/components/features/dashboard/SalesChart";
 import StatCard from "@/components/Shared/StatCard";
-import { useAuth } from "@/hooks/useAuth";
-import { tokenStorage } from "@/lib/storage";
 import {
   faBoxOpen,
   faCartShopping,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+
 
 export default function DashboardPage() {
-  const router = useRouter();
-  const [checking, setChecking] = useState(true); // ← buat hindari "flash" konten sebelum cek selesai
 
-  useEffect(() => {
-    const token = tokenStorage.get();
-    if (!token) {
-      router.push("/login");
-    } else {
-      setTimeout(() => {
-        setChecking(false);
-      }, 0);
-    }
-  }, [router]);
-
-  if (checking) return null; // atau tampilkan spinner/skeleton
   return (
     <div className="w-full flex flex-col gap-4 mx-auto">
       <section id="banner-welcome" className="w-full">
