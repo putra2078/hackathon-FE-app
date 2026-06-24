@@ -14,9 +14,9 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function RegisterPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { register, isLoading, error } = useRegister();
 
   function handleSubmit(e: React.FormEvent) {
@@ -35,17 +35,21 @@ export default function RegisterPage() {
         <p className="text-sm">
           Sudah punya akun?{" "}
           <Link className="underline text-blue-600" href={"/login"}>
-            Login disini!
+            Login di sini!
           </Link>
         </p>
       </div>
 
       <Form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         <TextField isRequired name="username" type="text">
-            <Label>Nama</Label>
-            <Input className="rounded" placeholder="example123" value={name} onChange={(e) => setName(e.target.value)}/>
-                      <FieldError />
-
+          <Label>Nama</Label>
+          <Input
+            className="rounded"
+            placeholder="Budi Siregar"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <FieldError />
         </TextField>
         <TextField
           isRequired
@@ -59,7 +63,12 @@ export default function RegisterPage() {
           }}
         >
           <Label>Email</Label>
-          <Input className="rounded" placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input
+            className="rounded"
+            placeholder="budi@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <FieldError />
         </TextField>
         <TextField
@@ -67,38 +76,51 @@ export default function RegisterPage() {
           minLength={8}
           name="password"
           type={isVisible ? "text" : "password"}
-                  validate={(value) => {
-          if (value.length < 8) {
-            return "Password must be at least 8 characters";
-          }
-          if (!/[A-Z]/.test(value)) {
-            return "Password must contain at least one uppercase letter";
-          }
-          if (!/[0-9]/.test(value)) {
-            return "Password must contain at least one number";
-          }
-          return null;
-        }}
+          validate={(value) => {
+            if (value.length < 8) {
+              return "Wajib terdiri minimal 8 karakter";
+            }
+            if (!/[A-Z]/.test(value)) {
+              return "Wajib memiliki minimal 1 huruf besar";
+            }
+            if (!/[0-9]/.test(value)) {
+              return "Wajib memiliki minimal 1 angka";
+            }
+            return null;
+          }}
         >
           <Label>Password</Label>
-          <Input className="rounded" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
+          <Input
+            className="rounded"
+            placeholder="Masukkan Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Description>
+            Minimal terdiri 8 karakter dengan 1 huruf besar dan 1 angka
+          </Description>
           <FieldError />
-                     <Checkbox
-          name="show-pass"
-          isSelected={isVisible}
-          onChange={toggleVisibility}
-        >
-          <Checkbox.Content className="flex flex-row items-center gap-2 text-sm mt-2">
-            <Checkbox.Control className="rounded-sm before:rounded-sm" >
-              <Checkbox.Indicator/>
-            </Checkbox.Control>
-            Show Password
-          </Checkbox.Content>
-        </Checkbox>
+          <Checkbox
+            name="show-pass"
+            isSelected={isVisible}
+            onChange={toggleVisibility}
+          >
+            <Checkbox.Content className="flex flex-row items-center gap-2 text-sm mt-2">
+              <Checkbox.Control className="rounded-sm before:rounded-sm">
+                <Checkbox.Indicator />
+              </Checkbox.Control>
+              Tampilkan Password
+            </Checkbox.Content>
+          </Checkbox>
         </TextField>
         {error && <p className="text-red-500">{error}</p>}
-          <Button isDisabled={isLoading} type="submit" className="bg-primary hover:bg-primary-500 rounded w-full shadow">{isLoading ? "Mendaftar..." : "Daftar"}</Button>
+        <Button
+          isDisabled={isLoading}
+          type="submit"
+          className="bg-primary hover:bg-primary-500 rounded w-full shadow"
+        >
+          {isLoading ? "Mendaftar..." : "Daftar"}
+        </Button>
       </Form>
     </div>
   );
