@@ -4,12 +4,18 @@ import { title } from 'process';
 interface type {
   title: string,
   list: string[],
-  width?: string
+  width?: string,
+  clearable?: string,
 }
 
-export default function DropDown({title, list, width}: type) {
+export default function DropDown({title, list, width, clearable}: type) {
   return (
-  <Select className={`rounded-md border ${width}`} aria-label='Drop Down' placeholder={title}>
+  <Select 
+    className={`rounded-md border ${width}`} 
+    aria-label='Drop Down' 
+    placeholder={title}
+    
+  >
       <Select.Trigger className="rounded-md">
         <Select.Value />
         <Select.Indicator />
