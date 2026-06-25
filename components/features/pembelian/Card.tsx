@@ -11,7 +11,6 @@ type value = {
 }
 
 export default function CardPembelian({title, value, icon, gradient, subText, subTextExpenses, changes}: value) {
-
   return (
     <div
       className="min-h-20 flex items-center bg-surface border border-gray-200 rounded-2xl shadow"

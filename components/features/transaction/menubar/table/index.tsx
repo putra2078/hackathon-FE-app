@@ -14,8 +14,7 @@ export default function Table() {
   const data = mainData;
 
   const memoizedData = useMemo(() => data, [data]);
-  // const [data, setData] = useState<Transaction>(mainData);
-
+  
   const table = useReactTable({
     data: memoizedData,
     columns: Columns,

@@ -14,7 +14,7 @@ export const Columns = [
     header: "ID-TRANSAKSI",
     cell: (info) => {
       return (
-        <span className="text-status-success font-bold">
+        <span className="text-green-700 font-bold">
           #{info.getValue()}
         </span>
       );

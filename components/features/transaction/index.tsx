@@ -17,7 +17,7 @@ export default function TransactionMenu() {
           <DateSelector />
           <StatusSelect />
         </div>
-        <Link href='/penjualan/tambah' className="py-3 px-6 text-background font-bold rounded-xl shadow hover:cursor-pointer bg-linear-to-b from-primary-500 to-primary-600 active:bg-linear-to-t active:translate-y-px active:shadow-none">
+        <Link href='/penjualan/tambah-transaksi' className="py-3 px-6 text-background font-bold rounded-xl shadow hover:cursor-pointer bg-linear-to-b from-primary-500 to-primary-600 active:bg-linear-to-t active:translate-y-px active:shadow-none">
           + Tambah transaksi
         </Link>
       </div>
