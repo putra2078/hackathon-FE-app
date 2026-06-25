@@ -1,6 +1,6 @@
-// lib/api/auth.ts
+import { LoginReq, LoginRes, RegisterReq, RegisterRes } from '@/types/api/auth.types';
 import { apiClient } from './client';
-import type { ApiResponse, LoginData, RegisterData } from './types';
+import { ApiResponse } from '@/types/api/base.types';
 
 export interface LoginPayload {
   email: string;
@@ -13,12 +13,12 @@ export interface RegisterPayload {
   password: string;
 }
 
-export async function loginUser(payload: LoginPayload): Promise<LoginData> {
-  const res = await apiClient.post<ApiResponse<LoginData>>('/users/login', payload);
+export async function loginUser(payload: LoginReq): Promise<LoginRes> {
+  const res = await apiClient.post<ApiResponse<LoginRes>>('/users/login', payload);
   return res.data.data;
 }
 
-export async function registerUser(payload: RegisterPayload): Promise<RegisterData> {
-  const res = await apiClient.post<ApiResponse<RegisterData>>('/users/register', payload);
+export async function registerUser(payload: RegisterReq): Promise<RegisterRes> {
+  const res = await apiClient.post<ApiResponse<RegisterRes>>('/users/register', payload);
   return res.data.data;
 }

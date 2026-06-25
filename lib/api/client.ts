@@ -3,8 +3,8 @@ import axios, {
   AxiosInstance,
   InternalAxiosRequestConfig,
 } from "axios";
-import type { ApiErrorResponse } from "./types";
 import { tokenStorage } from "../storage";
+import { ApiErrorResponse } from "@/types/api/base.types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 console.log(BASE_URL);
