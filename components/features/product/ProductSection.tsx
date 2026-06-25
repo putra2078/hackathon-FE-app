@@ -3,16 +3,16 @@ import { Button } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { usePagination } from "@/hooks/usePagination";
-import { productsData } from "./mock/supplier.mock";
 import { ReusableTable } from "@/components/Shared/ReusableTable";
-import { productColumns } from "./product.columns";
+import {  productColumns } from "./product.columns";
 import TableSearchField from "../../Shared/TableSearchField";
 import SelectList, { createList } from "@/components/Shared/SelectList";
+import { Product } from "@/types/api/product.types";
 
 
-export default function ProductSection() {
+export default function ProductSection({products}: {products: Product[]}) {
     const { currentData, pagination } = usePagination({
-      data: productsData,
+      data: products,
       rowsPerPage: 5,
       itemLabel: "supplier",
     });
