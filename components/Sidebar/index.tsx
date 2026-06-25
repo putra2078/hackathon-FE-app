@@ -22,7 +22,7 @@ export default function Sidebar() {
         <div className="flex items-center py-3">
           <div className="w-16">
             <img
-              src="brand-icon.svg"
+              src="/brand-icon.svg"
               alt=""
               className="w-full h-full object-cover"
             />
