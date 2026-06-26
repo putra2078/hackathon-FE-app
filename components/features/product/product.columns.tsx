@@ -4,19 +4,19 @@ import ActionProductButton from "./ActionProductButton";
 import { Product } from "@/types/api/product.types";
 import { formatPrice } from "@/lib/formatPrice";
 
-export interface ProductExt extends Product {
-  status: "aktif" | "tidak aktif";
-}
+// export interface ProductExt extends Product {
+//   status: "aktif" | "tidak aktif";
+// }
 
-const statusColorMap: Record<
-  ProductExt["status"],
-  "success" | "warning" | "danger"
-> = {
-  aktif: "success",
-  "tidak aktif": "danger",
-};
+// const statusColorMap: Record<
+//   ProductExt["status"],
+//   "success" | "warning" | "danger"
+// > = {
+//   aktif: "success",
+//   "tidak aktif": "danger",
+// };
 
-export const productColumns: ColumnDef<ProductExt>[] = [
+export const productColumns: ColumnDef<Product>[] = [
   {
     key: "produk",
     label: "Produk",
@@ -59,20 +59,20 @@ export const productColumns: ColumnDef<ProductExt>[] = [
   { key: "sellPrice", label: "Harga Jual", minWidth: 140, renderCell: (row) => (
     <p>{formatPrice(row.sellPrice)}</p>
   )},
-  {
-    key: "status",
-    label: "Status",
-    minWidth: 110,
-    renderCell: (row) => (
-      <Chip
-        color={statusColorMap[row.status]}
-        variant="soft"
-        className="rounded-md capitalize"
-      >
-        {row.status}
-      </Chip>
-    ),
-  },
+  // {
+  //   key: "status",
+  //   label: "Status",
+  //   minWidth: 110,
+  //   renderCell: (row) => (
+  //     <Chip
+  //       color={statusColorMap[row.status]}
+  //       variant="soft"
+  //       className="rounded-md capitalize"
+  //     >
+  //       {row.status}
+  //     </Chip>
+  //   ),
+  // },
   {
     key: "aksi",
     label: "Aksi",
