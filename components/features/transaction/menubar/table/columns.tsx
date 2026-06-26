@@ -7,7 +7,7 @@ import { Transaction } from "./types";
 
 import { Button, Dropdown, Label } from "@heroui/react";
 import { EllipsisVertical } from "@gravity-ui/icons";
-import DropDown from "@/components/Shared/Select";
+import DropDown from "@/components/Shared/DropDown";
 
 const columnHelper = createColumnHelper<Transaction>();
 
