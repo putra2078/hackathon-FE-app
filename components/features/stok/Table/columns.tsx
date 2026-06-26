@@ -1,5 +1,6 @@
 import { createColumnHelper } from "@tanstack/react-table";
 import { Chip, Button } from "@heroui/react";
+import { Eye, Ellipsis } from "@gravity-ui/icons";
 import {Icon} from "@iconify/react";
 
 import { stokType } from './type'
@@ -85,10 +86,10 @@ export const Column = [
     cell: () => (
       <span className="flex gap-2 text-black">
         <Button isIconOnly variant="tertiary" className='rounded-lg'>
-          <Icon className="size-4" icon="gravity-ui:eye" />
+          <Eye className="size-4 shrink-0 text-muted"/>
         </Button>
         <Button isIconOnly variant="tertiary" className='rounded-lg'>
-          <Icon className="size-4" icon="gravity-ui:ellipsis" />
+          <Ellipsis className="size-4 shrink-0 text-muted"/>
         </Button>
       </span>
     )

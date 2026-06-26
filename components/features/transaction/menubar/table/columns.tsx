@@ -1,11 +1,13 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 
 import { createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "./types";
 
-import { Button } from "@heroui/react";
-import {Icon} from "@iconify/react";
+import { Button, Dropdown, Label } from "@heroui/react";
+import { EllipsisVertical } from "@gravity-ui/icons";
+import DropDown from "@/components/Shared/Select";
 
 const columnHelper = createColumnHelper<Transaction>();
 
@@ -80,12 +82,26 @@ export const Columns = [
     id: "action",
     cell: () => {
       return (
-        <div className="flex justify-center">
-          <Button isIconOnly className="hover:cursor-pointer" variant="tertiary">
-            <Icon className="size-4" icon="gravity-ui:ellipsis-vertical" />
+        <Dropdown>
+          <Button isIconOnly aria-label="Menu" variant="tertiary">
+            <EllipsisVertical className="size-4 shrink-0 text-muted" />
           </Button>
-        </div>
+          <Dropdown.Popover placement='bottom end'>
+            <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
+              <Dropdown.Item id="edit-item" textValue="Edit item">
+                <Label>Edit item</Label>
+              </Dropdown.Item>
+              <Dropdown.Item id="delete-item" textValue="Delete file" variant="danger">
+                <Label>Delete item</Label>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown.Popover>
+        </Dropdown>
       );
     },
   }),
 ];
+
+/* <Button isIconOnly className="hover:cursor-pointer" variant="tertiary">
+  
+</Button> */

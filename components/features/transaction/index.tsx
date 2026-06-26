@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function TransactionMenu() {
   return (
-    <section className="p-6 bg-surface border border-gray-200 rounded-2xl shadow">
+    <section className="p-6 bg-surface border border-gray-200 rounded-2xl">
       {/* Menubar */}
       <div className="flex justify-between">
         <div className="flex gap-4 items-center">
