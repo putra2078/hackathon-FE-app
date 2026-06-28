@@ -1,4 +1,4 @@
-import AddNewProductSection from "@/components/features/product/AddNewProductSection";
+import AddNewProductSection from "@/components/features/product/addProduct/AddNewProductSection";
 import NavBanner from "@/components/Shared/NavBanner";
 
 export default function AddProduct() {
