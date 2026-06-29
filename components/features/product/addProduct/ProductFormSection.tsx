@@ -29,7 +29,7 @@ const INITIAL_FORM_STATE = {
   description: "",
 };
 
-export default function AddNewProductSection() {
+export default function ProductFormSection() {
   const { addProduct, error, isLoading, clearError, isSuccess, clearSuccess } =
     useAddProduct();
   const [form, setForm] = useState(INITIAL_FORM_STATE);
@@ -98,14 +98,6 @@ export default function AddNewProductSection() {
           <DescriptionField form={form} updateField={updateField} />
           <hr />
           <div className="flex gap-4 items-center w-full justify-end">
-            {/* <Button
-              variant="tertiary"
-              className="rounded-md shadow-sm border-0"
-              onPress={() => router.push("/produk")}
-              isDisabled={isLoading}
-            >
-              Batal
-            </Button> */}
             <CancelButton />
             <Button
               variant="primary"

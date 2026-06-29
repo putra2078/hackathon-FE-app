@@ -79,7 +79,7 @@ export const productColumns: ColumnDef<Product>[] = [
     minWidth: 160,
     renderCell: (row) =>  (
       <div className="flex items-center gap-2">
-        <ActionProductButton />
+        <ActionProductButton id={row.id}/>
       </div>
     ),
   },
