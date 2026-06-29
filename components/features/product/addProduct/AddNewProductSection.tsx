@@ -2,10 +2,7 @@
 import { ErrorAlert, SuccessAlert } from "@/components/Shared/CustomAlert";
 import { createList } from "@/components/Shared/SelectList";
 import { useAddProduct } from "@/hooks/useAddProduct";
-import {
-  Button,
-  Form,
-} from "@heroui/react";
+import { AlertDialog, Button, Form } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import BasicInfoFields from "./BasicInfoFields";
@@ -38,7 +35,7 @@ export default function AddNewProductSection() {
   const [form, setForm] = useState(INITIAL_FORM_STATE);
   const [buyPrice, setBuyPrice] = useState(0);
   const [sellPrice, setSellPrice] = useState(0);
-  const router = useRouter();
+
 
   const updateField = (key) => (value) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -98,17 +95,18 @@ export default function AddNewProductSection() {
         />
         <hr />
         <div className="flex flex-col gap-4">
-          <DescriptionField form={form} updateField={updateField}/>
+          <DescriptionField form={form} updateField={updateField} />
           <hr />
           <div className="flex gap-4 items-center w-full justify-end">
-            <Button
+            {/* <Button
               variant="tertiary"
               className="rounded-md shadow-sm border-0"
               onPress={() => router.push("/produk")}
               isDisabled={isLoading}
             >
               Batal
-            </Button>
+            </Button> */}
+            <CancelButton />
             <Button
               variant="primary"
               className="rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700"
@@ -121,5 +119,44 @@ export default function AddNewProductSection() {
         </div>
       </Form>
     </div>
+  );
+}
+
+function CancelButton() {
+    const router = useRouter();
+
+  return (
+    <AlertDialog>
+      <Button variant="tertiary" className="rounded-md shadow-sm border-0">
+        Batal
+      </Button>
+      <AlertDialog.Backdrop>
+        <AlertDialog.Container>
+          <AlertDialog.Dialog className="sm:max-w-[400px] rounded-md">
+            <AlertDialog.CloseTrigger />
+            <AlertDialog.Header>
+              <AlertDialog.Icon status="warning" />
+              <AlertDialog.Heading>
+                Batalkan penambahan produk?
+              </AlertDialog.Heading>
+            </AlertDialog.Header>
+            <AlertDialog.Body>
+              <p>
+                Data yang sudah Anda isi belum disimpan dan akan hilang kalau
+                Anda keluar sekarang.
+              </p>
+            </AlertDialog.Body>
+            <AlertDialog.Footer>
+              <Button slot="close" variant="tertiary" className="rounded">
+                Lanjutkan Mengisi
+              </Button>
+              <Button onPress={() => router.push('/produk')} variant="danger-soft" className="rounded">
+                Ya, Batalkan
+              </Button>
+            </AlertDialog.Footer>
+          </AlertDialog.Dialog>
+        </AlertDialog.Container>
+      </AlertDialog.Backdrop>
+    </AlertDialog>
   );
 }

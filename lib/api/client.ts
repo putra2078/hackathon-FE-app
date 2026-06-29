@@ -7,7 +7,6 @@ import { tokenStorage } from "../storage";
 import { ApiErrorResponse } from "@/types/api/base.types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-console.log(BASE_URL);
 
 export class ApiError extends Error {
   status: number;
