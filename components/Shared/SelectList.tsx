@@ -15,13 +15,15 @@ interface SelectListProps<K extends string> {
   width?: number;
   ariaLabel?: string
   name?: string
+  isRequired?: boolean
 }
 
-export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200, ariaLabel, name}: SelectListProps<K>) {
+export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200, ariaLabel, name, isRequired}: SelectListProps<K>) {
   const styleWidth =  `${width}px`;
     return (
     
     <Select
+    isRequired={isRequired}
       placeholder={placeholder}
       defaultValue={defaultValue}
       style={{

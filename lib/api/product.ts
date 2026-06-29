@@ -1,5 +1,5 @@
 import { ApiResponse } from "@/types/api/base.types";
-import { createNewProductRes, getAllProductsRes } from "@/types/api/product.types";
+import { createNewProductRes, getAllProductsRes, Product } from "@/types/api/product.types";
 import { apiClient } from "./client";
 
 export async function getAllProducts(): Promise<getAllProductsRes[]> {
@@ -7,7 +7,7 @@ export async function getAllProducts(): Promise<getAllProductsRes[]> {
     return res.data.data
 }
 
-export async function createNewProduct(): Promise<createNewProductRes>{
-    const res = await apiClient.post<ApiResponse<createNewProductRes>>('/products')
+export async function createNewProduct(payload: Product): Promise<createNewProductRes>{
+    const res = await apiClient.post<ApiResponse<createNewProductRes>>('/products', payload)
     return res.data.data
 }

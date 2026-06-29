@@ -1,16 +1,16 @@
-// hooks/useLogin.ts
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { loginUser, type LoginPayload } from '@/lib/api/auth';
+import { loginUser } from '@/lib/api/auth';
 import { ApiError } from '@/lib/api/client';
 import { tokenStorage } from '@/lib/storage';
+import { LoginReq } from '@/types/api/auth.types';
 
 export function useLogin() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function login(payload: LoginPayload) {
+  async function login(payload: LoginReq) {
     setIsLoading(true);
     setError(null);
 
