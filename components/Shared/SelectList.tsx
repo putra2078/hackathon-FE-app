@@ -1,4 +1,4 @@
-import { ListBox, Select } from "@heroui/react";
+import { FieldError, ListBox, Select } from "@heroui/react";
 
 export const createList  = <K extends string>(items: ListItemsDef<K>[]) => items;
 
@@ -47,6 +47,7 @@ export default function SelectList<K extends string>({ListItems, placeholder, de
             })}
         </ListBox>
       </Select.Popover>
+      <FieldError/>
     </Select>
   );
 }

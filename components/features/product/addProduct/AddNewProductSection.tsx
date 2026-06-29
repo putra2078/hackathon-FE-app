@@ -1,19 +1,16 @@
 "use client";
 import { ErrorAlert, SuccessAlert } from "@/components/Shared/CustomAlert";
-import SelectList, { createList } from "@/components/Shared/SelectList";
+import { createList } from "@/components/Shared/SelectList";
 import { useAddProduct } from "@/hooks/useAddProduct";
 import {
   Button,
-  FieldError,
   Form,
-  Input,
-  Label,
-  NumberField,
-  TextArea,
-  TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import BasicInfoFields from "./BasicInfoFields";
+import PriceFields from "./PriceFields";
+import DescriptionField from "./DescriptionField";
 
 const PRODUCT_CATEGORY_LIST = createList([
   { key: "aksesoris", textValue: "Aksesoris" },
@@ -84,113 +81,24 @@ export default function AddNewProductSection() {
         className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col gap-6">
-          <h2 className="text-xl font-semibold">1. Informasi Dasar</h2>
-          <div className="flex gap-4 items-center">
-            <TextField
-              isRequired
-              className="w-full max-w-64"
-              name="name"
-              type="text"
-              value={form.name}
-              onChange={updateField("name")}
-            >
-              <Label>Nama Produk</Label>
-              <Input placeholder="Contoh: Beras" className="rounded" />
-              <FieldError />
-            </TextField>
-            <TextField
-              isRequired
-              className="w-full max-w-64"
-              name="code"
-              type="text"
-              value={form.code}
-              onChange={updateField("code")}
-            >
-              <Label>SKU Produk</Label>
-              <Input placeholder="Contoh: PRD005" className="rounded" />
-              <FieldError />
-            </TextField>
-            <div>
-              <Label>Kategori</Label>
-              <SelectList
-                isRequired
-                ListItems={PRODUCT_CATEGORY_LIST}
-                placeholder="Pilih Kategori"
-                name="category"
-                selectedKey={form.category}
-                onSelectionChange={updateField("category")}
-              />
-            </div>
-          </div>
-        </div>
+        <BasicInfoFields
+          PRODUCT_CATEGORY_LIST={PRODUCT_CATEGORY_LIST}
+          form={form}
+          updateField={updateField}
+        />
+        <hr />
+        <PriceFields
+          IDR_FORMAT_OPTIONS={IDR_FORMAT_OPTIONS}
+          buyPrice={buyPrice}
+          form={form}
+          sellPrice={sellPrice}
+          setBuyPrice={setBuyPrice}
+          setSellPrice={setSellPrice}
+          updateField={updateField}
+        />
         <hr />
         <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold">2. Harga & Stok</h2>
-          <div className="flex gap-4 items-start">
-            <NumberField
-              isRequired
-              name="buyPrice"
-              className="w-full max-w-64"
-              value={buyPrice}
-              onChange={setBuyPrice}
-              minValue={0}
-              formatOptions={IDR_FORMAT_OPTIONS}
-            >
-              <Label>Harga Beli</Label>
-              <Input placeholder="Contoh: Rp10.000" className="rounded" />
-              <FieldError />
-            </NumberField>
-            <NumberField
-              isRequired
-              name="sellPrice"
-              className="w-full max-w-64"
-              value={sellPrice}
-              onChange={setSellPrice}
-              minValue={0}
-              formatOptions={IDR_FORMAT_OPTIONS}
-              validate={(value) => {
-                if (value <= buyPrice) {
-                  return "Harga jual harus lebih besar dari harga beli.";
-                }
-                return null;
-              }}
-            >
-              <Label>Harga Jual</Label>
-              <Input placeholder="Contoh: Rp20.000" className="rounded" />
-              <FieldError />
-            </NumberField>
-            <NumberField
-              isRequired
-              name="stock"
-              className="w-full max-w-64"
-              value={form.stock}
-              onChange={updateField("stock")}
-              minValue={0}
-              step={1}
-            >
-              <Label>Jumlah Stok Awal</Label>
-              <Input placeholder="Contoh: 10" className="rounded" />
-              <FieldError />
-            </NumberField>
-          </div>
-        </div>
-        <hr />
-        <div className="flex flex-col gap-4">
-          <h2 className="text-xl font-semibold">3. Deskripsi</h2>
-          <div className="flex gap-4 items-center">
-            <TextArea
-              aria-label="Deskripsi Produk"
-              id="description"
-              placeholder="Masukkan deskripsi tentang produk..."
-              rows={6}
-              style={{ resize: "vertical" }}
-              className="w-full"
-              name="description"
-              value={form.description}
-              onChange={updateField("description")}
-            />
-          </div>
+          <DescriptionField form={form} updateField={updateField}/>
           <hr />
           <div className="flex gap-4 items-center w-full justify-end">
             <Button
