@@ -8,6 +8,7 @@ export default async function Product({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
   return (
     <div className="w-full flex flex-col gap-4 mx-auto">
       <section id="navBanner" className="w-full">

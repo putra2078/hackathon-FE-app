@@ -1,7 +1,7 @@
 "use client";
 import { ErrorAlert, SuccessAlert } from "@/components/Shared/CustomAlert";
 import { createList } from "@/components/Shared/SelectList";
-import { useAddProduct } from "@/hooks/useAddProduct";
+import { useProduct } from "@/hooks/useProduct";
 import { AlertDialog, Button, Form } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -31,7 +31,7 @@ const INITIAL_FORM_STATE = {
 
 export default function ProductFormSection() {
   const { addProduct, error, isLoading, clearError, isSuccess, clearSuccess } =
-    useAddProduct();
+    useProduct();
   const [form, setForm] = useState(INITIAL_FORM_STATE);
   const [buyPrice, setBuyPrice] = useState(0);
   const [sellPrice, setSellPrice] = useState(0);
