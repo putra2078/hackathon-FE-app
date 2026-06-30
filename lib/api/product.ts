@@ -41,3 +41,10 @@ export async function updateProduct({
   );
   return res.data.data;
 }
+
+export async function deleteProductById(id: string): Promise<Product> {
+  const res = await apiClient.delete<ApiResponse<Product>>(
+    `/products/${id}`
+  );
+  return res.data.data;
+}

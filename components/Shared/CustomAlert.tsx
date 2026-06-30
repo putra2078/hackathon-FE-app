@@ -8,7 +8,7 @@ interface AlertProps{
 }
 
 interface AlertWithClearProps extends AlertProps {
-  clearAlert: () => void;
+  clearAlert?: () => void;
 }
 
 export function ErrorAlert({ desc, clearAlert, title }: AlertWithClearProps) {

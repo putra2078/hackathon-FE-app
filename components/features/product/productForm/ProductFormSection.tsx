@@ -1,7 +1,7 @@
 "use client";
 import { ErrorAlert, SuccessAlert } from "@/components/Shared/CustomAlert";
 import { createList } from "@/components/Shared/SelectList";
-import { useSaveProduct } from "@/hooks/useSaveProduct";
+import { useSaveProduct } from "@/hooks/product/useSaveProduct";
 import { AlertDialog, Button, Form } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

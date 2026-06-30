@@ -2,7 +2,7 @@
 import ProductFormSection from "@/components/features/product/productForm/ProductFormSection";
 
 import NavBanner from "@/components/Shared/NavBanner";
-import { useProductDetail } from "@/hooks/useProductDetail";
+import { useProductDetail } from "@/hooks/product/useProductDetail";
 import { Params } from "next/dist/server/request/params";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
