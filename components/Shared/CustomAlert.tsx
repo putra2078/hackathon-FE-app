@@ -1,12 +1,17 @@
 import { Alert, CloseButton, Spinner } from "@heroui/react";
 
-interface ErrorAlert {
-  desc: string | null;
-  clearError: () => void;
+
+
+interface AlertProps{
   title: string
+  desc?: string
 }
 
-export function ErrorAlert({ desc, clearError, title }: ErrorAlert) {
+interface AlertWithClearProps extends AlertProps {
+  clearAlert: () => void;
+}
+
+export function ErrorAlert({ desc, clearAlert, title }: AlertWithClearProps) {
   return (
     <div className="top-4 right-4 fixed z-999">
       <Alert status="danger" className="rounded-sm">
@@ -14,13 +19,13 @@ export function ErrorAlert({ desc, clearError, title }: ErrorAlert) {
           <Alert.Title>{title}</Alert.Title>
           <Alert.Description>{desc}</Alert.Description>
         </Alert.Content>
-        <CloseButton onPress={clearError} />
+        <CloseButton onPress={clearAlert} />
       </Alert>
     </div>
   );
 }
 
-export function LoadingAlert({title, desc}) {
+export function LoadingAlert({title, desc}: AlertProps) {
   return (
     <div className="top-4 right-4 fixed z-999">
       <Alert status="accent" className="rounded-sm">
@@ -38,7 +43,7 @@ export function LoadingAlert({title, desc}) {
   );
 }
 
-export function SuccessAlert({title, clear}) {
+export function SuccessAlert({title, clearAlert}: AlertWithClearProps) {
   return (
     <div className="top-4 right-4 fixed z-999">
             <Alert status="success" className="rounded">
@@ -46,7 +51,7 @@ export function SuccessAlert({title, clear}) {
         <Alert.Content>
           <Alert.Title>{title}</Alert.Title>
         </Alert.Content>
-        <CloseButton onPress={clear}/>
+        <CloseButton onPress={clearAlert}/>
       </Alert>
     </div>
   );

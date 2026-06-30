@@ -3,12 +3,16 @@ import ProductFormSection from "@/components/features/product/productForm/Produc
 
 import NavBanner from "@/components/Shared/NavBanner";
 import { useProductDetail } from "@/hooks/useProductDetail";
+import { Params } from "next/dist/server/request/params";
 import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
+interface IdParams extends Params{
+  id: string
+}
+
 export default function Product() {
-  const { id } = useParams();
-  console.log(id);
+  const {id} = useParams<IdParams>();
 
   const { error, getProductDetail, isLoading, product } = useProductDetail();
 

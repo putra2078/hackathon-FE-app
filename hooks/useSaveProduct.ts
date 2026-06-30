@@ -1,7 +1,6 @@
 import { ApiError } from "@/lib/api/client";
 import {
   createNewProduct,
-  getProductById as getProductByIdApi,
   updateProduct as updateProductApi,
 } from "@/lib/api/product";
 import { Product, UpdateProductReq } from "@/types/api/product.types";
@@ -16,22 +15,6 @@ export function useSaveProduct() {
     setError(null);
   };
   const clearSuccess = () => setIsSuccess(false);
-
-  async function getProductById(id: number) {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const data = await getProductByIdApi(id);
-      return data
-    } catch (err) {
-      setError(
-        err instanceof ApiError ? err.message : "Gagal mengambil informasi produk",
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   async function addProduct(payload: Product) {
     setIsLoading(true);
@@ -87,6 +70,5 @@ export function useSaveProduct() {
     isSuccess,
     clearError,
     clearSuccess,
-    getProductById
   };
 }

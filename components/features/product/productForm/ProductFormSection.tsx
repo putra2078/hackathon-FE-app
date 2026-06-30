@@ -9,6 +9,7 @@ import BasicInfoFields from "./BasicInfoFields";
 import PriceFields from "./PriceFields";
 import DescriptionField from "./DescriptionField";
 import { Product } from "@/types/api/product.types";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const PRODUCT_CATEGORY_LIST = createList([
   { key: "aksesoris", textValue: "Aksesoris" },
@@ -87,7 +88,7 @@ export default function ProductFormSection({
       {error && (
         <ErrorAlert
           desc={error}
-          clearError={clearError}
+          clearAlert={clearError}
           title={
             isEditMode ? "Gagal Memperbarui Produk" : "Gagal Menambahkan Produk"
           }
@@ -100,7 +101,7 @@ export default function ProductFormSection({
               ? "Berhasil memperbarui produk"
               : "Berhasil menambahkan produk"
           }
-          clear={clearSuccess}
+          clearAlert={clearSuccess}
         />
       )}
 
@@ -151,7 +152,12 @@ export default function ProductFormSection({
   );
 }
 
-function CancelButton({ router, isEditMode }) {
+interface CancelButtonProps{
+  router: AppRouterInstance
+  isEditMode: boolean
+}
+
+function CancelButton({ router, isEditMode }: CancelButtonProps) {
   return (
     <AlertDialog>
       <Button variant="tertiary" className="rounded-md shadow-sm border-0">
