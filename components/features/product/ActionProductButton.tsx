@@ -15,12 +15,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AlertDialog, Button, Dropdown, Label } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import ProductDetailModal from "./ProductDetailModal";
 
 interface Props {
   id: string;
+  code: string
 }
 
-export default function ActionProductButton({ id }: Props) {
+export default function ActionProductButton({ id, code }: Props) {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -88,23 +90,23 @@ export default function ActionProductButton({ id }: Props) {
             <Dropdown.Menu>
               <Dropdown.Item
                 id="view-product"
-                textValue="Lihat produk"
+                textValue="Lihat Detail"
                 className="rounded"
                 onAction={() => alert("nice nice")}
               >
                 <FontAwesomeIcon icon={faEye} />
 
-                <Label>Lihat produk</Label>
+                <Label>Lihat Detail</Label>
               </Dropdown.Item>
               <Dropdown.Item
                 id="delete-product"
-                textValue="Hapus produk"
+                textValue="Hapus Produk"
                 variant="danger"
                 className="rounded"
                 onAction={handleAction}
               >
                 <FontAwesomeIcon icon={faTrash} className="text-danger" />
-                <Label>Hapus produk</Label>
+                <Label>Hapus Produk</Label>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown.Popover>
@@ -118,11 +120,11 @@ export default function ActionProductButton({ id }: Props) {
                 <AlertDialog.Header>
                   <AlertDialog.Icon status="danger" />
                   <AlertDialog.Heading>
-                    Apakah anda yakin ingin menghapus produk ini?
+                    Hapus produk ini? {`(SKU: ${code})`}
                   </AlertDialog.Heading>
                 </AlertDialog.Header>
                 <AlertDialog.Body>
-                  <p>Produk ini akan terhapus permanen</p>
+                  <p>Tindakan ini tidak dapat dibatalkan. Produk akan dihapus secara permanen.</p>
                 </AlertDialog.Body>
                 <AlertDialog.Footer>
                   <Button

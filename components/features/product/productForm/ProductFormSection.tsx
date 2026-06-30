@@ -10,6 +10,7 @@ import PriceFields from "./PriceFields";
 import DescriptionField from "./DescriptionField";
 import { Product } from "@/types/api/product.types";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import ProductDetailModal from "../ProductDetailModal";
 
 const PRODUCT_CATEGORY_LIST = createList([
   { key: "aksesoris", textValue: "Aksesoris" },
