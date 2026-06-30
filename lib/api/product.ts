@@ -16,6 +16,7 @@ export async function getAllProducts(): Promise<getAllProductsRes[]> {
 export async function createNewProduct(
   payload: Product,
 ): Promise<createNewProductRes> {
+  
   const res = await apiClient.post<ApiResponse<createNewProductRes>>(
     "/products/",
     payload,
@@ -23,7 +24,7 @@ export async function createNewProduct(
   return res.data.data;
 }
 
-export async function getProductById(id: number): Promise<Product> {
+export async function getProductById(id: string): Promise<Product> {
   const res = await apiClient.get<ApiResponse<Product>>(
     `/products/${id}`
   );

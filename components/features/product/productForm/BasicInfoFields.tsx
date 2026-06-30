@@ -15,12 +15,14 @@ interface BasicInfoFieldsProps {
   };
   updateField: (key: string) => (value: string) => void;
   PRODUCT_CATEGORY_LIST: { key: string; textValue: string }[];
+  isEditMode: boolean
 }
 
 export default function BasicInfoFields({
   form,
   updateField,
   PRODUCT_CATEGORY_LIST,
+  isEditMode
 }: BasicInfoFieldsProps) {
   return (
     <div className="flex flex-col gap-6">
@@ -46,6 +48,7 @@ export default function BasicInfoFields({
           className="w-full max-w-64"
           name="code"
           type="text"
+          isDisabled={isEditMode}
         >
           <Label>SKU Produk</Label>
           <Input

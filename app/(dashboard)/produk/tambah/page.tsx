@@ -1,4 +1,4 @@
-import ProductFormSection from "@/components/features/product/addProduct/ProductFormSection";
+import ProductFormSection from "@/components/features/product/productForm/ProductFormSection";
 import NavBanner from "@/components/Shared/NavBanner";
 
 export default function AddProduct() {
@@ -8,7 +8,7 @@ export default function AddProduct() {
         <NavBanner bannerTitle="Tambah Produk Baru" />
       </section>
       <section id="addProductForm" className="w-full">
-        <ProductFormSection/>
+        <ProductFormSection mode="create" initialData={null}/>
       </section>
     </div>
   );

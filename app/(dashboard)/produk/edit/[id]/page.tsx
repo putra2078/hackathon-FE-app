@@ -1,13 +1,20 @@
-import ProductFormSection from "@/components/features/product/addProduct/ProductFormSection";
+"use client";
+import ProductFormSection from "@/components/features/product/productForm/ProductFormSection";
 
 import NavBanner from "@/components/Shared/NavBanner";
+import { useProductDetail } from "@/hooks/useProductDetail";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
 
-export default async function Product({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = await params;
+export default function Product() {
+  const { id } = useParams();
+  console.log(id);
+
+  const { error, getProductDetail, isLoading, product } = useProductDetail();
+
+  useEffect(() => {
+    getProductDetail(id);
+  }, [id]);
 
   return (
     <div className="w-full flex flex-col gap-4 mx-auto">
@@ -15,7 +22,12 @@ export default async function Product({
         <NavBanner bannerTitle="Edit Produk" />
       </section>
       <section id="productTable" className="w-full">
-        <ProductFormSection />
+        {error && <div>Gagal memuat produk: {error}</div>}
+        {isLoading || !product ? (
+          <div>Memuat data produk...</div>
+        ) : (
+          <ProductFormSection mode="edit" key={product.id} initialData={product} />
+        )}
       </section>
     </div>
   );

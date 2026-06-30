@@ -1,13 +1,14 @@
 "use client";
 import { ErrorAlert, SuccessAlert } from "@/components/Shared/CustomAlert";
 import { createList } from "@/components/Shared/SelectList";
-import { useProduct } from "@/hooks/useProduct";
+import { useSaveProduct } from "@/hooks/useSaveProduct";
 import { AlertDialog, Button, Form } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import BasicInfoFields from "./BasicInfoFields";
 import PriceFields from "./PriceFields";
 import DescriptionField from "./DescriptionField";
+import { Product } from "@/types/api/product.types";
 
 const PRODUCT_CATEGORY_LIST = createList([
   { key: "aksesoris", textValue: "Aksesoris" },
@@ -21,7 +22,7 @@ const IDR_FORMAT_OPTIONS: Intl.NumberFormatOptions = {
   minimumFractionDigits: 0,
 };
 
-const INITIAL_FORM_STATE = {
+const EMPTY_FORM_STATE = {
   name: "",
   code: "",
   category: "",
@@ -29,13 +30,30 @@ const INITIAL_FORM_STATE = {
   description: "",
 };
 
-export default function ProductFormSection() {
-  const { addProduct, error, isLoading, clearError, isSuccess, clearSuccess } =
-    useProduct();
-  const [form, setForm] = useState(INITIAL_FORM_STATE);
-  const [buyPrice, setBuyPrice] = useState(0);
-  const [sellPrice, setSellPrice] = useState(0);
+interface ProductFormSectionProps {
+  mode: "create" | "edit";
+  initialData: null | Product;
+}
 
+export default function ProductFormSection({
+  initialData,
+  mode,
+}: ProductFormSectionProps) {
+  const router = useRouter();
+
+  const { saveProduct, isLoading, error, isSuccess, clearError, clearSuccess } =
+    useSaveProduct();
+
+  const [form, setForm] = useState(() => ({
+    name: initialData?.name ?? "",
+    code: initialData?.code ?? "",
+    category: initialData?.category ?? "",
+    stock: initialData?.stock ?? 0,
+    description: initialData?.description ?? "",
+  }));
+
+  const [buyPrice, setBuyPrice] = useState(initialData?.buyPrice ?? 0);
+  const [sellPrice, setSellPrice] = useState(initialData?.sellPrice ?? 0);
 
   const updateField = (key) => (value) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -49,14 +67,20 @@ export default function ProductFormSection() {
       sellPrice,
     };
 
-    const success = await addProduct(payload);
+    const success = await saveProduct(payload, initialData?.id);
 
     if (success) {
-      setForm(INITIAL_FORM_STATE);
-      setBuyPrice(0);
-      setSellPrice(0);
+      if (mode === "create") {
+        setForm(EMPTY_FORM_STATE);
+        setBuyPrice(0);
+        setSellPrice(0);
+      } else {
+        router.push("/produk");
+      }
     }
   };
+
+  const isEditMode = mode === "edit";
 
   return (
     <div>
@@ -64,12 +88,18 @@ export default function ProductFormSection() {
         <ErrorAlert
           desc={error}
           clearError={clearError}
-          title="Gagal Menambahkan Produk"
+          title={
+            isEditMode ? "Gagal Memperbarui Produk" : "Gagal Menambahkan Produk"
+          }
         />
       )}
       {isSuccess && (
         <SuccessAlert
-          title="Berhasil menambahkan produk"
+          title={
+            isEditMode
+              ? "Berhasil memperbarui produk"
+              : "Berhasil menambahkan produk"
+          }
           clear={clearSuccess}
         />
       )}
@@ -82,6 +112,7 @@ export default function ProductFormSection() {
           PRODUCT_CATEGORY_LIST={PRODUCT_CATEGORY_LIST}
           form={form}
           updateField={updateField}
+          isEditMode={isEditMode}
         />
         <hr />
         <PriceFields
@@ -98,14 +129,20 @@ export default function ProductFormSection() {
           <DescriptionField form={form} updateField={updateField} />
           <hr />
           <div className="flex gap-4 items-center w-full justify-end">
-            <CancelButton />
+            <CancelButton isEditMode={isEditMode} router={router} />
             <Button
               variant="primary"
               className="rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700"
               type="submit"
               isDisabled={isLoading}
             >
-              {isLoading ? "Menambahkan..." : "Tambahkan Produk"}
+              {isLoading
+                ? isEditMode
+                  ? "Menyimpan..."
+                  : "Menambahkan..."
+                : isEditMode
+                  ? "Simpan Perubahan"
+                  : "Tambahkan Produk"}
             </Button>
           </div>
         </div>
@@ -114,9 +151,7 @@ export default function ProductFormSection() {
   );
 }
 
-function CancelButton() {
-    const router = useRouter();
-
+function CancelButton({ router, isEditMode }) {
   return (
     <AlertDialog>
       <Button variant="tertiary" className="rounded-md shadow-sm border-0">
@@ -129,20 +164,27 @@ function CancelButton() {
             <AlertDialog.Header>
               <AlertDialog.Icon status="warning" />
               <AlertDialog.Heading>
-                Batalkan penambahan produk?
+                {isEditMode
+                  ? "Batalkan perubahan produk?"
+                  : "Batalkan penambahan produk?"}{" "}
               </AlertDialog.Heading>
             </AlertDialog.Header>
             <AlertDialog.Body>
               <p>
-                Data yang sudah Anda isi belum disimpan dan akan hilang kalau
-                Anda keluar sekarang.
+                {isEditMode
+                  ? "Perubahan yang sudah Anda buat belum disimpan dan akan hilang kalau Anda keluar sekarang."
+                  : "Data yang sudah Anda isi belum disimpan dan akan hilang kalau Anda keluar sekarang."}
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
               <Button slot="close" variant="tertiary" className="rounded">
                 Lanjutkan Mengisi
               </Button>
-              <Button onPress={() => router.push('/produk')} variant="danger-soft" className="rounded">
+              <Button
+                onPress={() => router.push("/produk")}
+                variant="danger-soft"
+                className="rounded"
+              >
                 Ya, Batalkan
               </Button>
             </AlertDialog.Footer>

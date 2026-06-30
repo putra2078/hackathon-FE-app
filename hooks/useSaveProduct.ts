@@ -1,18 +1,42 @@
+import { ApiError } from "@/lib/api/client";
 import {
   createNewProduct,
+  getProductById as getProductByIdApi,
   updateProduct as updateProductApi,
 } from "@/lib/api/product";
 import { Product, UpdateProductReq } from "@/types/api/product.types";
-import { ApiError } from "next/dist/server/api-utils";
 import { useState } from "react";
 
-export function useProduct() {
+export function useSaveProduct() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const clearError = () => {
+    setError(null);
+  };
+  const clearSuccess = () => setIsSuccess(false);
+
+  async function getProductById(id: number) {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await getProductByIdApi(id);
+      return data
+    } catch (err) {
+      setError(
+        err instanceof ApiError ? err.message : "Gagal mengambil informasi produk",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   async function addProduct(payload: Product) {
     setIsLoading(true);
+    setError(null);
+    setIsSuccess(false);
 
     try {
       await createNewProduct(payload);
@@ -20,7 +44,7 @@ export function useProduct() {
       return true;
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Gagal Menambahkan produk",
+        err instanceof ApiError ? err.message : "Gagal menambahkan produk",
       );
       return false;
     } finally {
@@ -30,6 +54,8 @@ export function useProduct() {
 
   async function updateProduct({ id, payload }: UpdateProductReq) {
     setIsLoading(true);
+    setError(null);
+    setIsSuccess(false);
 
     try {
       await updateProductApi({ id, payload });
@@ -37,7 +63,7 @@ export function useProduct() {
       return true;
     } catch (err) {
       setError(
-        err instanceof ApiError ? err.message : "Gagal Menambahkan produk",
+        err instanceof ApiError ? err.message : "Gagal memperbarui produk",
       );
       return false;
     } finally {
@@ -45,18 +71,22 @@ export function useProduct() {
     }
   }
 
-  const clearError = () => {
-    setError(null);
-  };
-  const clearSuccess = () => setIsSuccess(false);
+  async function saveProduct(payload: Product, productId?: string) {
+    if (productId) {
+      return updateProduct({ id: productId, payload: payload });
+    }
+    return addProduct(payload);
+  }
 
   return {
     addProduct,
+    updateProduct,
+    saveProduct,
     isLoading,
     error,
     isSuccess,
     clearError,
     clearSuccess,
-    updateProduct,
+    getProductById
   };
 }
