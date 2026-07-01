@@ -20,6 +20,7 @@ export function useDeleteProduct() {
     try {
       await deleteProductById(id);
       setIsSuccess(true);
+      return(true)
     } catch (err) {
       setError(
         err instanceof ApiError ? err.message : "Gagal menambahkan produk",

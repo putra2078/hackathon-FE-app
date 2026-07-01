@@ -1,6 +1,8 @@
 "use client";
 
-import { Table } from "@heroui/react";
+import { faBoxesPacking, faInbox } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EmptyState, Table } from "@heroui/react";
 import { Pagination } from "@heroui/react";
 
 // Definisi tiap kolom
@@ -10,7 +12,7 @@ export interface ColumnDef<T> {
   className?: string; // class tambahan untuk <th>
   cellClassName?: string; // class tambahan untuk <td>
   renderCell?: (row: T) => React.ReactNode; // custom renderer; jika tidak ada, pakai row[key]
-  minWidth?: number
+  minWidth?: number;
 }
 
 export interface PaginationConfig {
@@ -28,17 +30,19 @@ interface ReusableTableProps<T extends object> {
   columns: ColumnDef<T>[];
   data: T[];
   pagination?: PaginationConfig;
+  emptyMessage: string
 }
 
 export function ReusableTable<T extends object>({
   columns,
   data,
   pagination,
+  emptyMessage
 }: ReusableTableProps<T>) {
   return (
-    <Table aria-label="Table" className="rounded-none p-0">
+    <Table aria-label="Table" className="rounded-none p-0 min-h-[200px]">
       <Table.ResizableContainer>
-        <Table.Content className="min-w-[700px]" aria-label="table content">
+        <Table.Content className="min-w-[700px] h-full" aria-label="table content">
           {/* Header */}
           <Table.Header
             className={"bg-surface-secondary border border-surface-border"}
@@ -57,7 +61,14 @@ export function ReusableTable<T extends object>({
           </Table.Header>
 
           {/* Body */}
-          <Table.Body>
+          <Table.Body
+            renderEmptyState={() => (
+              <EmptyState className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
+                <FontAwesomeIcon icon={faBoxesPacking} size="2xl" className="text-muted size-6"/>
+                <span className="text-sm text-muted">{emptyMessage}</span>
+              </EmptyState>
+            )}
+          >
             {data.map((row, rowIndex) => (
               <Table.Row
                 key={rowIndex}
@@ -80,7 +91,7 @@ export function ReusableTable<T extends object>({
         </Table.Content>
       </Table.ResizableContainer>
       {pagination && (
-        <Table.Footer className="bg-surface-secondary">
+        <Table.Footer className="bg-surface-secondary border-t">
           <Pagination size="sm" aria-label="Navigasi Tabel">
             <Pagination.Summary className="text-black">
               Manampilkan {pagination.start} - {pagination.end} dari{" "}

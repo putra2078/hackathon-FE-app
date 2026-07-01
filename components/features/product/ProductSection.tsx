@@ -7,10 +7,16 @@ import { ReusableTable } from "@/components/Shared/ReusableTable";
 import { productColumns } from "./product.columns";
 import TableSearchField from "../../Shared/TableSearchField";
 import SelectList, { createList } from "@/components/Shared/SelectList";
-import { Product } from "@/types/api/product.types";
+import { getAllProductsRes, Product } from "@/types/api/product.types";
 import Link from "next/link";
 
-export default function ProductSection({ products }: { products: Product[] }) {
+interface ProductSectionProps{
+  products: getAllProductsRes[]
+  error: string
+
+}
+
+export default function ProductSection({ products }: { products: getAllProductsRes[] }) {
   const { currentData, pagination } = usePagination({
     data: products,
     rowsPerPage: 5,
@@ -60,6 +66,7 @@ export default function ProductSection({ products }: { products: Product[] }) {
             columns={productColumns}
             data={currentData}
             pagination={pagination}
+            emptyMessage="Belum ada produk terdaftar"
           />
         </div>
       </div>

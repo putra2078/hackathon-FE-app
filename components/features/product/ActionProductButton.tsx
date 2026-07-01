@@ -14,8 +14,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AlertDialog, Button, Dropdown, Label } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import ProductDetailModal from "./ProductDetailModal";
+import { mutate } from "swr";
+import { PRODUCT_KEY } from "@/lib/swr-keys";
 
 interface Props {
   id: string;
@@ -50,10 +52,10 @@ export default function ActionProductButton({ id, code }: Props) {
   };
 
   const handleDelete = async () => {
-    await deleteProduct(id);
+    const success = await deleteProduct(id);
 
-    if (isSuccess) {
-      router.refresh();
+    if (success) {
+        mutate(PRODUCT_KEY)
     }
 
     setIsAlertOpen(false);
