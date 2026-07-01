@@ -25,7 +25,9 @@ interface Props {
 export default function ActionProductButton({ id, code }: Props) {
   const router = useRouter();
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const {
     clearError,
     clearSuccess,
@@ -35,9 +37,15 @@ export default function ActionProductButton({ id, code }: Props) {
     isSuccess,
   } = useDeleteProduct();
 
-  const handleAction = () => {
+  const handleActionAlert = () => {
     setTimeout(() => {
-      setIsOpen(true);
+      setIsAlertOpen(true);
+    }, 100);
+  };
+
+  const handleActionModal = () => {
+    setTimeout(() => {
+      setIsModalOpen(true);
     }, 100);
   };
 
@@ -48,10 +56,12 @@ export default function ActionProductButton({ id, code }: Props) {
       router.refresh();
     }
 
-    setIsOpen(false);
+    setIsAlertOpen(false);
   };
+
   return (
     <>
+    {isModalOpen && id && <ProductDetailModal id={id} isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>}
       {isLoading && <LoadingAlert title="Sedang menghapus produk..." />}
       {error && (
         <ErrorAlert
@@ -92,7 +102,7 @@ export default function ActionProductButton({ id, code }: Props) {
                 id="view-product"
                 textValue="Lihat Detail"
                 className="rounded"
-                onAction={() => alert("nice nice")}
+                onAction={handleActionModal}
               >
                 <FontAwesomeIcon icon={faEye} />
 
@@ -103,7 +113,7 @@ export default function ActionProductButton({ id, code }: Props) {
                 textValue="Hapus Produk"
                 variant="danger"
                 className="rounded"
-                onAction={handleAction}
+                onAction={handleActionAlert}
               >
                 <FontAwesomeIcon icon={faTrash} className="text-danger" />
                 <Label>Hapus Produk</Label>
@@ -112,7 +122,7 @@ export default function ActionProductButton({ id, code }: Props) {
           </Dropdown.Popover>
         </Dropdown>
 
-        <AlertDialog isOpen={isOpen} onOpenChange={setIsOpen}>
+        <AlertDialog isOpen={isAlertOpen} onOpenChange={setIsAlertOpen}>
           <AlertDialog.Backdrop>
             <AlertDialog.Container>
               <AlertDialog.Dialog className="sm:max-w-[400px] rounded-md">
@@ -130,7 +140,7 @@ export default function ActionProductButton({ id, code }: Props) {
                   <Button
                     variant="tertiary"
                     className="rounded"
-                    onPress={() => setIsOpen(false)}
+                    onPress={() => setIsAlertOpen(false)}
                   >
                     Batal
                   </Button>

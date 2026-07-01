@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@heroui/react";
+import { Button, buttonVariants } from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { usePagination } from "@/hooks/usePagination";
@@ -8,11 +8,9 @@ import { productColumns } from "./product.columns";
 import TableSearchField from "../../Shared/TableSearchField";
 import SelectList, { createList } from "@/components/Shared/SelectList";
 import { Product } from "@/types/api/product.types";
-import { useRouter } from "next/navigation";
-import ProductDetailModal from "./ProductDetailModal";
+import Link from "next/link";
 
 export default function ProductSection({ products }: { products: Product[] }) {
-  const router = useRouter()
   const { currentData, pagination } = usePagination({
     data: products,
     rowsPerPage: 5,
@@ -33,7 +31,6 @@ export default function ProductSection({ products }: { products: Product[] }) {
   return (
     <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
       <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
-      <ProductDetailModal/>
         <div id="filter" className="flex gap-4 items-center p-6 w-full">
           <TableSearchField
             placeholder="Cari Produk..."
@@ -50,16 +47,12 @@ export default function ProductSection({ products }: { products: Product[] }) {
             <FontAwesomeIcon icon={faFilter} /> Filter
           </Button>
           <div className="ml-auto">
-
-              <Button
-                variant="primary"
-                onClick={() => router.push('/produk/tambah')}
-                className={
-                  "rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700"
-                }
-              >
-                <FontAwesomeIcon icon={faPlus} /> Tambah Produk
-              </Button>
+            <Link
+              href={"/produk/tambah"}
+              className={`${buttonVariants({ variant: "primary" })} text-white rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700`}
+            >
+              <FontAwesomeIcon icon={faPlus} /> Tambah Produk
+            </Link>
           </div>
         </div>
         <div id="table">

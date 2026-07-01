@@ -2,6 +2,7 @@ import { ApiResponse } from "@/types/api/base.types";
 import {
   createNewProductRes,
   getAllProductsRes,
+  getDetailProductRes,
   Product,
   UpdateProductReq,
 } from "@/types/api/product.types";
@@ -24,8 +25,8 @@ export async function createNewProduct(
   return res.data.data;
 }
 
-export async function getProductById(id: string): Promise<Product> {
-  const res = await apiClient.get<ApiResponse<Product>>(
+export async function getProductById(id: string): Promise<getDetailProductRes> {
+  const res = await apiClient.get<ApiResponse<getDetailProductRes>>(
     `/products/${id}`
   );
   return res.data.data;

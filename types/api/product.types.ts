@@ -19,6 +19,11 @@ export interface createNewProductRes extends Product {
   updatedAt?: string;
 }
 
+export interface getDetailProductRes extends Product {
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface UpdateProductReq {
   id: string;
   payload: {

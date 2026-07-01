@@ -1,5 +1,6 @@
 "use client";
 import ProductFormSection from "@/components/features/product/productForm/ProductFormSection";
+import SkeletonLoadingForm from "@/components/features/product/productForm/SkeletonLoadingForm";
 
 import NavBanner from "@/components/Shared/NavBanner";
 import { useProductDetail } from "@/hooks/product/useProductDetail";
@@ -28,7 +29,7 @@ export default function Product() {
       <section id="productTable" className="w-full">
         {error && <div>Gagal memuat produk: {error}</div>}
         {isLoading || !product ? (
-          <div>Memuat data produk...</div>
+          <SkeletonLoadingForm/>
         ) : (
           <ProductFormSection mode="edit" key={product.id} initialData={product} />
         )}

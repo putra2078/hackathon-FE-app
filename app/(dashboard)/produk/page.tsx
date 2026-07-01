@@ -5,7 +5,6 @@ import { getAllProductsRes } from "@/types/api/product.types";
 
 export default async function ProductPage(){
     const products: getAllProductsRes[] = await getAllProducts()
-    console.log(products)
     return(
         <div className="w-full flex flex-col gap-4 mx-auto">
             <section id="navBanner" className="w-full">

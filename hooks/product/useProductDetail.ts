@@ -1,10 +1,10 @@
 import { ApiError } from "@/lib/api/client";
 import { getProductById } from "@/lib/api/product";
-import { Product } from "@/types/api/product.types";
+import { getDetailProductRes, Product } from "@/types/api/product.types";
 import { useState } from "react";
 
 export function useProductDetail() {
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<getDetailProductRes | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
