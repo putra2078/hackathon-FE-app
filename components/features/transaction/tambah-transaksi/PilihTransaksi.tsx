@@ -3,6 +3,7 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { Modal, Button, Key } from "@heroui/react"
 import { Dispatch, SetStateAction } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import clsx from 'clsx'
 
 interface list {
   id: string,
@@ -30,7 +31,7 @@ export default function PilihTransaksi({metode, setMetode, list, selected, unsel
         value={metode}
         onChange={(value) => setMetode(value)}
       >
-        <Select.Trigger className="rounded-md">
+        <Select.Trigger className="rounded-md shadow-none">
           <Select.Value />
           <Select.Indicator />
         </Select.Trigger>
@@ -50,7 +51,10 @@ export default function PilihTransaksi({metode, setMetode, list, selected, unsel
         { list.map(li => 
             <span 
               key={li.id}   
-              className={`transition delay-50 duration-100 border font-black text-center rounded-lg p-2 ${li.value == metode ? selected : unselected}`}
+              className={clsx(
+                "transition-all delay-50 border font-black text-center rounded-lg p-2 hover:cursor-pointer", 
+                `${li.value == metode ? selected : unselected}`,
+              )}
               onClick={() => setMetode(li.id)}
             >
               {li.value}

@@ -86,13 +86,13 @@ export const Columns = [
           <Button isIconOnly aria-label="Menu" variant="tertiary">
             <EllipsisVertical className="size-4 shrink-0 text-muted" />
           </Button>
-          <Dropdown.Popover placement='bottom end'>
+          <Dropdown.Popover placement='bottom end' className="rounded-xl">
             <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
-              <Dropdown.Item id="edit-item" textValue="Edit item">
-                <Label>Edit item</Label>
+              <Dropdown.Item id="edit-item" textValue="Edit item" className="rounded-lg">
+                <Label className="font-bold">Edit item</Label>
               </Dropdown.Item>
-              <Dropdown.Item id="delete-item" textValue="Delete file" variant="danger">
-                <Label>Delete item</Label>
+              <Dropdown.Item id="delete-item" textValue="Delete file" variant="danger" className="rounded-lg">
+                <Label className="font-bold text-red-700">Delete item</Label>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown.Popover>
