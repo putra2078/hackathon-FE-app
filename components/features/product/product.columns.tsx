@@ -1,24 +1,20 @@
 import { ColumnDef } from "@/components/Shared/ReusableTable";
 import { Chip } from "@heroui/react";
 import ActionProductButton from "./ActionProductButton";
+import { Product } from "@/types/api/product.types";
+import { formatPrice } from "@/lib/formatPrice";
 
-export interface Product {
-  productName: string;
-  sku: string;
-  category: string;
-  stock: number;
-  buyPrice: number;
-  sellPrice: number;
-  status: "aktif" | "tidak aktif";
-}
+// export interface ProductExt extends Product {
+//   status: "aktif" | "tidak aktif";
+// }
 
-const statusColorMap: Record<
-  Product["status"],
-  "success" | "warning" | "danger"
-> = {
-  aktif: "success",
-  "tidak aktif": "danger",
-};
+// const statusColorMap: Record<
+//   ProductExt["status"],
+//   "success" | "warning" | "danger"
+// > = {
+//   aktif: "success",
+//   "tidak aktif": "danger",
+// };
 
 export const productColumns: ColumnDef<Product>[] = [
   {
@@ -35,8 +31,8 @@ export const productColumns: ColumnDef<Product>[] = [
           />
         </div>
         <div className="truncate">
-          <p className="truncate font-semibold">{row.productName}</p>
-          <p className="text-sm text-gray-500">SKU: {row.sku}</p>
+          <p className="truncate font-semibold">{row.name}</p>
+          <p className="text-sm text-gray-500">SKU: {row.code}</p>
         </div>
       </div>
     ),
@@ -47,7 +43,7 @@ export const productColumns: ColumnDef<Product>[] = [
     minWidth: 160
   },
   {
-    key: "stok",
+    key: "stock",
     label: "Stok",
     minWidth: 100,
     renderCell: (row) => (
@@ -57,29 +53,33 @@ export const productColumns: ColumnDef<Product>[] = [
       </div>
     ),
   },
-  { key: "buyPrice", label: "Harga Beli", minWidth: 140 },
-  { key: "sellPrice", label: "Harga Jual", minWidth: 140},
-  {
-    key: "status",
-    label: "Status",
-    minWidth: 110,
-    renderCell: (row) => (
-      <Chip
-        color={statusColorMap[row.status]}
-        variant="soft"
-        className="rounded-md capitalize"
-      >
-        {row.status}
-      </Chip>
-    ),
-  },
+  { key: "buyPrice", label: "Harga Beli", minWidth: 140, renderCell: (row) => (
+    <p>{formatPrice(row.buyPrice)}</p>
+  )},
+  { key: "sellPrice", label: "Harga Jual", minWidth: 140, renderCell: (row) => (
+    <p>{formatPrice(row.sellPrice)}</p>
+  )},
+  // {
+  //   key: "status",
+  //   label: "Status",
+  //   minWidth: 110,
+  //   renderCell: (row) => (
+  //     <Chip
+  //       color={statusColorMap[row.status]}
+  //       variant="soft"
+  //       className="rounded-md capitalize"
+  //     >
+  //       {row.status}
+  //     </Chip>
+  //   ),
+  // },
   {
     key: "aksi",
     label: "Aksi",
     minWidth: 160,
     renderCell: (row) =>  (
       <div className="flex items-center gap-2">
-        <ActionProductButton />
+        <ActionProductButton id={row.id} code={row.code}/>
       </div>
     ),
   },

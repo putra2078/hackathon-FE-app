@@ -2,18 +2,27 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faShop, faSackDollar, faWarehouse, faPeopleGroup, faTruckFast, faCartShopping, faBoxesPacking } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHouse,
+  faShop,
+  faSackDollar,
+  faWarehouse,
+  faPeopleGroup,
+  faTruckFast,
+  faCartShopping,
+  faBoxesPacking,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Sidebar() {
   const pathname = usePathname();
   const itemsMenu = [
-    { name: "Dashboard", href: "/", icon: faHouse },
-    { name: "Produk", href: "/produk", icon: faBoxesPacking },
-    { name: "Penjualan", href: "/penjualan", icon: faSackDollar },
-    { name: "Pembelian", href: "/pembelian", icon: faCartShopping },
-    { name: "Stok", href: "/stock", icon: faWarehouse },
-    { name: "Pelanggan", href: "/pelanggan", icon: faPeopleGroup },
-    { name: "Supplier", href: "/supplier", icon: faTruckFast },
+    { name: "dashboard", href: "/", icon: faHouse },
+    { name: "produk", href: "/produk", icon: faBoxesPacking },
+    { name: "penjualan", href: "/penjualan", icon: faSackDollar },
+    { name: "pembelian", href: "/pembelian", icon: faCartShopping },
+    { name: "stok", href: "/stock", icon: faWarehouse },
+    { name: "pelanggan", href: "/pelanggan", icon: faPeopleGroup },
+    { name: "supplier", href: "/supplier", icon: faTruckFast },
   ];
   return (
     <aside className="bg-surface p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">
@@ -22,7 +31,7 @@ export default function Sidebar() {
         <div className="flex items-center py-3">
           <div className="w-16">
             <img
-              src="brand-icon.svg"
+              src="./brand-icon.png"
               alt=""
               className="w-full h-full object-cover"
             />
@@ -37,7 +46,10 @@ export default function Sidebar() {
         {/* Nav List */}
         <nav className="flex flex-col gap-4">
           {itemsMenu.map((item, i) => {
-            const isActive = pathname === item.href;
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
             return (
               <Link
                 key={i}

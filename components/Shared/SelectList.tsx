@@ -1,4 +1,4 @@
-import { ListBox, Select } from "@heroui/react";
+import { FieldError, ListBox, Select } from "@heroui/react";
 
 export const createList  = <K extends string>(items: ListItemsDef<K>[]) => items;
 
@@ -14,19 +14,23 @@ interface SelectListProps<K extends string> {
   defaultValue?: K;
   width?: number;
   ariaLabel?: string
+  name?: string
+  isRequired?: boolean
 }
 
-export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200, ariaLabel}: SelectListProps<K>) {
+export default function SelectList<K extends string>({ListItems, placeholder, defaultValue, width = 200, ariaLabel, name, isRequired}: SelectListProps<K>) {
   const styleWidth =  `${width}px`;
     return (
     
     <Select
+    isRequired={isRequired}
       placeholder={placeholder}
       defaultValue={defaultValue}
       style={{
         width: styleWidth
       }}
       aria-label={ariaLabel}
+      name={name}
     >
       <Select.Trigger className={"rounded-md"}>
         <Select.Value />
@@ -43,6 +47,7 @@ export default function SelectList<K extends string>({ListItems, placeholder, de
             })}
         </ListBox>
       </Select.Popover>
+      <FieldError/>
     </Select>
   );
 }
