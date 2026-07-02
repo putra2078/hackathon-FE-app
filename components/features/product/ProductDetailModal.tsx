@@ -7,8 +7,6 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, buttonVariants, Modal } from "@heroui/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 interface ProductDetailModalProps {
   id: string;
@@ -21,12 +19,7 @@ export default function ProductDetailModal({
   isOpen,
   setIsOpen,
 }: ProductDetailModalProps) {
-  const { error, getProductDetail, isLoading, product } = useProductDetail();
-  const router = useRouter()
-
-  useEffect(() => {
-    getProductDetail(id);
-  }, [id]);
+  const {error, isLoading, product} = useProductDetail(id)
 
   if (isLoading || !product) return null;
 

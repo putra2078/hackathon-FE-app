@@ -14,10 +14,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AlertDialog, Button, Dropdown, Label } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import { startTransition, useState } from "react";
+import {  useState } from "react";
 import ProductDetailModal from "./ProductDetailModal";
 import { mutate } from "swr";
-import { PRODUCT_KEY } from "@/lib/swr-keys";
+import { PRODUCT_KEYS } from "@/lib/swr-keys";
 
 interface Props {
   id: string;
@@ -52,11 +52,7 @@ export default function ActionProductButton({ id, code }: Props) {
   };
 
   const handleDelete = async () => {
-    const success = await deleteProduct(id);
-
-    if (success) {
-        mutate(PRODUCT_KEY)
-    }
+    deleteProduct(id);
 
     setIsAlertOpen(false);
   };

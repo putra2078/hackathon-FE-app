@@ -1,1 +1,5 @@
-export const PRODUCT_KEY = 'all-products';
+// lib/swr-keys.ts
+export const PRODUCT_KEYS = {
+  all: 'products',
+  detail: (id: string) => `products/${id}`,
+};

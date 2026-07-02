@@ -1,62 +1,68 @@
-import { ApiError } from "@/lib/api/client";
-import {
-  createNewProduct,
-  updateProduct as updateProductApi,
-} from "@/lib/api/product";
+import { createNewProduct, updateProduct as updateProductApi } from "@/lib/api/product";
+import { getErrorMessage } from "@/lib/getErrorMessage";
+import { PRODUCT_KEYS } from "@/lib/swr-keys";
 import { Product, UpdateProductReq } from "@/types/api/product.types";
 import { useState } from "react";
+import { mutate } from "swr";
+import useSWRMutation from "swr/mutation";
 
 export function useSaveProduct() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const {
+    trigger: triggerAdd,
+    isMutating: isAdding,
+    error: addError,
+    reset: resetAddError,
+  } = useSWRMutation(
+    PRODUCT_KEYS.all,
+    (_key: string, { arg }: { arg: Product }) => createNewProduct(arg),
+  );
+
+  const {
+    trigger: triggerUpdate,
+    isMutating: isUpdating,
+    error: updateError,
+    reset: resetUpdateError,
+  } = useSWRMutation(
+    PRODUCT_KEYS.all,
+    (_key: string, { arg }: { arg: UpdateProductReq }) => updateProductApi(arg),
+  );
+
   const clearError = () => {
-    setError(null);
+    resetAddError();
+    resetUpdateError();
   };
   const clearSuccess = () => setIsSuccess(false);
 
   async function addProduct(payload: Product) {
-    setIsLoading(true);
-    setError(null);
     setIsSuccess(false);
-
     try {
-      await createNewProduct(payload);
+      await triggerAdd(payload);
       setIsSuccess(true);
+      mutate(PRODUCT_KEYS.all);
       return true;
-    } catch (err) {
-      setError(
-        err instanceof ApiError ? err.message : "Gagal menambahkan produk",
-      );
+    } catch {
       return false;
-    } finally {
-      setIsLoading(false);
     }
   }
 
   async function updateProduct({ id, payload }: UpdateProductReq) {
-    setIsLoading(true);
-    setError(null);
     setIsSuccess(false);
-
     try {
-      await updateProductApi({ id, payload });
+      await triggerUpdate({ id, payload });
       setIsSuccess(true);
+      mutate(PRODUCT_KEYS.all);
+      mutate(PRODUCT_KEYS.detail(id));
       return true;
-    } catch (err) {
-      setError(
-        err instanceof ApiError ? err.message : "Gagal memperbarui produk",
-      );
+    } catch {
       return false;
-    } finally {
-      setIsLoading(false);
     }
   }
 
   async function saveProduct(payload: Product, productId?: string) {
     if (productId) {
-      return updateProduct({ id: productId, payload: payload });
+      return updateProduct({ id: productId, payload });
     }
     return addProduct(payload);
   }
@@ -65,8 +71,10 @@ export function useSaveProduct() {
     addProduct,
     updateProduct,
     saveProduct,
-    isLoading,
-    error,
+    isLoading: isAdding || isUpdating,
+    error:
+      getErrorMessage(addError, "Gagal menambahkan produk") ??
+      getErrorMessage(updateError, "Gagal memperbarui produk"),
     isSuccess,
     clearError,
     clearSuccess,

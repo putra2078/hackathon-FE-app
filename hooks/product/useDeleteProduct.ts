@@ -1,36 +1,40 @@
-import { ApiError } from "@/lib/api/client";
 import { deleteProductById } from "@/lib/api/product";
+import { getErrorMessage } from "@/lib/getErrorMessage";
+import { PRODUCT_KEYS } from "@/lib/swr-keys";
 import { useState } from "react";
+import { mutate } from "swr";
+import useSWRMutation from "swr/mutation";
 
 export function useDeleteProduct() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const clearError = () => {
-    setError(null);
-  };
+  const {
+    trigger,
+    isMutating: isLoading,
+    error: swrError,
+    reset,
+  } = useSWRMutation(
+    PRODUCT_KEYS.all,
+    (_key: string, { arg: id }: { arg: string }) => deleteProductById(id),
+  );
+
+  const clearError = () => reset();
   const clearSuccess = () => setIsSuccess(false);
 
   async function deleteProduct(id: string) {
-    setIsLoading(true);
-    setError(null);
     setIsSuccess(false);
 
     try {
-      await deleteProductById(id);
+      await trigger(id);
       setIsSuccess(true);
-      return(true)
-    } catch (err) {
-      setError(
-        err instanceof ApiError ? err.message : "Gagal menambahkan produk",
-      );
+      mutate(PRODUCT_KEYS.all);
+      return true;
+    } catch {
       return false;
-    } finally {
-      setIsLoading(false);
     }
   }
 
+  const error = getErrorMessage(swrError, "Gagal menghapus produk")
   return {
     isLoading,
     error,
@@ -38,5 +42,5 @@ export function useDeleteProduct() {
     clearError,
     clearSuccess,
     deleteProduct,
-  }
+  };
 }

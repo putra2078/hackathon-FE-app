@@ -15,11 +15,7 @@ interface IdParams extends Params{
 export default function Product() {
   const {id} = useParams<IdParams>();
 
-  const { error, getProductDetail, isLoading, product } = useProductDetail();
-
-  useEffect(() => {
-    getProductDetail(id);
-  }, [id]);
+  const { error, isLoading, product} = useProductDetail(id);
 
   return (
     <div className="w-full flex flex-col gap-4 mx-auto">

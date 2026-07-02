@@ -1,27 +1,17 @@
-import { ApiError } from "@/lib/api/client";
 import { getProductById } from "@/lib/api/product";
-import { getDetailProductRes, Product } from "@/types/api/product.types";
-import { useState } from "react";
+import { getErrorMessage } from "@/lib/getErrorMessage";
+import { PRODUCT_KEYS } from "@/lib/swr-keys";
+import useSWR from "swr";
 
-export function useProductDetail() {
-  const [product, setProduct] = useState<getDetailProductRes | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+export function useProductDetail(id: string) {
+  const { data, error, isLoading } = useSWR(
+    id ? PRODUCT_KEYS.detail(id) : null,
+    () => getProductById(id),
+  );
 
-  async function getProductDetail(id: string) {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const data = await getProductById(id);
-      setProduct(data);
-      return data;
-    } catch (err) {
-      setError(err instanceof ApiError ? err.message : "Gagal memuat data produk");
-      return null;
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  return { product, getProductDetail, isLoading, error };
+  return {
+    product: data,
+    error: getErrorMessage(error, "Gagal mengambil detail produk"),
+    isLoading,
+  };
 }
