@@ -16,11 +16,11 @@ type Props = {
   metode: Key | null | undefined;
   setMetode: Dispatch<SetStateAction<Key | null | undefined>>;
   list: list[];
-  selected: string;
-  unselected: string;
 };
 
-export default function PilihTransaksi({metode, setMetode, list, selected, unselected}: Props) {
+export default function PilihTransaksi({metode, setMetode, list}: Props) {
+  const selected = 'bg-green-600/10 border-green-700 text-green-700';
+  const unselected = 'bg-background border-gray-200 text-gray-400';
   return (
     <>
       <p className="text-gray-500 my-2">Metode pembayaran</p>

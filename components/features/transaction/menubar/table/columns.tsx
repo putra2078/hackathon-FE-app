@@ -1,13 +1,10 @@
 "use client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-
 import { createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "./types";
 
 import { Button, Dropdown, Label } from "@heroui/react";
 import { EllipsisVertical } from "@gravity-ui/icons";
-import DropDown from "@/components/Shared/DropDown";
+import { formatRupiah } from "@/components/Functions/FormatRupiah";
 
 const columnHelper = createColumnHelper<Transaction>();
 
@@ -45,9 +42,7 @@ export const Columns = [
     cell: (info) => {
       return (
         <span className="font-bold">
-          {info
-            .getValue()
-            .toLocaleString("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 })}
+          {formatRupiah(info.getValue())}
         </span>
       );
     },

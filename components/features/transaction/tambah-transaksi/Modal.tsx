@@ -3,6 +3,7 @@ import { Modal, Button, Key, RadioGroup, Radio, Label } from "@heroui/react"
 import { Dispatch, SetStateAction } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import { formatRupiah } from "@/components/Functions/FormatRupiah";
 
 interface list {
   id: string,
@@ -15,12 +16,12 @@ type Props = {
   metode: Key | null | undefined;
   setMetode: Dispatch<SetStateAction<Key | null | undefined>>;
   list: list[];
-  selected: string;
-  unselected: string;
-  bayar: string;
+  bayar: number;
 };
 
-export default function SimpanTransaksi({metode, setMetode, list, selected, unselected, bayar}: Props) {
+export default function SimpanTransaksi({metode, setMetode, list, bayar}: Props) {
+  const selected = 'bg-green-600/10 border-green-700 text-green-700';
+  const unselected = 'bg-background border-gray-200 text-gray-400';
   return (
     <Modal>
       <Button variant="secondary" fullWidth className="my-1 p-6 rounded-lg font-bold text-background bg-green-800">Simpan Transaksi</Button>
@@ -70,7 +71,7 @@ export default function SimpanTransaksi({metode, setMetode, list, selected, unse
 
               <div className="flex justify-between">
                 <h3>Total Transaksi:</h3>
-                <p className="font-bold text-green-800">{bayar}</p>
+                <p className="font-bold text-green-800">{formatRupiah(bayar)}</p>
               </div>
             </Modal.Body>
             <Modal.Footer className="flex flex-col">
