@@ -1,4 +1,4 @@
-import { LoginReq, LoginRes, RegisterReq, RegisterRes, User } from '@/types/api/auth.types';
+import { LoginReq, LoginRes, RegisterReq, RegisterRes, UpdateUserReq, User } from '@/types/api/auth.types';
 import { apiClient } from './client';
 import { ApiResponse } from '@/types/api/base.types';
 
@@ -15,4 +15,9 @@ export async function registerUser(payload: RegisterReq): Promise<RegisterRes> {
 export async function getUserById(id: string): Promise<User> {
   const res = await apiClient.get<ApiResponse<User>>(`/users/${id}`);
   return res.data.data
+}
+
+export async function updateUser(id: string, payload: UpdateUserReq): Promise<User> {
+  const res = await apiClient.put<ApiResponse<User>>(`/users/${id}`, payload);
+  return res.data.data;
 }

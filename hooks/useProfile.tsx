@@ -2,14 +2,17 @@ import useSWR from "swr";
 import { getErrorMessage } from "@/lib/getErrorMessage";
 import { userStorage } from "@/lib/storage";
 import { getUserById } from "@/lib/api/auth";
+import { PROFILE_KEYS } from "@/lib/swr-keys";
 
 export function useProfile() {
   const userId = userStorage.get();
 
   const { data, error, isLoading, mutate } = useSWR(
-    userId?.id ? `users/${userId}` : null,
+    PROFILE_KEYS.profile,
     () => getUserById(userId?.id),
   );
+
+  console.log("now", userId?.id)
 
   return {
     user: data,
