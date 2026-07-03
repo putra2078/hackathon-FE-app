@@ -12,8 +12,6 @@ export function useProfile() {
     () => getUserById(userId?.id),
   );
 
-  console.log("now", userId?.id)
-
   return {
     user: data,
     error: getErrorMessage(error, "Gagal mengambil data profil"),

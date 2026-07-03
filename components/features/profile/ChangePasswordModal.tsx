@@ -1,4 +1,4 @@
-import { useUpdateProfile } from "@/hooks/useUpdateProfile";
+import { useUpdateProfile } from "@/hooks/profile/useUpdateProfile";
 import {
   Button,
   Form,

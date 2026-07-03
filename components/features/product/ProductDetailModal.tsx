@@ -130,7 +130,6 @@ export default function ProductDetailModal({
                 Tutup
               </Button>
               <Link
-                // className="text-white rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700 px-4 h-9 inline-flex items-center justify-center text-sm font-medium transition-transform-colors active:scale-95"
                 href={`/produk/edit/${id}`}
                 className={`${buttonVariants({ variant: "primary" })} text-white rounded-md shadow-sm border-0 bg-primary hover:bg-primary-700`}
               >

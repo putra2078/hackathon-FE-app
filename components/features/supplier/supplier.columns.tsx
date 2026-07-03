@@ -1,4 +1,3 @@
-// app/supplier/supplier.columns.tsx
 import { ColumnDef } from "@/components/Shared/ReusableTable";
 import { Chip } from "@heroui/react";
 import ActionProductButton from "../product/ActionProductButton";
@@ -21,7 +20,6 @@ export const supplierColumns: ColumnDef<Supplier>[] = [
   {
     key: "supplier",
     label: "Supplier",
-    // render dua baris: nama tebal + PIC abu
     renderCell: (row) => (
       <div>
         <p className="font-semibold text-gray-900">{row.name}</p>

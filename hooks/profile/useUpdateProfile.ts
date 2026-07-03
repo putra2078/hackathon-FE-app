@@ -1,4 +1,3 @@
-// hooks/useUpdateProfile.ts
 import useSWRMutation from "swr/mutation";
 import { mutate } from "swr";
 import { getErrorMessage } from "@/lib/getErrorMessage";
@@ -22,8 +21,7 @@ export function useUpdateProfile() {
 
   async function updateProfile(payload: UpdateUserReq) {
     try {
-      const a = await trigger(payload);
-      console.log(a.id)
+      await trigger(payload);
       mutate(PROFILE_KEYS.profile); 
       return true;
     } catch {

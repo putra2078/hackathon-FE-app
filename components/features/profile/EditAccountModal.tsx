@@ -1,4 +1,4 @@
-import { useUpdateProfile } from "@/hooks/useUpdateProfile";
+import { useUpdateProfile } from "@/hooks/profile/useUpdateProfile";
 import {
   Button,
   Form,
@@ -27,7 +27,6 @@ export default function EditAccountModal({
   const [name, setName] = useState(defaultName);
   const [email, setEmail] = useState(defaultEmail);
 
-  // reset field & error tiap kali modal dibuka ulang
   useEffect(() => {
     if (state.isOpen) {
       setName(defaultName);

@@ -8,15 +8,9 @@ import {
 } from "@heroui/react";
 import EditAccountModal from "./EditAccountModal";
 import ChangePasswordModal from "./ChangePasswordModal";
-import { useProfile } from "@/hooks/useProfile";
+import { useProfile } from "@/hooks/profile/useProfile";
 import { ErrorAlert } from "@/components/Shared/CustomAlert";
 
-const DUMMY_USER = {
-  name: "Arif Budianto",
-  email: "arif.budianto@toko.com",
-  role: "Pemilik",
-  avatarUrl: "https://i.pravatar.cc/150?img=12",
-};
 
 export default function ProfileDetailSection() {
     const { user, error, isLoading } = useProfile();
