@@ -1,6 +1,14 @@
 import { Button, Form, Input, Modal, TextField, Label } from "@heroui/react";
+import React from "react";
 
-export default function EditAccountModal({ trigger }: { trigger: React.ReactNode }) {
+interface EditAccountModalProps{
+    trigger: React.ReactNode
+      defaultName: string;
+  defaultEmail: string;
+}
+
+export default function EditAccountModal({ trigger, defaultEmail, defaultName }: EditAccountModalProps) {
+    console.log(defaultEmail, defaultName)
   return (
     <Modal>
       <Modal.Trigger>{trigger}</Modal.Trigger>
@@ -16,7 +24,7 @@ export default function EditAccountModal({ trigger }: { trigger: React.ReactNode
                 <TextField>
                   <Label>Nama</Label>
                   <Input
-                    defaultValue="nice Ma"
+                    defaultValue={defaultName}
                     placeholder="Nama lengkap"
                     className="rounded"
                   />
@@ -25,7 +33,7 @@ export default function EditAccountModal({ trigger }: { trigger: React.ReactNode
                   <Label>Email</Label>
                   <Input
                     type="email"
-                    defaultValue="budi@gmail.com"
+                    defaultValue={defaultEmail}
                     placeholder="nama@email.com"
                     className="rounded"
                   />
