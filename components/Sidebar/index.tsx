@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
-  faShop,
   faSackDollar,
   faWarehouse,
   faPeopleGroup,
@@ -12,9 +11,8 @@ import {
   faCartShopping,
   faBoxesPacking,
 } from "@fortawesome/free-solid-svg-icons";
+import BottomCard from "./BottomCard";
 
-export default function Sidebar() {
-  const pathname = usePathname();
   const itemsMenu = [
     { name: "dashboard", href: "/", icon: faHouse },
     { name: "produk", href: "/produk", icon: faBoxesPacking },
@@ -24,11 +22,15 @@ export default function Sidebar() {
     { name: "pelanggan", href: "/pelanggan", icon: faPeopleGroup },
     { name: "supplier", href: "/supplier", icon: faTruckFast },
   ];
+
+export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <aside className="bg-surface p-4 w-60 flex flex-col sticky top-0 left-0 h-screen shadow overflow-y-auto scrollbar-thin">
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-8">
         {/* Logo */}
-        <div className="flex items-center py-3">
+        <div className="flex items-center pt-3">
           <div className="w-16">
             <img
               src="./brand-icon.png"
@@ -66,15 +68,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Bagian bawah */}
-        <div className="flex gap-2 px-4 py-6 bg-primary-100 rounded-xl items-center">
-          <div>
-            <FontAwesomeIcon icon={faShop} className="text-primary text-3xl" />
-          </div>
-          <div>
-            <h3 className="font-semibold">Toko sejahtera</h3>
-            <p className="text-xs">Pemilik</p>
-          </div>
-        </div>
+          <BottomCard/>
       </div>
     </aside>
   );

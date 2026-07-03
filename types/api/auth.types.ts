@@ -25,3 +25,9 @@ export interface RegisterRes {
   user: User;
 }
 
+
+export interface UpdateUserReq{
+  name?: string
+  email?: string
+  password?: string
+}

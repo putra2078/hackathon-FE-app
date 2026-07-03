@@ -1,4 +1,3 @@
-// hooks/usePagination.ts
 import { useState, useMemo } from "react";
 import { PaginationConfig } from "@/components/Shared/ReusableTable";
 
