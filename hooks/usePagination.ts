@@ -21,8 +21,35 @@ export function usePagination<T>({
 
   const totalPages = Math.ceil(data.length / rowsPerPage);
 
-  const startPage = Math.max(1, Math.min(page - 1, totalPages - 2));
-  const pages = Array.from({ length: Math.min(3, totalPages) }, (_, i) => startPage + i);
+  // const startPage = Math.max(1, Math.min(page - 1, totalPages - 2));
+
+  const pages = useMemo(() => {
+    // Jika total halaman 7 atau kurang, tampilkan semua angka langsung
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    // Jika halaman aktif ada di dekat halaman awal (halaman 1 sampai 4)
+    if (page <= 2) {
+      return [1, 2, 3, "...", totalPages];
+    }
+
+    // Jika halaman aktif ada di dekat halaman akhir
+    if (page >= totalPages - 1) {
+      return [1, "...", totalPages - 2, totalPages - 1, totalPages];
+    }
+
+    // Jika halaman aktif berada tepat di tengah-tengah
+    return [
+      1,
+      "...",
+      page - 1,
+      page,
+      page + 1,
+      "...",
+      totalPages
+    ];
+  }, [page, totalPages]); 
 
   const currentData = useMemo(() => {
     const start = (page - 1) * rowsPerPage;

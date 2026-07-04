@@ -22,7 +22,7 @@ export interface PaginationConfig {
   start: number;
   end: number;
   itemLabel?: string;
-  pages: number[];
+  pages: (number | string)[];
   onPageChange: (page: number) => void;
 }
 
@@ -30,19 +30,22 @@ interface ReusableTableProps<T extends object> {
   columns: ColumnDef<T>[];
   data: T[];
   pagination?: PaginationConfig;
-  emptyMessage: string
+  emptyMessage: string;
 }
 
 export function ReusableTable<T extends object>({
   columns,
   data,
   pagination,
-  emptyMessage
+  emptyMessage,
 }: ReusableTableProps<T>) {
   return (
     <Table aria-label="Table" className="rounded-none p-0 min-h-[200px]">
       <Table.ResizableContainer>
-        <Table.Content className="min-w-[700px] h-full" aria-label="table content">
+        <Table.Content
+          className="min-w-[700px] h-full"
+          aria-label="table content"
+        >
           {/* Header */}
           <Table.Header
             className={"bg-surface-secondary border border-surface-border"}
@@ -64,7 +67,11 @@ export function ReusableTable<T extends object>({
           <Table.Body
             renderEmptyState={() => (
               <EmptyState className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
-                <FontAwesomeIcon icon={faBoxesPacking} size="2xl" className="text-muted size-6"/>
+                <FontAwesomeIcon
+                  icon={faBoxesPacking}
+                  size="2xl"
+                  className="text-muted size-6"
+                />
                 <span className="text-sm text-muted">{emptyMessage}</span>
               </EmptyState>
             )}
@@ -111,17 +118,29 @@ export function ReusableTable<T extends object>({
                   <Pagination.PreviousIcon />
                 </Pagination.Previous>
               </Pagination.Item>
-              {pagination.pages.map((p) => (
-                <Pagination.Item key={p}>
-                  <Pagination.Link
-                    isActive={p === pagination.currentPage}
-                    onPress={() => pagination.onPageChange(p)}
-                    className={`data-[active="true"]:bg-primary data-[active="true"]:text-primary-foreground data-[active='true']:font-semibold  rounded-md border border-slate-300 bg-white text-foreground`}
-                  >
-                    {p}
-                  </Pagination.Link>
-                </Pagination.Item>
-              ))}
+              {pagination.pages.map((p, index) => {
+                if (p === "...") {
+                  return (
+                    <Pagination.Item key={`ellipsis-${index}`}>
+                      <span className="px-3 py-1.5 text-slate-400 select-none text-sm font-normal">
+                        ...
+                      </span>
+                    </Pagination.Item>
+                  );
+                }
+
+                return (
+                  <Pagination.Item key={`page-${p}`}>
+                    <Pagination.Link
+                      isActive={p === pagination.currentPage}
+                      onPress={() => pagination.onPageChange(p as number)}
+                      className="data-[active='true']:bg-primary data-[active='true']:text-primary-foreground data-[active='true']:font-semibold rounded-md border border-slate-300 bg-white text-foreground"
+                    >
+                      {p}
+                    </Pagination.Link>
+                  </Pagination.Item>
+                );
+              })}
               <Pagination.Item>
                 <Pagination.Next
                   isDisabled={pagination.currentPage === pagination.totalPages}

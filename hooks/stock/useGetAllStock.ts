@@ -7,7 +7,7 @@ export function useGetAllStock() {
   const { data, error, isLoading, mutate } = useSWR(SWR_KEYS.stock.all, getAllStock);
 
   return {
-    products: data,
+    stocks: data,
     error: getErrorMessage(error, "Gagal mengambil daftar stock"),
     isLoading,
     refetch: mutate,
