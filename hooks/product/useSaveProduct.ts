@@ -1,6 +1,6 @@
 import { createNewProduct, updateProduct as updateProductApi } from "@/lib/api/product";
 import { getErrorMessage } from "@/lib/getErrorMessage";
-import { PRODUCT_KEYS } from "@/lib/swr-keys";
+import { SWR_KEYS } from "@/lib/swr-keys";
 import { Product, UpdateProductReq } from "@/types/api/product.types";
 import { useState } from "react";
 import { mutate } from "swr";
@@ -15,7 +15,7 @@ export function useSaveProduct() {
     error: addError,
     reset: resetAddError,
   } = useSWRMutation(
-    PRODUCT_KEYS.all,
+    SWR_KEYS.product.all,
     (_key: string, { arg }: { arg: Product }) => createNewProduct(arg),
   );
 
@@ -25,7 +25,7 @@ export function useSaveProduct() {
     error: updateError,
     reset: resetUpdateError,
   } = useSWRMutation(
-    PRODUCT_KEYS.all,
+    SWR_KEYS.product.all,
     (_key: string, { arg }: { arg: UpdateProductReq }) => updateProductApi(arg),
   );
 
@@ -40,7 +40,7 @@ export function useSaveProduct() {
     try {
       await triggerAdd(payload);
       setIsSuccess(true);
-      mutate(PRODUCT_KEYS.all);
+      mutate(SWR_KEYS.product.all);
       return true;
     } catch {
       return false;
@@ -52,8 +52,8 @@ export function useSaveProduct() {
     try {
       await triggerUpdate({ id, payload });
       setIsSuccess(true);
-      mutate(PRODUCT_KEYS.all);
-      mutate(PRODUCT_KEYS.detail(id));
+      mutate(SWR_KEYS.product.all);
+      mutate(SWR_KEYS.product.detail(id));
       return true;
     } catch {
       return false;

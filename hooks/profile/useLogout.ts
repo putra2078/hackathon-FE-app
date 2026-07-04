@@ -1,6 +1,6 @@
 import { useSWRConfig } from "swr";
 import { tokenStorage, userStorage } from "@/lib/storage";
-import { PROFILE_KEYS } from "@/lib/swr-keys";
+import { SWR_KEYS } from "@/lib/swr-keys";
 import { useState } from "react";
 
 export function useLogout() {
@@ -13,7 +13,7 @@ export function useLogout() {
         tokenStorage.remove()
       userStorage.remove();
 
-      await mutate(PROFILE_KEYS.profile, undefined, { revalidate: false });
+      await mutate(SWR_KEYS.profile.me, undefined, { revalidate: false });
 
       // await logoutAPI();
 

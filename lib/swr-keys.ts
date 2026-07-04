@@ -1,8 +1,14 @@
-export const PRODUCT_KEYS = {
-  all: 'products',
-  detail: (id: string) => `products/${id}`,
-};
+export const SWR_KEYS = {
+  product: {
+    all: "products",
+    detail: (id: string) => `products/${id}`,
+  },
 
-export const PROFILE_KEYS = {
-  profile: 'profiles'
-}
+  stock: {
+    all: "stocks",
+  },
+
+  profile: {
+    me: "profile/me"
+  }
+};

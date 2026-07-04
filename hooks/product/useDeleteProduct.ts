@@ -1,6 +1,6 @@
 import { deleteProductById } from "@/lib/api/product";
 import { getErrorMessage } from "@/lib/getErrorMessage";
-import { PRODUCT_KEYS } from "@/lib/swr-keys";
+import { SWR_KEYS } from "@/lib/swr-keys";
 import { useState } from "react";
 import { mutate } from "swr";
 import useSWRMutation from "swr/mutation";
@@ -14,7 +14,7 @@ export function useDeleteProduct() {
     error: swrError,
     reset,
   } = useSWRMutation(
-    PRODUCT_KEYS.all,
+    SWR_KEYS.product.all,
     (_key: string, { arg: id }: { arg: string }) => deleteProductById(id),
   );
 
@@ -27,7 +27,7 @@ export function useDeleteProduct() {
     try {
       await trigger(id);
       setIsSuccess(true);
-      mutate(PRODUCT_KEYS.all);
+      mutate(SWR_KEYS.product.all);
       return true;
     } catch {
       return false;
