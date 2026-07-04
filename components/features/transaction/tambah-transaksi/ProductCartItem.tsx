@@ -1,22 +1,9 @@
 import clsx from "clsx";
 import { Button } from "@heroui/react";
 import { CirclePlus, CircleMinus, TrashBin } from "@gravity-ui/icons";
- 
-interface ProductCartItemProps {
-  imageUrl: string;
-  name: string;
-  unitPrice: number;
-  quantity: number;
-  onIncrement: () => void;
-  onDecrement: () => void;
-  onRemove: () => void;
-  className?: string;
-}
- 
-function formatRupiah(value: number) {
-  return `Rp${value.toLocaleString("id-ID")}`;
-}
- 
+import { ProductCartItemProps } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
+import { formatRupiah } from "@/components/Functions/FormatRupiah";
+
 export function ProductCartItem({
   imageUrl,
   name,
@@ -24,6 +11,7 @@ export function ProductCartItem({
   quantity,
   onIncrement,
   onDecrement,
+  item,
   onRemove,
   className,
 }: ProductCartItemProps) {
@@ -39,8 +27,7 @@ export function ProductCartItem({
       {/* Delete button */}
       <Button
         isIconOnly
-        // variant="light"
-        onPress={onRemove}
+        onClick={() => onRemove(item)}
         aria-label={`Hapus ${name}`}
         className="absolute right-2 top-2 z-10 size-8 rounded-full bg-red-50 text-red-500 hover:bg-red-100"
       >

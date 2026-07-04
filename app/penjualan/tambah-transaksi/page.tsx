@@ -13,7 +13,8 @@ import {
   Button, 
   SearchField,
   Surface,
-  useOverlayState
+  useOverlayState,
+  ScrollShadow
 } from                       "@heroui/react";
 import { 
   faMoneyBillWave, 
@@ -26,23 +27,36 @@ import {
 import Link from             "next/link";
 import { useState } from     "react";
 import ProdukDrawer from "@/components/features/transaction/tambah-transaksi/Drawer";
-
+import { ProdukProps } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
+import clsx from 'clsx'
 
 export default function TambahTransaksi() {
-  const [metode, setMetode] = useState<Key | null>();;
+  const [metode, setMetode] = useState<Key | null>();
+  const [items, setItems] = useState<ProdukProps[]>([]);
+  const drawerState = useOverlayState();
+
   const list = [
     { id: 'Tunai', value:'Tunai', desc: 'Bayar langsung di kasir', icon: faMoneyBillWave}, 
     { id: 'Qris', value:'Qris', desc: 'Gopay, OVO, Dana, ShopeePay', icon: faQrcode},
     { id: 'Transfer', value:'Transfer', desc: 'BCA, Mandiri, BNI, BRI', icon: faBuildingColumns},
   ];
 
-
   const subtotal = 280000;
   const tax = subtotal * 0.11;
   const discount = subtotal * 0.20;
   const totalHarga = subtotal + tax - discount;
 
-  const drawerState = useOverlayState();
+  const AddItem = (item: ProdukProps) => {
+    const isAvailable = items.find(items => items.nama === item.nama)
+    if (!isAvailable) {
+      setItems(i => [...i, item])
+    } 
+  };
+
+  const RemoveItem = (item: ProdukProps) => {
+    setItems(items.filter((element) => element !== item))
+  };
+ 
   return (
     <div>
       <BannerSmall title="Tambah Transaksi"></BannerSmall>
@@ -69,46 +83,38 @@ export default function TambahTransaksi() {
                 </SearchField.Group>
               </SearchField>
             </div>
-
-            <article className="grid grid-cols-3 gap-4">
-              <ProductCartItem
-                imageUrl="/Keyboard.jpg"
-                name="Kopi Arabika Gayo 250g"
-                unitPrice={85000}
-                quantity={2}
-                onIncrement={() => {}}
-                onDecrement={() => {}}
-                onRemove={() => {}}
-              />
-              <ProductCartItem
-                imageUrl="/Keyboard.jpg"
-                name="Kopi Arabika Gayo 250g"
-                unitPrice={85000}
-                quantity={2}
-                onIncrement={() => {}}
-                onDecrement={() => {}}
-                onRemove={() => {}}
-              />
-              <div 
-                className="hover:opacity-50 transition bg-surface border-2 border-green-800 border-dashed text-green-800 rounded-xl opacity-25 flex flex-col items-center justify-center w-full h-full hover:cursor-pointer"
-                onClick={drawerState.open}
-              >
-                <CirclePlusFill className="size-8 shrink-0"/>
-                <h3 className="font-bold text-center">Tambah Produk<br/>Dari Katalog</h3>   
-              </div>
+            <ScrollShadow className="max-h-120 w-full">
+            <article className="grid grid-cols-3 gap-4 items-stretch">
+                { items.map((item, idx) => (
+                  <ProductCartItem
+                    key={idx}
+                    imageUrl="/Keyboard.jpg"
+                    name={item.nama}
+                    unitPrice={item.harga}
+                    quantity={item.quantity}
+                    onIncrement={() => {item.quantity++}}
+                    onDecrement={() => {}}
+                    item={item}
+                    onRemove={RemoveItem}
+                  />             
+                ))}
+                <div 
+                  className={clsx(
+                    "hover:opacity-50 hover:cursor-pointer transition",
+                    "bg-surface border-2 opacity-25 border-green-800 border-dashed text-green-800",
+                    "flex flex-col items-center justify-center",
+                    "w-full min-h-96 rounded-xl"
+                  )}
+                  onClick={drawerState.open}
+                >
+                  <CirclePlusFill className="size-8 shrink-0"/>
+                  <h3 className="font-bold text-center">Tambah Produk<br/>Dari Katalog</h3>   
+                </div>
             </article>
-
+            </ScrollShadow>
 
             <br />
-
-            <Button variant="outline" 
-              className="w-full rounded-2xl h-16 text-green-800 font-bold"
-              onPress={drawerState.open}
-            >
-              <CirclePlusFill className="size-4 shrink-0"/>
-              <h3>Tambah Produk Lainnya</h3>
-            </Button>
-            <ProdukDrawer state={drawerState}/>
+            <ProdukDrawer state={drawerState} AddItem={AddItem}/>
           </Surface>
         </section>
 
