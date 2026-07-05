@@ -38,7 +38,7 @@ export const productColumns: ColumnDef<Product>[] = [
     ),
   },
   {
-    key: "category",
+    key: "categoryName",
     label: "Kategori",
     minWidth: 160
   },

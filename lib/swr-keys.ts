@@ -4,6 +4,10 @@ export const SWR_KEYS = {
     detail: (id: string) => `products/${id}`,
   },
 
+  category: {
+    all: "categories"
+  },
+
   stock: {
     all: "stocks",
   },

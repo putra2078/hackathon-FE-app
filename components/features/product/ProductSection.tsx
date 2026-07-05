@@ -7,16 +7,11 @@ import { ReusableTable } from "@/components/Shared/ReusableTable";
 import { productColumns } from "./product.columns";
 import TableSearchField from "../../Shared/TableSearchField";
 import SelectList, { createList } from "@/components/Shared/SelectList";
-import { getAllProductsRes, Product } from "@/types/api/product.types";
+import { ProductsWithCategoryName } from "@/types/api/product.types";
 import Link from "next/link";
 
-interface ProductSectionProps{
-  products: getAllProductsRes[]
-  error: string
 
-}
-
-export default function ProductSection({ products }: { products: getAllProductsRes[] }) {
+export default function ProductSection({ products }: { products: ProductsWithCategoryName[] }) {
   const { currentData, pagination } = usePagination({
     data: products,
     rowsPerPage: 5,
