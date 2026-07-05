@@ -23,7 +23,7 @@ export const productColumns: ColumnDef<Product>[] = [
     minWidth: 220,
     renderCell: (row) => (
       <div className="flex items-center gap-2">
-        <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-md shrink-0 overflow-hidden">
+        <div className="flex justify-center items-center w-12 h-12 bg-primary rounded-md shrink-0 overflow-hidden border">
           <img
             src="https://images.unsplash.com/photo-1628794397139-a45fc3286892?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="product-image"

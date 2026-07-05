@@ -55,7 +55,7 @@ export function ReusableTable<T extends object>({
                 isRowHeader={i === 0}
                 key={col.key}
                 className={"font-semibold text-black text-sm"}
-                minWidth={col.minWidth}
+                minWidth={col.minWidth || 120}
               >
                 {col.label}
                 {i !== columns.length - 1 && <Table.ColumnResizer />}
