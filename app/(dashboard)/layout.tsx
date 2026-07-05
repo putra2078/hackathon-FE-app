@@ -1,7 +1,6 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
 import React from "react";
-import { tokenStorage } from "@/lib/storage";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { jwtDecode, JwtPayload } from "jwt-decode";
@@ -13,27 +12,27 @@ export default function DashboardLayout({
 }) {
   const router = useRouter();
   const [checking, setChecking] = useState(true);
-  useEffect(() => {
-    const token = tokenStorage.get();
-    if (!token) {
-      router.push("/login");
-      return;
-    }
+  // useEffect(() => {
+  //   const token = tokenStorage.get();
+  //   if (!token) {
+  //     router.push("/login");
+  //     return;
+  //   }
 
-    const decoded = jwtDecode<JwtPayload>(token);
+  //   const decoded = jwtDecode<JwtPayload>(token);
 
-    if (Date.now() >= decoded.exp * 1000) {
-      tokenStorage.remove();
-      router.push("/login");
-      return;
-    }
+  //   if (Date.now() >= decoded.exp * 1000) {
+  //     tokenStorage.remove();
+  //     router.push("/login");
+  //     return;
+  //   }
 
-    setTimeout(() => {
-      setChecking(false);
-    }, 0);
-  }, [router]);
+  //   setTimeout(() => {
+  //     setChecking(false);
+  //   }, 0);
+  // }, [router]);
 
-  if (checking) return null;
+  // if (checking) return null;
   return (
     <>
       <Sidebar />

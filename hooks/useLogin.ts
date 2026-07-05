@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { loginUser } from '@/lib/api/auth';
 import { ApiError } from '@/lib/api/client';
-import { tokenStorage, userStorage } from '@/lib/storage';
+import { accessTokenStorage, refreshTokenStorage, userStorage } from '@/lib/storage';
 import { LoginReq } from '@/types/api/auth.types';
 
 export function useLogin() {
@@ -16,7 +16,9 @@ export function useLogin() {
 
     try {
       const data = await loginUser(payload);
-      tokenStorage.set(data.token);
+      // tokenStorage.set(data.);
+      accessTokenStorage.set(data.accessToken)
+      refreshTokenStorage.set(data.refreshToken)
       userStorage.set(data.user)
       router.push('/');
     } catch (err) {

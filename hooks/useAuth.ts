@@ -1,15 +1,15 @@
 import { useRouter } from 'next/navigation';
-import { tokenStorage } from '@/lib/storage';
+import { accessTokenStorage } from '@/lib/storage';
 
 export function useAuth() {
   const router = useRouter();
 
   function isAuthenticated(): boolean {
-    return !!tokenStorage.get();
+    return !!accessTokenStorage.get();
   }
 
   function logout() {
-    tokenStorage.remove();
+    accessTokenStorage.remove();
     router.push('/login');
   }
 

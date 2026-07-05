@@ -1,18 +1,31 @@
 import { User } from "@/types/api/auth.types";
 
-const TOKEN_KEY = "token";
+const ACC_TOKEN_KEY = "acc-token";
+const REFRESH_TOKEN_KEY = "refresh-token";
 const USER_KEY = "user"
 
-export const tokenStorage = {
+export const accessTokenStorage = {
   get(): string | null {
     if (typeof window === "undefined") return null;
-    return localStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(ACC_TOKEN_KEY);
   },
-  set(token: string) {
-    localStorage.setItem(TOKEN_KEY, token);
+  set(accToken: string) {
+    localStorage.setItem(ACC_TOKEN_KEY, accToken);
   },
   remove() {
-    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(ACC_TOKEN_KEY);
+  },
+};
+export const refreshTokenStorage = {
+  get(): string | null {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem(REFRESH_TOKEN_KEY);
+  },
+  set(refreshToken: string) {
+    localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+  },
+  remove() {
+    localStorage.removeItem(REFRESH_TOKEN_KEY);
   },
 };
 
