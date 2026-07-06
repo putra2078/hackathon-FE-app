@@ -2,7 +2,8 @@ import {Button, Drawer, Surface } from "@heroui/react";
 import clsx from 'clsx'
 import { CirclePlusFill } from "@gravity-ui/icons";
 import { DrawerProps } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
-
+// import { ProdukTypes } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
+// import {useState} from 'react';
 
 export default function ProdukDrawer({state, AddItem}: DrawerProps) {
   const something = [
@@ -10,6 +11,16 @@ export default function ProdukDrawer({state, AddItem}: DrawerProps) {
     {nama: 'Mouse', harga: 12000, stok: 20, quantity: 1},
     {nama: 'Bruh', harga: 12000, stok: 19, quantity: 1},
   ];
+
+  // const [selectedItem, SelectBatch] = useState<ProdukTypes[]>([]);
+
+  // console.log(selec)
+  // const SelectItem = (item: ProdukTypes) => {
+  //   const isAvailable = selectedItem.find(items => items.nama === item.nama)
+  //   if (!isAvailable) {
+  //     SelectBatch(i => [...i, item])
+  //   } 
+  // };
 
   const button = "min-w-24 rounded-lg font-bold"
   const secondary = "text-green-800"

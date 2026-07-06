@@ -27,12 +27,12 @@ import {
 import Link from             "next/link";
 import { useState } from     "react";
 import ProdukDrawer from "@/components/features/transaction/tambah-transaksi/Drawer";
-import { ProdukProps } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
+import { ProdukType } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
 import clsx from 'clsx'
 
 export default function TambahTransaksi() {
   const [metode, setMetode] = useState<Key | null>();
-  const [items, setItems] = useState<ProdukProps[]>([]);
+  const [items, setItems] = useState<ProdukType[]>([]);
   const drawerState = useOverlayState();
 
   const list = [
@@ -46,14 +46,14 @@ export default function TambahTransaksi() {
   const discount = subtotal * 0.20;
   const totalHarga = subtotal + tax - discount;
 
-  const AddItem = (item: ProdukProps) => {
+  const AddItem = (item: ProdukType) => {
     const isAvailable = items.find(items => items.nama === item.nama)
     if (!isAvailable) {
       setItems(i => [...i, item])
     } 
   };
 
-  const RemoveItem = (item: ProdukProps) => {
+  const RemoveItem = (item: ProdukType) => {
     setItems(items.filter((element) => element !== item))
   };
  

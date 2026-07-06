@@ -1,6 +1,6 @@
 import { UseOverlayStateReturn } from "@heroui/react";
 
-export type ProdukProps = {
+export interface ProdukType {
   nama: string,
   harga: number,
   stok: number,
@@ -9,7 +9,7 @@ export type ProdukProps = {
 
 export interface DrawerProps {
   state: UseOverlayStateReturn;
-  AddItem: (item: ProdukProps) => void;
+  AddItem: (item: ProdukType) => void;
 }
 
 export interface ProductCartItemProps {
@@ -17,9 +17,9 @@ export interface ProductCartItemProps {
   name: string;
   unitPrice: number;
   quantity: number;
-  item: ProdukProps;
+  item: ProdukType;
   onIncrement: () => void;
   onDecrement: () => void;
-  onRemove: (item: ProdukProps) => void;
+  onRemove: (item: ProdukType) => void;
   className?: string;
 }

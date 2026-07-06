@@ -16,7 +16,7 @@ export function ProductCartItem({
   className,
 }: ProductCartItemProps) {
   const total = unitPrice * quantity;
- 
+
   return (
     <div
       className={clsx(
@@ -82,5 +82,3 @@ export function ProductCartItem({
     </div>
   );
 }
- 
-// Usage:
