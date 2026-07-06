@@ -4,7 +4,6 @@ import { ApiResponse } from '@/types/api/base.types';
 
 export async function loginUser(payload: LoginReq): Promise<LoginRes> {
   const res = await apiClient.post<ApiResponse<LoginRes>>('/users/login', payload);
-  console.log(res.data)
   return res.data.data;
 }
 

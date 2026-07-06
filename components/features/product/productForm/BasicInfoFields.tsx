@@ -11,7 +11,7 @@ interface BasicInfoFieldsProps {
   form: {
     name: string;
     code: string;
-    category: string;
+    categoryId: string;
   };
   updateField: (key: string) => (value: string) => void;
   PRODUCT_CATEGORY_LIST: { key: string; textValue: string }[];
@@ -63,8 +63,8 @@ export default function BasicInfoFields({
           isRequired
           aria-label="pilih category"
           className="w-full max-w-64"
-          value={form.category}
-          onChange={updateField("category")}
+          value={form.categoryId}
+          onChange={updateField("categoryId")}
         >
           <Label>Kategori</Label>
           <Select.Trigger className={"rounded-md"}>

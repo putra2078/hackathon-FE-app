@@ -3,7 +3,7 @@ import axios, {
   AxiosInstance,
   InternalAxiosRequestConfig,
 } from "axios";
-import { accessTokenStorage, refreshTokenStorage } from "../storage";
+import { accessTokenStorage, refreshTokenStorage, userStorage } from "../storage";
 import { ApiErrorResponse } from "@/types/api/base.types";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -119,8 +119,8 @@ apiClient.interceptors.response.use(
       return apiClient(config);
     }
  
-    // 401: access token expired, refresh
-    if (error.response?.status === 401 && !config._retry) {
+    // 401, 403: access token expired, refresh
+    if (error.response?.status === 401 || error.response?.status === 403  && !config._retry) {
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -142,6 +142,7 @@ apiClient.interceptors.response.use(
           { refreshToken },
           { headers: { "Content-Type": "application/json" } },
         );
+
  
         const newAccessToken: string = data.data.accessToken;
         accessTokenStorage.set(newAccessToken);
@@ -149,14 +150,15 @@ apiClient.interceptors.response.use(
  
         config.headers.Authorization = `Bearer ${newAccessToken}`;
         return apiClient(config);
-      } catch (refreshError) {
-        processQueue(refreshError, null);
+      } catch  {
+        processQueue(null, null);
  
-        accessTokenStorage.set("");
-        refreshTokenStorage.set("");
+        accessTokenStorage.remove();
+        refreshTokenStorage.remove();
+        userStorage.remove()
         window.location.href = "/login";
  
-        return Promise.reject(refreshError);
+        return Promise.reject(error);
       } finally {
         isRefreshing = false;
       }

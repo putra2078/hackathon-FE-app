@@ -38,7 +38,6 @@ export default function EditAccountModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const success = await updateProfile({ name, email });
-    console.log(success)
     if (success) {
       state.close();
     }

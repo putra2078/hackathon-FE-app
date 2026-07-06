@@ -11,11 +11,12 @@ import DescriptionField from "./DescriptionField";
 import { Product } from "@/types/api/product.types";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import ProductDetailModal from "../ProductDetailModal";
+import { useGetAllCategory } from "@/hooks/product/useGetAllCategory";
 
-const PRODUCT_CATEGORY_LIST = createList([
-  { key: "aksesoris", textValue: "Aksesoris" },
-  { key: "elektronik", textValue: "Elektronik" },
-]);
+// const PRODUCT_CATEGORY_LIST = createList([
+//   { key: "aksesoris", textValue: "Aksesoris" },
+//   { key: "elektronik", textValue: "Elektronik" },
+// ]);
 
 const IDR_FORMAT_OPTIONS: Intl.NumberFormatOptions = {
   currency: "IDR",
@@ -27,9 +28,10 @@ const IDR_FORMAT_OPTIONS: Intl.NumberFormatOptions = {
 const EMPTY_FORM_STATE = {
   name: "",
   code: "",
-  category: "",
+  categoryId: "",
   stock: 0,
   description: "",
+  image: ""
 };
 
 interface ProductFormSectionProps {
@@ -43,16 +45,21 @@ export default function ProductFormSection({
 }: ProductFormSectionProps) {
   const router = useRouter();
 
+  const { categoryList} = useGetAllCategory()
+
   const { saveProduct, isLoading, error, isSuccess, clearError, clearSuccess } =
     useSaveProduct();
 
   const [form, setForm] = useState(() => ({
     name: initialData?.name ?? "",
     code: initialData?.code ?? "",
-    category: initialData?.category ?? "",
+    categoryId: initialData?.categoryId ?? "",
     stock: initialData?.stock ?? 0,
     description: initialData?.description ?? "",
+    image: initialData?.image ?? null
   }));
+
+  console.log(form.categoryId)
 
   const [buyPrice, setBuyPrice] = useState(initialData?.buyPrice ?? 0);
   const [sellPrice, setSellPrice] = useState(initialData?.sellPrice ?? 0);
@@ -111,7 +118,7 @@ export default function ProductFormSection({
         onSubmit={handleSubmit}
       >
         <BasicInfoFields
-          PRODUCT_CATEGORY_LIST={PRODUCT_CATEGORY_LIST}
+          PRODUCT_CATEGORY_LIST={categoryList}
           form={form}
           updateField={updateField}
           isEditMode={isEditMode}
