@@ -27,13 +27,18 @@ import {
 import Link from             "next/link";
 import { useState } from     "react";
 import ProdukDrawer from "@/components/features/transaction/tambah-transaksi/Drawer";
-import { ProdukType } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
+import { ProdukType, SelectProductType } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
 import clsx from 'clsx'
 
 export default function TambahTransaksi() {
   const [metode, setMetode] = useState<Key | null>();
-  const [items, setItems] = useState<ProdukType[]>([]);
+  const [Produk, TambahProduk] = useState<ProdukType[]>([]);
   const drawerState = useOverlayState();
+
+  const subTotal = Produk.reduce((sum, item) => sum + item.harga, 0);
+  const tax = subTotal * 0.11;
+  const discount = subTotal * 0.20;
+  const totalHarga = subTotal + tax - discount;
 
   const list = [
     { id: 'Tunai', value:'Tunai', desc: 'Bayar langsung di kasir', icon: faMoneyBillWave}, 
@@ -41,20 +46,14 @@ export default function TambahTransaksi() {
     { id: 'Transfer', value:'Transfer', desc: 'BCA, Mandiri, BNI, BRI', icon: faBuildingColumns},
   ];
 
-  const subtotal = 280000;
-  const tax = subtotal * 0.11;
-  const discount = subtotal * 0.20;
-  const totalHarga = subtotal + tax - discount;
-
   const AddItem = (item: ProdukType) => {
-    const isAvailable = items.find(items => items.nama === item.nama)
+    const isAvailable = Produk.find(Produk => Produk.nama === item.nama)
     if (!isAvailable) {
-      setItems(i => [...i, item])
-    } 
+      TambahProduk(i => [...i, item])
+    }
   };
-
   const RemoveItem = (item: ProdukType) => {
-    setItems(items.filter((element) => element !== item))
+    TambahProduk(Produk.filter((element) => element !== item))
   };
  
   return (
@@ -69,7 +68,7 @@ export default function TambahTransaksi() {
             <Combox title="Cari atau pilih pelanggan..." list={['John Doe', 'Jane Smith', 'Bob Johnson']} />
           </Surface>
           
-          <Surface className="bg-surface p-5 rounded-xl border border-gray-200">
+          <Surface className="bg-surface p-5 rounded-xl border border-gray-200  ">
             <div className="flex justify-between items-center mb-2">
               <h2 className="text-lg font-semibold text-gray-800">Daftar Produk</h2>
               <SearchField name="search" aria-label='Search Field' className="border rounded-md">
@@ -83,16 +82,17 @@ export default function TambahTransaksi() {
                 </SearchField.Group>
               </SearchField>
             </div>
-            <ScrollShadow className="max-h-120 w-full">
+            <br />
+            <ScrollShadow className="max-h-150 w-full">
             <article className="grid grid-cols-3 gap-4 items-stretch">
-                { items.map((item, idx) => (
+                { Produk.map((item, idx) => (
                   <ProductCartItem
                     key={idx}
-                    imageUrl="/Keyboard.jpg"
+                    imageUrl={item.image}
                     name={item.nama}
                     unitPrice={item.harga}
-                    quantity={item.quantity}
-                    onIncrement={() => {item.quantity++}}
+                    quantity={undefined}
+                    onIncrement={() => {}}
                     onDecrement={() => {}}
                     item={item}
                     onRemove={RemoveItem}
@@ -114,7 +114,7 @@ export default function TambahTransaksi() {
             </ScrollShadow>
 
             <br />
-            <ProdukDrawer state={drawerState} AddItem={AddItem}/>
+            <ProdukDrawer state={drawerState} AddItem={AddItem} Produk={Produk}/>
           </Surface>
         </section>
 
@@ -123,7 +123,7 @@ export default function TambahTransaksi() {
           <Surface className="bg-surface p-5 rounded-xl border border-gray-200 text-gray-500">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Ringkasan Pembayaran</h2>
             <PaymentSummary 
-              subtotal={subtotal}
+              subtotal={subTotal}
               taxRate={0.11}
               discount={discount}
               promoLabel="PROMO 20"

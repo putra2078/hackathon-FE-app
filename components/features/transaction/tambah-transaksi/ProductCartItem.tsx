@@ -8,7 +8,7 @@ export function ProductCartItem({
   imageUrl,
   name,
   unitPrice,
-  quantity,
+  quantity=1,
   onIncrement,
   onDecrement,
   item,
@@ -20,7 +20,7 @@ export function ProductCartItem({
   return (
     <div
       className={clsx(
-        "relative rounded-2xl border border-black/5 bg-white",
+        "relative rounded-2xl border border-black/5 bg-white max-h-150",
         className,
       )}
     >
@@ -53,7 +53,6 @@ export function ProductCartItem({
           <div className="flex items-center gap-3 rounded-full border border-neutral-200 px-2 py-1">
             <Button
               isIconOnly
-              // variant="light"
               size="sm"
               onPress={onDecrement}
               aria-label="Kurangi jumlah"
@@ -66,7 +65,6 @@ export function ProductCartItem({
             </span>
             <Button
               isIconOnly
-              // variant="light"
               size="sm"
               onPress={onIncrement}
               aria-label="Tambah jumlah"
