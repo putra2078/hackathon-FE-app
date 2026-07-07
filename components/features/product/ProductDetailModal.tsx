@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetCategoryById } from "@/hooks/product/useGetCategoryById";
 import { useProductDetail } from "@/hooks/product/useProductDetail";
 import { formatDate } from "@/lib/formatDate";
 import { formatPrice } from "@/lib/formatPrice";
@@ -21,7 +22,14 @@ export default function ProductDetailModal({
 }: ProductDetailModalProps) {
   const {error, isLoading, product} = useProductDetail(id)
 
-  if (isLoading || !product) return null;
+  const {category} = useGetCategoryById(product?.categoryId)
+
+  const categoryName = category ? category.name : "Loading..."
+
+    if (isLoading || !product) return null;
+
+    const imgURL = product.image || 'https://images.unsplash.com/photo-1628794397139-a45fc3286892?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+
 
   const LabelAndDesc = [
     {
@@ -34,7 +42,7 @@ export default function ProductDetailModal({
     },
     {
       label: "Kategori",
-      desc: product.category,
+      desc: categoryName,
     },
     {
       label: "Stock",
@@ -69,7 +77,7 @@ export default function ProductDetailModal({
                   <div>
                     <div className="w-46 h-46 rounded-sm overflow-hidden shadow">
                       <img
-                        src="https://images.unsplash.com/photo-1628794397139-a45fc3286892?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        src={imgURL}
                         alt="product-image"
                         className="w-full h-full object-cover"
                       />
@@ -104,7 +112,7 @@ export default function ProductDetailModal({
                 <div>
                   <div className="space-y-0.5">
                     <h2 className="text-base font-semibold text-foreground">
-                      Riwayat Perubaham
+                      Riwayat Perubahan
                     </h2>
                     <div className="flex gap-6">
                       <div>

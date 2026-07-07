@@ -4,7 +4,7 @@ import { getErrorMessage } from "@/lib/getErrorMessage";
 import { userStorage } from "@/lib/storage";
 import { UpdateUserReq } from "@/types/api/auth.types";
 import { updateUser } from "@/lib/api/auth";
-import { PROFILE_KEYS } from "@/lib/swr-keys";
+import { SWR_KEYS } from "@/lib/swr-keys";
 
 export function useUpdateProfile() {
   const user = userStorage.get();
@@ -15,14 +15,14 @@ export function useUpdateProfile() {
     error: swrError,
     reset,
   } = useSWRMutation(
-    PROFILE_KEYS.profile,
+    SWR_KEYS.profile.me,
     (_key: string, { arg }: { arg: UpdateUserReq }) => updateUser(user!.id, arg),
   );
 
   async function updateProfile(payload: UpdateUserReq) {
     try {
       await trigger(payload);
-      mutate(PROFILE_KEYS.profile); 
+      mutate(SWR_KEYS.profile.me); 
       return true;
     } catch {
       return false;

@@ -20,7 +20,7 @@ import Filter from './Filter'
 export default function Filtering() {
   return (
     <div className="flex justify-between items-center p-4 ">
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap">
 
       <Search />
       <DropDown 
@@ -42,7 +42,7 @@ export default function Filtering() {
       />
 
       </div>
-      <div>
+      <div className="self-start">
         <Filter />
       </div>
     </div>

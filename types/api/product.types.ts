@@ -2,11 +2,16 @@ export interface Product {
   id?: string;
   code: string;
   name: string;
+  image: string | null
   description: string | null;
-  category: string;
+  categoryId: string;
   buyPrice: number;
   sellPrice: number;
   stock: number;
+}
+
+export interface ProductsWithCategoryName extends Product{
+  categoryName: string
 }
 
 export interface getAllProductsRes extends Product {

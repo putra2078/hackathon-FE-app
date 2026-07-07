@@ -17,7 +17,8 @@ export interface RegisterReq {
 }
 
 export interface LoginRes {
-  token: string;
+  accessToken: string;
+  refreshToken: string;
   user: User;
 }
 
