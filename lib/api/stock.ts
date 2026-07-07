@@ -1,8 +1,14 @@
-import { Stock } from "@/types/api/stock.types";
+import { PatchStocksReq, PatchStocksRes, Stock } from "@/types/api/stock.types";
 import { apiClient } from "./client";
 import { ApiResponse } from "@/types/api/base.types";
 
 export async function getAllStock(): Promise<Stock[]> {
     const res = await apiClient.get<ApiResponse<Stock[]>>('/products/stock')
+    return res.data.data
+}
+
+
+export async function patchStocks(payload: PatchStocksReq[]): Promise<PatchStocksRes[]> {
+    const res = await apiClient.patch<ApiResponse<PatchStocksRes[]>>('/products/stock', payload)
     return res.data.data
 }
