@@ -3,23 +3,29 @@ import clsx from 'clsx'
 import { CirclePlusFill } from "@gravity-ui/icons";
 import { DrawerProps, ProdukType } from '@/components/features/transaction/tambah-transaksi/Props/ProdukProps'
 
-export default function ProdukDrawer({state, AddItem, Produk}: DrawerProps) {
+export default function ProdukDrawer({state, AddItem, RemoveItem, Produk}: DrawerProps) {
   const something = [
-    { image: '/Keyboard.jpg',nama: 'Keyboard', harga: 12000, stok: 12},
+    { image: '/Keyboard.jpg', nama: 'Keyboard', harga: 12000, stok: 12},
     { image: '/Mouse.jpg',nama: 'Mouse', harga: 24000, stok: 20},
     { image: '/Keyboard.jpg',nama: 'Bruh', harga: 32000, stok: 19},
   ];
 
-  const Selected = (item: ProdukType) => {
-    const isSelected = Produk.find(Produk => Produk.nama === item.nama)
-    if (isSelected) {
-      return 'opacity-50'
-    }
+  const isSelected = (item: ProdukType) => {
+    return Produk.find(Produk => Produk.nama === item.nama)
   }
 
+  // const ToggleItem = (item: ProdukType) => {
+  //   if (isSelected(item)) {
+  //     RemoveItem(item) 
+  //   } else {
+  //     AddItem(item)
+  //   }
+  // }
+  
   const button = "min-w-24 rounded-lg font-bold"
   const secondary = "text-green-800"
   const primary = "bg-green-800"
+  
   return (
     <Drawer>
       <Button variant="outline" 
@@ -45,9 +51,9 @@ export default function ProdukDrawer({state, AddItem, Produk}: DrawerProps) {
                     key={idx} 
                     className={clsx(
                       "relative rounded-2xl border border-black/5 bg-white hover:cursor-pointer hover:opacity-75 transition",
-                      Selected(item)
+                      isSelected(item) ? 'border-3 border-green-800 bg-surface opacity-50 active:translate-y-px' : ''
                     )}
-                      onClick={() => AddItem(item)}
+                    onClick={() => AddItem(item)}
                   >
                     <div className="aspect-square w-full overflow-hidden rounded-t-xl h-64 bg-neutral-100">
                       <img

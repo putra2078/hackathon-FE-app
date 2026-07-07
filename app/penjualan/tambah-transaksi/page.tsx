@@ -32,13 +32,14 @@ import clsx from 'clsx'
 
 export default function TambahTransaksi() {
   const [metode, setMetode] = useState<Key | null>();
-  const [Produk, TambahProduk] = useState<ProdukType[]>([]);
+  const [Produk, TambahProduk] = useState<SelectProductType[]>([]);
   const drawerState = useOverlayState();
 
-  const subTotal = Produk.reduce((sum, item) => sum + item.harga, 0);
+  const subTotal = Produk.reduce((sum, item) => sum + (item.harga * item.quantity), 0);
   const tax = subTotal * 0.11;
   const discount = subTotal * 0.20;
   const totalHarga = subTotal + tax - discount;
+  const defaultQuantity = 1;
 
   const list = [
     { id: 'Tunai', value:'Tunai', desc: 'Bayar langsung di kasir', icon: faMoneyBillWave}, 
@@ -48,14 +49,36 @@ export default function TambahTransaksi() {
 
   const AddItem = (item: ProdukType) => {
     const isAvailable = Produk.find(Produk => Produk.nama === item.nama)
+    const FormatedItem = {...item, quantity: defaultQuantity}
     if (!isAvailable) {
-      TambahProduk(i => [...i, item])
+      TambahProduk(i => [...i, FormatedItem])
     }
   };
-  const RemoveItem = (item: ProdukType) => {
+
+  const RemoveItem = (item: SelectProductType) => {
     TambahProduk(Produk.filter((element) => element !== item))
   };
- 
+
+  const incrementQuantity = (nama: string) => {
+    TambahProduk(prevCart =>
+      prevCart.map(item =>
+        item.nama === nama && item.quantity < item.stok
+          ? { ...item, quantity: item.quantity + 1} 
+          : item
+      )
+    );
+  };
+
+  const decrementQuantity = (nama: string) => {
+    TambahProduk(prevCart =>
+      prevCart.map(item =>
+        item.nama === nama && item.quantity > 1
+          ? { ...item, quantity: item.quantity + -1} 
+          : item
+      )
+    );
+  };
+
   return (
     <div>
       <BannerSmall title="Tambah Transaksi"></BannerSmall>
@@ -91,12 +114,13 @@ export default function TambahTransaksi() {
                     imageUrl={item.image}
                     name={item.nama}
                     unitPrice={item.harga}
-                    quantity={undefined}
-                    onIncrement={() => {}}
-                    onDecrement={() => {}}
+                    quantity={item.quantity}
+                    onIncrement={incrementQuantity}
+                    // onIncrement={() => {}}
+                    onDecrement={decrementQuantity}
                     item={item}
                     onRemove={RemoveItem}
-                  />             
+                  />
                 ))}
                 <div 
                   className={clsx(
@@ -114,7 +138,7 @@ export default function TambahTransaksi() {
             </ScrollShadow>
 
             <br />
-            <ProdukDrawer state={drawerState} AddItem={AddItem} Produk={Produk}/>
+            <ProdukDrawer state={drawerState} AddItem={AddItem} Produk={Produk} RemoveItem={RemoveItem} />
           </Surface>
         </section>
 

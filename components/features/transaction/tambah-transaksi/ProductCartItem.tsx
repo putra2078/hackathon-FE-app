@@ -54,9 +54,9 @@ export function ProductCartItem({
             <Button
               isIconOnly
               size="sm"
-              onPress={onDecrement}
+              onPress={() => {onDecrement(item.nama)}}
               aria-label="Kurangi jumlah"
-              className="size-6 rounded-full bg-neutral-100"
+              className="size-6 rounded-full bg-neutral-100 text-gray-500"
             >
               <CircleMinus className="size-3" />
             </Button>
@@ -66,7 +66,7 @@ export function ProductCartItem({
             <Button
               isIconOnly
               size="sm"
-              onPress={onIncrement}
+              onPress={() => {onIncrement(item.nama)}}
               aria-label="Tambah jumlah"
               className="size-6 rounded-full bg-green-100 text-green-700"
             >
