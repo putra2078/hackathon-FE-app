@@ -22,6 +22,8 @@ export default function ProductDetailModal({
 }: ProductDetailModalProps) {
   const {error, isLoading, product} = useProductDetail(id)
 
+  console.log(product)
+
   const {category} = useGetCategoryById(product?.categoryId)
 
   const categoryName = category ? category.name : "Loading..."

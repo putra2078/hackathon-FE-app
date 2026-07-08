@@ -6,28 +6,31 @@ import {
   Select,
   ListBox,
 } from "@heroui/react";
+import ImageField from "./ImageField";
 
 interface BasicInfoFieldsProps {
   form: {
     name: string;
-    code: string;
     categoryId: string;
+    image: string | null
   };
   updateField: (key: string) => (value: string) => void;
   PRODUCT_CATEGORY_LIST: { key: string; textValue: string }[];
-  isEditMode: boolean
+  setImageFile: (file) => void
 }
 
 export default function BasicInfoFields({
   form,
   updateField,
   PRODUCT_CATEGORY_LIST,
-  isEditMode
+  setImageFile
 }: BasicInfoFieldsProps) {
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-xl font-semibold">1. Informasi Dasar</h2>
       <div className="flex gap-4 items-start">
+      <ImageField onChange={(file) => setImageFile(file)} value={form.image}/>
+      <div className="flex gap-4 items-start flex-1">
         <TextField
           isRequired
           className="w-full max-w-64"
@@ -40,22 +43,6 @@ export default function BasicInfoFields({
             className="rounded"
             onChange={(e) => updateField("name")(e.target.value)}
             value={form.name}
-          />
-          <FieldError />
-        </TextField>
-        <TextField
-          isRequired
-          className="w-full max-w-64"
-          name="code"
-          type="text"
-          isDisabled={isEditMode}
-        >
-          <Label>SKU Produk</Label>
-          <Input
-            placeholder="Contoh: PRD005"
-            className="rounded"
-            onChange={(e) => updateField("code")(e.target.value)}
-            value={form.code}
           />
           <FieldError />
         </TextField>
@@ -88,7 +75,7 @@ export default function BasicInfoFields({
           </Select.Popover>
           <FieldError />
         </Select>
-        <div></div>
+      </div>
       </div>
     </div>
   );
