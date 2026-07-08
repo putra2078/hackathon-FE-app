@@ -10,10 +10,8 @@ import PriceFields from "./PriceFields";
 import DescriptionField from "./DescriptionField";
 import { Product } from "@/types/api/product.types";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import ProductDetailModal from "../ProductDetailModal";
 import { useGetAllCategory } from "@/hooks/product/useGetAllCategory";
 import { useUploadFile } from "@/hooks/file/useUploadFile";
-import ImageField from "./ImageField";
 
 // const PRODUCT_CATEGORY_LIST = createList([
 //   { key: "aksesoris", textValue: "Aksesoris" },
@@ -81,6 +79,8 @@ export default function ProductFormSection({
       } catch (err) {
         return;
       }
+    } else if (imageFile === null){
+      imageFileName = null
     }
 
     const payload = {
@@ -97,6 +97,8 @@ export default function ProductFormSection({
         setForm(EMPTY_FORM_STATE);
         setBuyPrice(0);
         setSellPrice(0);
+                router.push("/produk");
+
       } else {
         router.push("/produk");
       }

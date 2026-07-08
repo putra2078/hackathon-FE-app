@@ -87,7 +87,7 @@ export default function ImageField({ value, onChange, error }: ImageFieldProps) 
         className="rounded-lg flex flex-col items-center justify-center gap-3 bg-gray-300 max-w-42 max-h-42"
       >
         {isLoadingImage && !localPreview ? (
-          <div className="w-32 h-32 rounded-lg bg-muted animate-pulse" />
+          <div className="w-42 h-42 rounded-lg bg-muted animate-pulse" />
         ) : preview ? (
           <div className="relative w-42 h-42">
             <img

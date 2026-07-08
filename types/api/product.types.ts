@@ -32,7 +32,7 @@ export interface getDetailProductRes extends Product {
 export interface UpdateProductReq {
   id: string;
   payload: {
-    category: string;
+    categoryId: string;
     buyPrice: number;
     sellPrice: number;
     stock: number;
