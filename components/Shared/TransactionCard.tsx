@@ -22,13 +22,13 @@ export default function TransactionCard() {
       title: "Total Pendapatan",
       description: `Rp.${pendapatan}`,
       icon: faBoxOpen,
-      gradient: "bg-linear-to-b from-primary-500 to-primary-600",
+      gradient: "bg-linear-to-b from-lime-600 to-lime-700",
     },
     {
       title: "Rata-rata Keranjang",
       description: `Rp.${keranjang}`,
       icon: faUser,
-      gradient: "bg-linear-to-b from-primary-500 to-primary-600",
+      gradient: "bg-linear-to-b from-lime-500 to-lime-400",
     },
   ];
 
@@ -38,7 +38,7 @@ export default function TransactionCard() {
         return (
           <div
             key={index}
-            className="min-h-18 flex items-center bg-surface border border-gray-200 rounded-2xl shadow"
+            className="min-h-18 flex items-center bg-surface border border-gray-200 rounded-2xl"
           >
             <div
               className={`m-6 ${info.gradient} text-background text-3xl min-w-16 min-h-16 rounded-2xl flex items-center justify-center shadow`}

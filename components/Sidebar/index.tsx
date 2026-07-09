@@ -33,7 +33,7 @@ export default function Sidebar() {
         <div className="flex items-center pt-3">
           <div className="w-16">
             <img
-              src="./brand-icon.png"
+              src="/brand-icon.svg"
               alt=""
               className="w-full h-full object-cover"
             />

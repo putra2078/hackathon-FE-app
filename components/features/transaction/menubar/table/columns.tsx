@@ -1,11 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
-
+"use client";
 import { createColumnHelper } from "@tanstack/react-table";
 import { Transaction } from "./types";
 
-import { Button } from "@heroui/react";
-import {Icon} from "@iconify/react";
+import { Button, Dropdown, Label } from "@heroui/react";
+import { EllipsisVertical } from "@gravity-ui/icons";
+import { formatRupiah } from "@/components/Functions/FormatRupiah";
 
 const columnHelper = createColumnHelper<Transaction>();
 
@@ -14,7 +13,7 @@ export const Columns = [
     header: "ID-TRANSAKSI",
     cell: (info) => {
       return (
-        <span className="text-status-success font-bold">
+        <span className="text-green-700 font-bold">
           #{info.getValue()}
         </span>
       );
@@ -43,9 +42,7 @@ export const Columns = [
     cell: (info) => {
       return (
         <span className="font-bold">
-          {info
-            .getValue()
-            .toLocaleString("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 })}
+          {formatRupiah(info.getValue())}
         </span>
       );
     },
@@ -80,12 +77,26 @@ export const Columns = [
     id: "action",
     cell: () => {
       return (
-        <div className="flex justify-center">
-          <Button isIconOnly className="hover:cursor-pointer" variant="tertiary">
-            <Icon className="size-4" icon="gravity-ui:ellipsis-vertical" />
+        <Dropdown>
+          <Button isIconOnly aria-label="Menu" variant="tertiary">
+            <EllipsisVertical className="size-4 shrink-0 text-muted" />
           </Button>
-        </div>
+          <Dropdown.Popover placement='bottom end' className="rounded-xl">
+            <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
+              <Dropdown.Item id="edit-item" textValue="Edit item" className="rounded-lg">
+                <Label className="font-bold">Edit item</Label>
+              </Dropdown.Item>
+              <Dropdown.Item id="delete-item" textValue="Delete file" variant="danger" className="rounded-lg">
+                <Label className="font-bold text-red-700">Delete item</Label>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown.Popover>
+        </Dropdown>
       );
     },
   }),
 ];
+
+/* <Button isIconOnly className="hover:cursor-pointer" variant="tertiary">
+  
+</Button> */

@@ -1,6 +1,7 @@
 import { createColumnHelper } from '@tanstack/react-table'
 import { Icon } from '@iconify/react'
 import { Button } from '@heroui/react'
+import { formatRupiah } from '@/components/Functions/FormatRupiah'
 
 import data from './MOCK_DATA.json'
 import { TypePembelian } from './type' 
@@ -47,11 +48,7 @@ export const Column = [
       return (
         <span>
           <strong>
-            {
-              info
-              .getValue()
-              .toLocaleString("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 })
-            }
+            {formatRupiah(info.getValue())}
           </strong>
           <p>{cappitalizeEach(status)}</p>
         </span>
