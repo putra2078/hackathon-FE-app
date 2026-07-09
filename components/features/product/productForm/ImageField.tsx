@@ -1,5 +1,7 @@
 "use client";
 import { useGetFileByName } from "@/hooks/file/useGetFileByName";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "@heroui/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -8,12 +10,15 @@ const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 interface ImageFieldProps {
   value: string | null;
-  onChange: (file: File | null) => void; 
+  onChange: (file: File | null) => void;
   error?: string;
 }
 
-export default function ImageField({ value, onChange, error }: ImageFieldProps) {
-  // Ambil gambar existing lewat blob (mode edit)
+export default function ImageField({
+  value,
+  onChange,
+  error,
+}: ImageFieldProps) {
   const {
     imageUrl: fetchedImageUrl,
     isLoading: isLoadingImage,
@@ -80,16 +85,17 @@ export default function ImageField({ value, onChange, error }: ImageFieldProps) 
   };
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-4 px-6 py-6 bg-surface-tertiary rounded-md border">
+      <h2 className="text-sm font-semibold">Gambar Produk</h2>
       <div
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
-        className="rounded-lg flex flex-col items-center justify-center gap-3 bg-gray-300 max-w-42 max-h-42"
+        className="rounded-lg flex flex-col items-center justify-center gap-3"
       >
         {isLoadingImage && !localPreview ? (
-          <div className="w-42 h-42 rounded-lg bg-muted animate-pulse" />
+          <div className="w-56 h-56 rounded-lg bg-muted animate-pulse border" />
         ) : preview ? (
-          <div className="relative w-42 h-42">
+          <div className="relative w-56 h-56 border rounded-lg bg-primary-50">
             <img
               src={preview}
               alt="Preview produk"
@@ -106,23 +112,24 @@ export default function ImageField({ value, onChange, error }: ImageFieldProps) 
             </Button>
           </div>
         ) : (
-          <div className="text-center py-6">
-            <p className="text-sm text-muted-foreground">
-              Tarik & lepas gambar di sini, atau
-            </p>
-            <Button
-              type="button"
-              variant="tertiary"
-              onPress={() => inputRef.current?.click()}
-              className="mt-2 rounded-md"
-            >
-              Pilih File
-            </Button>
-            <p className="text-xs text-muted-foreground mt-1">
-              JPG, PNG, WebP — maks {MAX_SIZE_MB}MB
-            </p>
+          <div className="relative w-56 h-56 border rounded-lg bg-primary-50">
+            <img
+              src="/image-placeholder.png"
+              alt="Preview produk"
+              className="w-full h-full object-cover rounded-lg"
+            />
           </div>
         )}
+
+        <Button
+          type="button"
+          variant="ghost"
+          onPress={() => inputRef.current?.click()}
+          className="mt-2 rounded-md w-full border"
+        >
+          <FontAwesomeIcon icon={faUpload} /> Upload File
+        </Button>
+        <p className="text-xs text-start self-start text-slate-400">{"Format: JPG, PNG, WebP (maks. 5MB)"} </p>
 
         <input
           ref={inputRef}
@@ -134,7 +141,9 @@ export default function ImageField({ value, onChange, error }: ImageFieldProps) 
       </div>
 
       {(localError || error || fetchError) && (
-        <p className="text-sm text-danger">{localError || error || fetchError}</p>
+        <p className="text-sm text-danger">
+          {localError || error || fetchError}
+        </p>
       )}
     </div>
   );

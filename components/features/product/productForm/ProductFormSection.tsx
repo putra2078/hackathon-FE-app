@@ -72,15 +72,18 @@ export default function ProductFormSection({
 
     let imageFileName = form.image;
 
-    if (imageFile) {
+    if(form.image){
+      imageFileName = form.image
+    }
+    else if (imageFile) {
       try {
         const uploadResult = await upload({ file: imageFile });
         imageFileName = uploadResult.filename;
       } catch (err) {
         return;
       }
-    } else if (imageFile === null){
-      imageFileName = null
+    } else if (imageFile === null) {
+      imageFileName = null;
     }
 
     const payload = {
@@ -97,8 +100,7 @@ export default function ProductFormSection({
         setForm(EMPTY_FORM_STATE);
         setBuyPrice(0);
         setSellPrice(0);
-                router.push("/produk");
-
+        router.push("/produk");
       } else {
         router.push("/produk");
       }
@@ -109,7 +111,7 @@ export default function ProductFormSection({
 
   return (
     <div>
-      {(error) && (
+      {error && (
         <ErrorAlert
           desc={error}
           clearAlert={clearError}

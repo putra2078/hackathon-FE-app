@@ -6,13 +6,18 @@ import { getErrorMessage } from "@/lib/getErrorMessage";
 export function useGetFileByName(filename: string) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
+  const check = filename && filename.trim() !== ''  ? `file/${filename}` : null
+
   const { data: blob, error, isLoading } = useSWR(
-    filename ? `file/${filename}` : null,
+    filename && filename.trim() !== ''  ? `file/${filename}` : null,
     () => getFileByName(filename)
   );
 
   useEffect(() => {
-    if (!blob) return;
+    if (!blob) {
+      setImageUrl(null)
+      return
+    };
 
 
     const localUrl = URL.createObjectURL(blob);

@@ -1,11 +1,9 @@
 import { ApiResponse } from "@/types/api/base.types";
 import { apiClient } from "./client";
 import { uploadFileReq, uploadFileRes } from "@/types/api/files.types";
-import { UpdatableChartOptions } from "recharts/types/state/rootPropsSlice";
 
 export async function getFileByName(filename: string){
     const res = await apiClient.get<any>(`/files/${filename}`, {responseType: "blob"})
-    console.log(res.data)
     return res.data
 }
 
