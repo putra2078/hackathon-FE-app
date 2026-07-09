@@ -8,7 +8,7 @@ import TipsPopup from "@/components/features/transaction/tambah-transaksi/TipsPo
 import { formatRupiah } from "@/components/Functions/FormatRupiah";
 import { ProductCartItem } from "@/components/features/transaction/tambah-transaksi/ProductCartItem";
 
-import { 
+import {
   Key, 
   Button, 
   SearchField,
@@ -137,7 +137,6 @@ export default function TambahTransaksi() {
                 </div>
             </article>
             </ScrollShadow>
-
             <br />
             <ProdukDrawer state={drawerState} AddItem={AddItem} Produk={Produk} RemoveItem={RemoveItem} />
           </Surface>
