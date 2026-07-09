@@ -116,6 +116,7 @@ export default function TambahTransaksi() {
                     unitPrice={item.harga}
                     quantity={item.quantity}
                     onIncrement={incrementQuantity}
+                    stok={item.stok}
                     // onIncrement={() => {}}
                     onDecrement={decrementQuantity}
                     item={item}

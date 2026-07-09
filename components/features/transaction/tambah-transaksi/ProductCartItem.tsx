@@ -12,6 +12,7 @@ export function ProductCartItem({
   onIncrement,
   onDecrement,
   item,
+  stok,
   onRemove,
   className,
 }: ProductCartItemProps) {
@@ -46,7 +47,11 @@ export function ProductCartItem({
       {/* Name + unit price */}
       <div className="p-4">
         <h4 className="mb-1 font-bold text-neutral-900">{name}</h4>
-        <p className="mb-3 text-sm text-neutral-500">{formatRupiah(unitPrice)}</p>
+        <div className="mb-3 text-sm text-neutral-500 flex gap-2 items-center">
+          <p>{formatRupiah(unitPrice)}</p>
+          -
+          <span>{stok}</span>
+        </div>
   
         {/* Quantity stepper + total */}
         <div className="flex items-center justify-between">

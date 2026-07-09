@@ -23,6 +23,7 @@ export interface ProductCartItemProps {
   name: string;
   unitPrice: number;
   quantity: number;
+  stok: number;
   item: SelectProductType;
   onRemove: (item: SelectProductType) => void;
   onIncrement: (nama: string) => void;
@@ -30,15 +31,3 @@ export interface ProductCartItemProps {
   className?: string;
   // onIncrement: () => void;
 }
-
-/*
-export interface ProdukType {
-  image: string;
-  nama: string;
-  harga: number;
-  stok: number;
-  quantity: number;
-}
-
-I have this type as an array with useState. Give me the simplest way to increment the quantity of a specific item
-*/
