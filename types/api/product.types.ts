@@ -1,6 +1,6 @@
 export interface Product {
   id?: string;
-  code: string;
+  code?: string;
   name: string;
   image: string | null
   description: string | null;
@@ -32,7 +32,7 @@ export interface getDetailProductRes extends Product {
 export interface UpdateProductReq {
   id: string;
   payload: {
-    category: string;
+    categoryId: string;
     buyPrice: number;
     sellPrice: number;
     stock: number;

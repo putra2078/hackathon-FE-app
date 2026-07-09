@@ -1,5 +1,6 @@
 "use client";
 
+import { useGetFileByName } from "@/hooks/file/useGetFileByName";
 import { useGetCategoryById } from "@/hooks/product/useGetCategoryById";
 import { useProductDetail } from "@/hooks/product/useProductDetail";
 import { formatDate } from "@/lib/formatDate";
@@ -21,14 +22,17 @@ export default function ProductDetailModal({
   setIsOpen,
 }: ProductDetailModalProps) {
   const {error, isLoading, product} = useProductDetail(id)
-
+  const {imageUrl, isLoading: isLoadingImage} = useGetFileByName(product?.image || "")
+  
+  console.log(product)
+  
   const {category} = useGetCategoryById(product?.categoryId)
-
+  
   const categoryName = category ? category.name : "Loading..."
-
-    if (isLoading || !product) return null;
-
-    const imgURL = product.image || 'https://images.unsplash.com/photo-1628794397139-a45fc3286892?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  
+  if (isLoading || !product) return null;
+  
+    const imgURL = imageUrl || 'image-placeholder.png'
 
 
   const LabelAndDesc = [
@@ -75,7 +79,7 @@ export default function ProductDetailModal({
               <div className="flex gap-4 flex-col">
                 <div className="flex gap-8">
                   <div>
-                    <div className="w-46 h-46 rounded-sm overflow-hidden shadow">
+                    <div className="w-46 h-46 rounded-sm overflow-hidden shadow bg-primary-50">
                       <img
                         src={imgURL}
                         alt="product-image"

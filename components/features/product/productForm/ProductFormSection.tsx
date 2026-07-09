@@ -10,8 +10,8 @@ import PriceFields from "./PriceFields";
 import DescriptionField from "./DescriptionField";
 import { Product } from "@/types/api/product.types";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import ProductDetailModal from "../ProductDetailModal";
 import { useGetAllCategory } from "@/hooks/product/useGetAllCategory";
+import { useUploadFile } from "@/hooks/file/useUploadFile";
 
 // const PRODUCT_CATEGORY_LIST = createList([
 //   { key: "aksesoris", textValue: "Aksesoris" },
@@ -27,11 +27,10 @@ const IDR_FORMAT_OPTIONS: Intl.NumberFormatOptions = {
 
 const EMPTY_FORM_STATE = {
   name: "",
-  code: "",
   categoryId: "",
   stock: 0,
   description: "",
-  image: ""
+  image: null,
 };
 
 interface ProductFormSectionProps {
@@ -45,21 +44,22 @@ export default function ProductFormSection({
 }: ProductFormSectionProps) {
   const router = useRouter();
 
-  const { categoryList} = useGetAllCategory()
+  const { categoryList } = useGetAllCategory();
 
   const { saveProduct, isLoading, error, isSuccess, clearError, clearSuccess } =
     useSaveProduct();
 
+  const { upload, isUploading, error: uploadError } = useUploadFile();
+
   const [form, setForm] = useState(() => ({
     name: initialData?.name ?? "",
-    code: initialData?.code ?? "",
     categoryId: initialData?.categoryId ?? "",
     stock: initialData?.stock ?? 0,
     description: initialData?.description ?? "",
-    image: initialData?.image ?? null
+    image: initialData?.image ?? null,
   }));
 
-  console.log(form.categoryId)
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   const [buyPrice, setBuyPrice] = useState(initialData?.buyPrice ?? 0);
   const [sellPrice, setSellPrice] = useState(initialData?.sellPrice ?? 0);
@@ -70,8 +70,25 @@ export default function ProductFormSection({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let imageFileName = form.image;
+
+    if(form.image){
+      imageFileName = form.image
+    }
+    else if (imageFile) {
+      try {
+        const uploadResult = await upload({ file: imageFile });
+        imageFileName = uploadResult.filename;
+      } catch (err) {
+        return;
+      }
+    } else if (imageFile === null) {
+      imageFileName = null;
+    }
+
     const payload = {
       ...form,
+      image: imageFileName,
       buyPrice,
       sellPrice,
     };
@@ -83,6 +100,7 @@ export default function ProductFormSection({
         setForm(EMPTY_FORM_STATE);
         setBuyPrice(0);
         setSellPrice(0);
+        router.push("/produk");
       } else {
         router.push("/produk");
       }
@@ -117,11 +135,15 @@ export default function ProductFormSection({
         className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border"
         onSubmit={handleSubmit}
       >
+        {/* <ImageField
+          value={form.image}
+          onChange={(file) => setImageFile(file)}
+        /> */}
         <BasicInfoFields
           PRODUCT_CATEGORY_LIST={categoryList}
           form={form}
           updateField={updateField}
-          isEditMode={isEditMode}
+          setImageFile={setImageFile}
         />
         <hr />
         <PriceFields
@@ -160,9 +182,9 @@ export default function ProductFormSection({
   );
 }
 
-interface CancelButtonProps{
-  router: AppRouterInstance
-  isEditMode: boolean
+interface CancelButtonProps {
+  router: AppRouterInstance;
+  isEditMode: boolean;
 }
 
 function CancelButton({ router, isEditMode }: CancelButtonProps) {
