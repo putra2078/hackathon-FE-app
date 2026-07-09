@@ -9,7 +9,7 @@ interface BannerProps {
 export default function BannerSmall({ title }: BannerProps) {
   const directory = usePathname().split('/');
   return (
-    <section className="rounded-xl bg-linear-to-r from-primary via-primary-400 via-53% to-primary-500 to-89% flex justify-between ">
+    <section className="rounded-xl bg-linear-to-r from-primary via-primary-400 via-53% to-primary-500 to-89% flex justify-between">
       <div className="text-background p-8">
         <div className="flex text-sm opacity-80 mb-1 font-medium gap-2">
           <nav className="flex flex-row gap-2 items-center">

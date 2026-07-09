@@ -1,4 +1,6 @@
 "use client";
+import { userStorage } from "@/lib/storage";
+import { User } from "@/types/api/auth.types";
 import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -6,6 +8,7 @@ import { useEffect, useState } from "react";
 export default function Banner() {
   const [formattedDate, setFormattedDate] = useState("");
   const [formattedTime, setFormattedTime] = useState("");
+  const userData = userStorage.get()
 
   useEffect(() => {
     const updateDate = () => {
@@ -32,7 +35,7 @@ export default function Banner() {
       <div className="flex-1 flex flex-col gap-4">
         <div>
           <h3 className="text-lg">Selamat Datang Kembali!</h3>
-          <h2 className="text-3xl font-semibold">Toko Sejahtera</h2>
+          <h2 className="text-3xl font-semibold">{userData?.name || "Anomali"}</h2>
           <p className="text-lg">Kelola tokomu dengan mudah dan efesien</p>
         </div>
         <div className="flex gap-12 items-center text-lg">

@@ -1,6 +1,8 @@
 "use client";
 
-import { Table } from "@heroui/react";
+import { faBoxesPacking, faInbox } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EmptyState, Table } from "@heroui/react";
 import { Pagination } from "@heroui/react";
 
 // Definisi tiap kolom
@@ -10,7 +12,7 @@ export interface ColumnDef<T> {
   className?: string; // class tambahan untuk <th>
   cellClassName?: string; // class tambahan untuk <td>
   renderCell?: (row: T) => React.ReactNode; // custom renderer; jika tidak ada, pakai row[key]
-  minWidth?: number
+  minWidth?: number;
 }
 
 export interface PaginationConfig {
@@ -20,7 +22,7 @@ export interface PaginationConfig {
   start: number;
   end: number;
   itemLabel?: string;
-  pages: number[];
+  pages: (number | string)[];
   onPageChange: (page: number) => void;
 }
 
@@ -28,17 +30,22 @@ interface ReusableTableProps<T extends object> {
   columns: ColumnDef<T>[];
   data: T[];
   pagination?: PaginationConfig;
+  emptyMessage: string;
 }
 
 export function ReusableTable<T extends object>({
   columns,
   data,
   pagination,
+  emptyMessage,
 }: ReusableTableProps<T>) {
   return (
-    <Table aria-label="Table" className="rounded-none p-0">
+    <Table aria-label="Table" className="rounded-none p-0 min-h-[200px]">
       <Table.ResizableContainer>
-        <Table.Content className="min-w-[700px]" aria-label="table content">
+        <Table.Content
+          className="min-w-[700px] h-full"
+          aria-label="table content"
+        >
           {/* Header */}
           <Table.Header
             className={"bg-surface-secondary border border-surface-border"}
@@ -48,7 +55,7 @@ export function ReusableTable<T extends object>({
                 isRowHeader={i === 0}
                 key={col.key}
                 className={"font-semibold text-black text-sm"}
-                minWidth={col.minWidth}
+                minWidth={col.minWidth || 120}
               >
                 {col.label}
                 {i !== columns.length - 1 && <Table.ColumnResizer />}
@@ -57,7 +64,18 @@ export function ReusableTable<T extends object>({
           </Table.Header>
 
           {/* Body */}
-          <Table.Body>
+          <Table.Body
+            renderEmptyState={() => (
+              <EmptyState className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
+                <FontAwesomeIcon
+                  icon={faBoxesPacking}
+                  size="2xl"
+                  className="text-muted size-6"
+                />
+                <span className="text-sm text-muted">{emptyMessage}</span>
+              </EmptyState>
+            )}
+          >
             {data.map((row, rowIndex) => (
               <Table.Row
                 key={rowIndex}
@@ -80,7 +98,7 @@ export function ReusableTable<T extends object>({
         </Table.Content>
       </Table.ResizableContainer>
       {pagination && (
-        <Table.Footer className="bg-surface-secondary">
+        <Table.Footer className="bg-surface-secondary border-t">
           <Pagination size="sm" aria-label="Navigasi Tabel">
             <Pagination.Summary className="text-black">
               Manampilkan {pagination.start} - {pagination.end} dari{" "}
@@ -100,17 +118,29 @@ export function ReusableTable<T extends object>({
                   <Pagination.PreviousIcon />
                 </Pagination.Previous>
               </Pagination.Item>
-              {pagination.pages.map((p) => (
-                <Pagination.Item key={p}>
-                  <Pagination.Link
-                    isActive={p === pagination.currentPage}
-                    onPress={() => pagination.onPageChange(p)}
-                    className={`data-[active="true"]:bg-primary data-[active="true"]:text-primary-foreground data-[active='true']:font-semibold  rounded-md border border-slate-300 bg-white text-foreground`}
-                  >
-                    {p}
-                  </Pagination.Link>
-                </Pagination.Item>
-              ))}
+              {pagination.pages.map((p, index) => {
+                if (p === "...") {
+                  return (
+                    <Pagination.Item key={`ellipsis-${index}`}>
+                      <span className="px-3 py-1.5 text-slate-400 select-none text-sm font-normal">
+                        ...
+                      </span>
+                    </Pagination.Item>
+                  );
+                }
+
+                return (
+                  <Pagination.Item key={`page-${p}`}>
+                    <Pagination.Link
+                      isActive={p === pagination.currentPage}
+                      onPress={() => pagination.onPageChange(p as number)}
+                      className="data-[active='true']:bg-primary data-[active='true']:text-primary-foreground data-[active='true']:font-semibold rounded-md border border-slate-300 bg-white text-foreground"
+                    >
+                      {p}
+                    </Pagination.Link>
+                  </Pagination.Item>
+                );
+              })}
               <Pagination.Item>
                 <Pagination.Next
                   isDisabled={pagination.currentPage === pagination.totalPages}
