@@ -7,7 +7,7 @@ interface ProductImageCellProps {
 }
 
 export default function ProductImageCell({ filename }: ProductImageCellProps) {
-  const { imageUrl, isLoading } = useGetFileByName(filename ?? null);
+  const { imageUrl, isLoading } = useGetFileByName(filename);
 
   if (isLoading) {
     return <div className="w-full h-full bg-gray-200 animate-pulse" />;

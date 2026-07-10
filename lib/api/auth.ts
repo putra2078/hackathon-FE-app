@@ -1,6 +1,7 @@
 import { LoginReq, LoginRes, RegisterReq, RegisterRes, UpdateUserReq, User } from '@/types/api/auth.types';
 import { apiClient } from './client';
 import { ApiResponse } from '@/types/api/base.types';
+import { userStorage } from '../storage';
 
 export async function loginUser(payload: LoginReq): Promise<LoginRes> {
   const res = await apiClient.post<ApiResponse<LoginRes>>('/users/login', payload);
@@ -19,5 +20,6 @@ export async function getUserById(id: string): Promise<User> {
 
 export async function updateUser(id: string, payload: UpdateUserReq): Promise<User> {
   const res = await apiClient.put<ApiResponse<User>>(`/users/${id}`, payload);
+  userStorage.set(res.data.data)
   return res.data.data;
 }
