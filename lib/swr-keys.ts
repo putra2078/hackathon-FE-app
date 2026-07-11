@@ -6,14 +6,19 @@ export const SWR_KEYS = {
 
   category: {
     all: "categories",
-    detail: (id: string) => `/categories/${id}`
+    detail: (id: string) => `/categories/${id}`,
   },
 
   stock: {
     all: "stocks",
   },
 
+  transaction: {
+    all: "transactions",
+    detail: (id: string) => `transactions/${id}`,
+  },
+
   profile: {
-    me: "profile/me"
-  }
+    me: "profile/me",
+  },
 };
