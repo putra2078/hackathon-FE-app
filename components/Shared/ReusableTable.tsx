@@ -30,14 +30,14 @@ interface ReusableTableProps<T extends object> {
   columns: ColumnDef<T>[];
   data: T[];
   pagination?: PaginationConfig;
-  emptyMessage: string;
+  emptyMessage?: string;
 }
 
 export function ReusableTable<T extends object>({
   columns,
   data,
   pagination,
-  emptyMessage,
+  emptyMessage = "Data tidak ditemukan",
 }: ReusableTableProps<T>) {
   return (
     <Table aria-label="Table" className="rounded-none p-0 min-h-[200px]">

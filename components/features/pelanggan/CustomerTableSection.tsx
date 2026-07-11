@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { ReusableTable } from "@/components/Shared/ReusableTable";
 import SelectList, { createList } from "@/components/Shared/SelectList";
 import TableSearchField from "@/components/Shared/TableSearchField";
@@ -10,11 +10,11 @@ import { usePagination } from "@/hooks/usePagination";
 import { customersData } from "./mock/customer.mock";
 
 export default function CustomerTableSection() {
-    const { currentData, pagination } = usePagination({
-      data: customersData,
-      rowsPerPage: 5,
-      itemLabel: "customer",
-    });
+  const { currentData, pagination } = usePagination({
+    data: customersData,
+    rowsPerPage: 5,
+    itemLabel: "customer",
+  });
 
   const StatusList = createList([
     { key: "aktif", textValue: "Aktif" },
@@ -24,7 +24,10 @@ export default function CustomerTableSection() {
     <div className="flex flex-col gap-6 bg-surface rounded-2xl p-6 shadow border">
       <div className="flex flex-col bg-surface-tertiary border border-surface-border rounded-xl overflow-hidden">
         <div id="filter" className="flex gap-4 items-center p-6 w-full">
-          <TableSearchField placeholder="Cari Pelanggan..." aria_label="Cari Pelanggan"/>
+          <TableSearchField
+            placeholder="Cari Pelanggan..."
+            aria_label="Cari Pelanggan"
+          />
           <SelectList
             ListItems={StatusList}
             placeholder="Status"
@@ -46,6 +49,7 @@ export default function CustomerTableSection() {
           columns={customerColumns}
           data={currentData}
           pagination={pagination}
+          emptyMessage="Belum ada data pelanggan"
         />
       </div>
     </div>

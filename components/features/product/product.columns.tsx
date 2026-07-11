@@ -5,8 +5,6 @@ import { Product } from "@/types/api/product.types";
 import { formatPrice } from "@/lib/formatPrice";
 import ProductImageCell from "./ProductImageCell";
 
-
-
 // export interface ProductExt extends Product {
 //   status: "aktif" | "tidak aktif";
 // }
@@ -39,7 +37,7 @@ export const productColumns: ColumnDef<Product>[] = [
   {
     key: "categoryName",
     label: "Kategori",
-    minWidth: 160
+    minWidth: 160,
   },
   {
     key: "stock",
@@ -52,12 +50,18 @@ export const productColumns: ColumnDef<Product>[] = [
       </div>
     ),
   },
-  { key: "buyPrice", label: "Harga Beli", minWidth: 140, renderCell: (row) => (
-    <p>{formatPrice(row.buyPrice)}</p>
-  )},
-  { key: "sellPrice", label: "Harga Jual", minWidth: 140, renderCell: (row) => (
-    <p>{formatPrice(row.sellPrice)}</p>
-  )},
+  {
+    key: "buyPrice",
+    label: "Harga Beli",
+    minWidth: 140,
+    renderCell: (row) => <p>{formatPrice(row.buyPrice)}</p>,
+  },
+  {
+    key: "sellPrice",
+    label: "Harga Jual",
+    minWidth: 140,
+    renderCell: (row) => <p>{formatPrice(row.sellPrice)}</p>,
+  },
   // {
   //   key: "status",
   //   label: "Status",
@@ -76,9 +80,11 @@ export const productColumns: ColumnDef<Product>[] = [
     key: "aksi",
     label: "Aksi",
     minWidth: 160,
-    renderCell: (row) =>  (
+    renderCell: (row) => (
       <div className="flex items-center gap-2">
-        <ActionProductButton id={row.id} code={row.code}/>
+        {row.id && row.code ? (
+          <ActionProductButton id={row.id} code={row.code} />
+        ) : null}
       </div>
     ),
   },
